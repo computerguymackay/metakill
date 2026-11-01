@@ -97,7 +97,9 @@ func (zipArchiveFormat) process(z *zipDoc) error {
 		if err := z.load(e); err != nil {
 			return fmt.Errorf("zip: %w", err)
 		}
-		z.stripMember(e)
+		if !z.cleanJarMetadata(e) {
+			z.stripMember(e)
+		}
 		if e.out == nil {
 			e.data, e.loaded = nil, false // unchanged: copy raw bytes, free memory
 		}

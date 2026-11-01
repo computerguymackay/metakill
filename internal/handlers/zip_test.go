@@ -6,6 +6,7 @@ import (
 	"errors"
 	"io"
 	"os"
+	"strings"
 	"testing"
 
 	"github.com/computerguymackay/metakill/internal/fixtures"
@@ -234,5 +235,51 @@ func TestDocumentJunkRemoved(t *testing.T) {
 	out, _, _ := roundTrip(t, "letter.docx", "ooxml", b.Bytes(), defaultOpts)
 	if _, ok := readZip(t, out)["__MACOSX/word/._document.xml"]; ok {
 		t.Fatal("AppleDouble file kept in DOCX")
+	}
+}
+
+func TestJarManifestCleaned(t *testing.T) {
+	out, pre, _ := roundTrip(t, "app.jar", "zip", fixtures.AppJAR(), defaultOpts)
+	want := map[string]bool{"Built-By": true, "Created-By": true, "Build-Jdk-Spec": true, "Build-Date": true}
+	got := map[string]int{}
+	for _, f := range pre.Fields {
+		if f.Namespace == "jar.manifest" {
+			got[f.Key]++
+			if f.Key == "Built-By" && f.Value != nil && strings.Contains(*f.Value, "Department") &&
+				!strings.Contains(*f.Value, "Wraps Past") {
+				t.Errorf("wrapped value not joined: %q", *f.Value)
+			}
+		}
+	}
+	for k := range want {
+		if got[k] == 0 {
+			t.Errorf("manifest attribute %s not reported", k)
+		}
+	}
+	if got["Built-By"] != 2 {
+		t.Errorf("Built-By in the per-entry section not reported (%d)", got["Built-By"])
+	}
+	m := readZip(t, out)
+	mf := m["META-INF/MANIFEST.MF"].data
+	assertAbsent(t, mf, fixtures.ArtistName, "Maven", "Build-Jdk", "2023", "raps Past")
+	for _, line := range fixtures.KeptManifestLines {
+		assertPresent(t, mf, line)
+	}
+	if !bytes.HasPrefix(mf, []byte("Manifest-Version: 1.0\r\n")) {
+		t.Error("Manifest-Version must stay first")
+	}
+	pom := string(m["META-INF/maven/com.example/app/pom.properties"].data)
+	if pom != "groupId=com.example\nartifactId=app\nversion=1.0\n" {
+		t.Errorf("pom.properties = %q", pom)
+	}
+	if string(m["com/example/App.class"].data) != "\xca\xfe\xba\xbe" {
+		t.Error("class file changed")
+	}
+}
+
+func TestSignedJarManifestUntouched(t *testing.T) {
+	// Signed JARs are skipped entirely, so their manifest is never edited.
+	if _, err := (zipArchiveHandler{}).Inspect(bytes.NewReader(fixtures.SignedJAR()), defaultOpts); !errors.Is(err, ErrSkip) {
+		t.Fatalf("got %v, want ErrSkip", err)
 	}
 }
