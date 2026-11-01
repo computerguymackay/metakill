@@ -147,6 +147,7 @@
     "cleaned": 1,
     "already_clean": 0,
     "skipped": 0,
+    "inspected": 0,
     "errors": 0,
     "not_fully_clean": 0,
     "fields_removed": 21,

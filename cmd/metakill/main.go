@@ -19,7 +19,7 @@ var version = "dev"
 
 const groupKey = "metakill_group"
 
-var groupOrder = []string{"Input", "Output", "Safety", "Stripping", "Other"}
+var groupOrder = []string{"Input", "Output", "Safety", "Stripping", "Archives", "Other"}
 
 func main() {
 	os.Exit(run(os.Args[1:]))
@@ -90,6 +90,11 @@ images, documents, audio and video files. Files are edited in place unless
 	add("Stripping", "keep-icc")
 	f.BoolVarP(&cfg.NoZeroPad, "no-zero-pad", "z", false, "do not zero existing padding/free-space regions")
 	add("Stripping", "no-zero-pad")
+
+	f.BoolVarP(&cfg.ExternalTools, "external-tools", "x", false, "allow running 7-Zip or rar to repack 7z and RAR archives")
+	add("Archives", "external-tools")
+	f.BoolVarP(&cfg.ConvertRAR, "convert-rar", "a", false, "convert RAR to 7z when no rar tool is installed (implies -x)")
+	add("Archives", "convert-rar")
 
 	f.BoolVar(&selftest, "selftest", false, "run the built-in smoke test")
 	_ = f.MarkHidden("selftest")

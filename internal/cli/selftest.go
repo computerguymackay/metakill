@@ -55,6 +55,9 @@ func selfTestOne(fx fixtures.Fixture, opts handlers.Options) error {
 	if !fx.Clean && pre.TotalFields() == 0 {
 		return fmt.Errorf("inspect found no metadata")
 	}
+	if pre.ReportOnly {
+		return nil // repacking needs -x and an external tool; inspection is the test here
+	}
 	if _, err := r.Seek(0, io.SeekStart); err != nil {
 		return err
 	}

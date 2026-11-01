@@ -54,6 +54,14 @@ func (r *runner) processOne(j job) report.Report {
 	if pre.Format == "" {
 		pre.Format = j.handler.Name()
 	}
+	if pre.ReportOnly {
+		pre.Status = report.StatusInspected
+		return pre
+	}
+	convert := pre.ConvertTo
+	if convert != "" && r.cfg.Output == "" {
+		pre.Output = swapExt(j.path, convert)
+	}
 	if r.cfg.DryRun {
 		pre.Status = statusFor(&pre)
 		return pre
@@ -62,6 +70,17 @@ func (r *runner) processOne(j job) report.Report {
 	target, inPlace, err := r.target(j.path)
 	if err != nil {
 		return fail(err)
+	}
+	writeTarget := target
+	if convert != "" {
+		if inPlace {
+			writeTarget = swapExt(target, convert)
+			if _, err := os.Lstat(writeTarget); err == nil {
+				return fail(fmt.Errorf("cannot convert: %s already exists", writeTarget))
+			}
+		} else if !strings.EqualFold(filepath.Ext(target), convert) {
+			return fail(fmt.Errorf("the output will be a %s archive; give -o/--output a %s name", strings.TrimPrefix(convert, "."), convert))
+		}
 	}
 
 	if pre.TotalFields() == 0 {
@@ -83,7 +102,7 @@ func (r *runner) processOne(j job) report.Report {
 		}
 	}
 
-	tmp, err := os.CreateTemp(filepath.Dir(target), ".metakill-*.tmp")
+	tmp, err := os.CreateTemp(filepath.Dir(writeTarget), ".metakill-*.tmp")
 	if err != nil {
 		return fail(err)
 	}
@@ -113,7 +132,19 @@ func (r *runner) processOne(j job) report.Report {
 		cleanup()
 		return fail(err)
 	}
-	check, err := j.handler.Inspect(tmp, r.opts)
+	vh := j.handler
+	if convert != "" {
+		// The output is a different format; validate it with its own handler.
+		if vh = handlers.Detect(tmp, ""); vh == nil || "."+vh.Name() != convert {
+			cleanup()
+			return fail(fmt.Errorf("post-write validation failed (original left untouched): output is not a %s archive", convert))
+		}
+		if _, err := tmp.Seek(0, io.SeekStart); err != nil {
+			cleanup()
+			return fail(err)
+		}
+	}
+	check, err := vh.Inspect(tmp, r.opts)
 	if err != nil {
 		cleanup()
 		return fail(fmt.Errorf("post-write validation failed (original left untouched): %w", err))
@@ -138,15 +169,38 @@ func (r *runner) processOne(j job) report.Report {
 	}
 	srcOpen = false
 
-	if backup != "" {
-		if err := copyFileExcl(target, backup, st.Mode().Perm()); err != nil {
-			_ = os.Remove(tmpName)
-			return fail(fmt.Errorf("creating backup: %w", err))
+	if convert != "" && inPlace {
+		// The original keeps its name as the backup (or is removed); the
+		// cleaned archive gets the new extension.
+		if backup != "" {
+			if err := os.Rename(target, backup); err != nil {
+				_ = os.Remove(tmpName)
+				return fail(fmt.Errorf("creating backup: %w", err))
+			}
 		}
-	}
-	if err := os.Rename(tmpName, target); err != nil {
-		_ = os.Remove(tmpName)
-		return fail(fmt.Errorf("replacing file: %w", err))
+		if err := os.Rename(tmpName, writeTarget); err != nil {
+			_ = os.Remove(tmpName)
+			if backup != "" {
+				_ = os.Rename(backup, target)
+			}
+			return fail(fmt.Errorf("writing converted file: %w", err))
+		}
+		if backup == "" {
+			if err := os.Remove(target); err != nil {
+				return fail(fmt.Errorf("removing original after conversion: %w", err))
+			}
+		}
+	} else {
+		if backup != "" {
+			if err := copyFileExcl(target, backup, st.Mode().Perm()); err != nil {
+				_ = os.Remove(tmpName)
+				return fail(fmt.Errorf("creating backup: %w", err))
+			}
+		}
+		if err := os.Rename(tmpName, target); err != nil {
+			_ = os.Remove(tmpName)
+			return fail(fmt.Errorf("replacing file: %w", err))
+		}
 	}
 
 	rep.Path = j.path
@@ -157,6 +211,8 @@ func (r *runner) processOne(j job) report.Report {
 	rep.Backup = backup
 	if !inPlace {
 		rep.Output = r.cfg.Output
+	} else if convert != "" {
+		rep.Output = swapExt(j.path, convert)
 	}
 	rep.Bytes = st.Size() - newSize
 	if rep.Bytes < 0 {
@@ -255,4 +311,9 @@ func prefixed(name string, err error) error {
 		return err
 	}
 	return fmt.Errorf("%s: %w", name, err)
+}
+
+// swapExt replaces a path's extension (e.g. holiday.rar → holiday.7z).
+func swapExt(p, ext string) string {
+	return strings.TrimSuffix(p, filepath.Ext(p)) + ext
 }

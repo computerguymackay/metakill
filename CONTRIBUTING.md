@@ -10,8 +10,10 @@ Thanks for helping. A few ground rules keep metakill trustworthy.
 - **Never corrupt a file.** Prefer in-place blanking (zeroing, Void/JUNK/free
   elements) over restructuring when offsets elsewhere in the file depend on
   layout.
-- **Pure Go only.** No cgo, no shelling out, no network access. A test fails
-  if any metakill package imports `net`.
+- **Pure Go only.** No cgo and no network access; a test fails if any
+  metakill package imports `net`. The only external programs ever run are
+  7-Zip/rar, to *repack* 7z and RAR archives, and only with
+  `-x/--external-tools`. Reading and validation must stay pure Go.
 - **Every user-facing flag has a short and a long form.**
 
 ## Layout

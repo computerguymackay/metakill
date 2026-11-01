@@ -1,0 +1,15 @@
+bundle.rar  [RAR]
+  Timestamps:      member timestamps (latest) = "2023-04-12T18:33:02Z", creation/access times = "6 member(s)"
+  Author:          owners = "jane:staff (501:20)"
+  Custom:          archive comment = <binary, 27 bytes>, docs/.DS_Store = <binary, 21 bytes>
+  > docs/photo.jpg  [JPEG]
+  >   GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16", exif:GPSLatitude = "37,46.494N", City = "San Francisco"
+  >   Timestamps:      DateTime = "2023:04:12 18:33:02", DateTimeOriginal = "2023:04:12 18:33:02", DateTimeDigitized = "2023:04:12 18:33:02", xmp:CreateDate = "2023-04-12T18:33:02"
+  >   Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
+  >   Author:          Artist = "Jane Photographer", dc:creator = "Jane Photographer", By-line = "Jane Photographer"
+  >   Software:        Software = "iOS 16.4", xmp:CreatorTool = "Adobe Photoshop 24.0"
+  >   Thumbnail:       ThumbnailImage = <binary, 631 bytes>
+  >   ICC profile:     ICC_PROFILE = <binary, 150 bytes>
+  >   Custom:          UserComment = "secret comment", Comment = "secret comment", TrailingData = <binary, 25 bytes>
+  >   Kept:            Orientation = "6"
+  --- 30 fields, ~0 B removable

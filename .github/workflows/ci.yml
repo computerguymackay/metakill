@@ -24,11 +24,19 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       CGO_ENABLED: "0"
+      METAKILL_REQUIRE_7Z: "1" # 7z/RAR tests must run, not skip
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
+      - name: Install 7-Zip (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y 7zip
+      - name: Install 7-Zip (macOS)
+        if: runner.os == 'macOS'
+        run: brew install sevenzip
+      # Windows runners ship 7-Zip in C:\Program Files\7-Zip.
       - name: Test
         run: go test ./...
       - name: Build
@@ -53,8 +61,10 @@ jobs:
           version: v2.15.0
       - name: govulncheck
         run: go run golang.org/x/vuln/cmd/govulncheck@v1.9.0 ./...
+      - name: Install 7-Zip
+        run: sudo apt-get update && sudo apt-get install -y 7zip
       - name: Race detector
-        run: CGO_ENABLED=1 go test -race ./...
+        run: CGO_ENABLED=1 METAKILL_REQUIRE_7Z=1 go test -race ./...
 
   release:
     needs: [test, lint]

@@ -112,6 +112,9 @@ func WriteTextSummary(w io.Writer, run *Run) {
 	}
 	fmt.Fprintf(w, "%s: %d cleaned, %d already clean, %d skipped, %d errors",
 		plural(s.Files, "file"), s.Cleaned, s.AlreadyClean, s.Skipped, s.Errors)
+	if s.Inspected > 0 {
+		fmt.Fprintf(w, ", %d inspected only", s.Inspected)
+	}
 	if run.DryRun {
 		// In dry-run nothing is cleaned; "cleaned" counts files that would be.
 		fmt.Fprint(w, " (dry run)")

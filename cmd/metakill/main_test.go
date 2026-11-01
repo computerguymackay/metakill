@@ -181,13 +181,19 @@ func TestGoldenDryRun(t *testing.T) {
 	dir := copyFixtures(t)
 	for _, n := range fixtureNames(t) {
 		t.Run(n, func(t *testing.T) {
+			// 7z and RAR need -x to be cleaned, so without it they are
+			// inspected only and report "not fully clean" (exit 3).
+			wantCode := 0
+			if strings.HasSuffix(n, ".7z") || strings.HasSuffix(n, ".rar") {
+				wantCode = 3
+			}
 			txt := runCLI(t, dir, "-n", n)
-			if txt.code != 0 {
-				t.Errorf("exit %d: %s", txt.code, txt.stderr)
+			if txt.code != wantCode {
+				t.Errorf("exit %d, want %d: %s", txt.code, wantCode, txt.stderr)
 			}
 			golden(t, filepath.Join("text", n+".txt"), txt.stdout)
 			js := runCLI(t, dir, "-n", "-j", n)
-			if js.code != 0 {
+			if js.code != wantCode {
 				t.Errorf("exit %d: %s", js.code, js.stderr)
 			}
 			if !json.Valid([]byte(js.stdout)) {
@@ -208,7 +214,8 @@ func TestHelpListsEveryFlag(t *testing.T) {
 	for _, f := range []string{
 		"-d, --directory", "-r, --recursive", "-n, --dry-run", "-j, --json", "-q, --quiet",
 		"-o, --output", "-y, --yes", "-b, --backup", "-k, --keep-tags", "-t, --keep-thumbnails",
-		"-c, --keep-icc", "-z, --no-zero-pad", "-v, --verbose", "-h, --help", "--version",
+		"-c, --keep-icc", "-z, --no-zero-pad", "-x, --external-tools", "-a, --convert-rar",
+		"-v, --verbose", "-h, --help", "--version",
 	} {
 		if !strings.Contains(r.stdout, f) {
 			t.Errorf("help is missing %q", f)
@@ -228,7 +235,7 @@ func TestUsageErrors(t *testing.T) {
 		stderr string
 	}{
 		{"unknown long flag", []string{"--bogus", "photo.jpg"}, "metakill: error: unknown flag: --bogus\n" + hint},
-		{"unknown short flag", []string{"-x", "photo.jpg"}, "metakill: error: unknown shorthand flag: 'x' in -x\n" + hint},
+		{"unknown short flag", []string{"-w", "photo.jpg"}, "metakill: error: unknown shorthand flag: 'w' in -w\n" + hint},
 		{"no args", nil, "metakill: error: no files given\n" + hint},
 		{"file in dir mode", []string{"-d", "photo.jpg"}, "metakill: error: photo.jpg is a file; in directory mode (-d) every argument must be a directory\n" + hint},
 		{"dir in file mode", []string{"."}, "metakill: error: . is a directory; use -d/--directory to process directories\n" + hint},
@@ -636,4 +643,125 @@ func TestTarRealRun(t *testing.T) {
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("after cleaning: %v, want %v", got, want)
 	}
+}
+
+func has7z() bool {
+	for _, n := range []string{"7zz", "7z", "7za", "7zr"} {
+		if _, err := exec.LookPath(n); err == nil {
+			return true
+		}
+	}
+	if runtime.GOOS == "windows" {
+		for _, env := range []string{"ProgramFiles", "ProgramW6432"} {
+			if _, err := os.Stat(filepath.Join(os.Getenv(env), "7-Zip", "7z.exe")); err == nil {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func need7zCLI(t *testing.T) {
+	t.Helper()
+	if !has7z() {
+		if os.Getenv("METAKILL_REQUIRE_7Z") != "" {
+			t.Fatal("7-Zip is required (METAKILL_REQUIRE_7Z is set) but was not found")
+		}
+		t.Skip("7-Zip not installed")
+	}
+	if _, err := exec.LookPath("rar"); err == nil {
+		t.Skip("rar is installed, so RAR is repacked instead of converted")
+	}
+}
+
+func TestArchivesInspectedWithoutX(t *testing.T) {
+	dir := copyFixtures(t, "bundle.7z", "bundle.rar")
+	r := runCLI(t, dir, "-y", "-q", "-j", "bundle.7z", "bundle.rar")
+	if r.code != 3 {
+		t.Fatalf("exit %d, want 3: %s", r.code, r.stderr)
+	}
+	var doc struct {
+		Results []struct{ Status string }
+		Summary map[string]float64
+	}
+	if err := json.Unmarshal([]byte(r.stdout), &doc); err != nil {
+		t.Fatal(err)
+	}
+	for _, x := range doc.Results {
+		if x.Status != "inspected" {
+			t.Errorf("status %q, want inspected", x.Status)
+		}
+	}
+	if doc.Summary["inspected"] != 2 || doc.Summary["fields_removed"] != 0 {
+		t.Errorf("summary %v", doc.Summary)
+	}
+	for _, n := range []string{"bundle.7z", "bundle.rar"} {
+		a, _ := os.ReadFile(filepath.Join(fixturesDir(t), n))
+		b, _ := os.ReadFile(filepath.Join(dir, n))
+		if !bytes.Equal(a, b) {
+			t.Errorf("%s was modified without -x", n)
+		}
+		if _, err := os.Stat(filepath.Join(dir, n+".bak")); err == nil {
+			t.Errorf("%s: backup created although nothing changed", n)
+		}
+	}
+}
+
+func TestRARConversion(t *testing.T) {
+	need7zCLI(t)
+	orig, _ := os.ReadFile(filepath.Join(fixturesDir(t), "bundle.rar"))
+
+	// In place: bundle.rar -> bundle.7z, original kept as bundle.rar.bak.
+	dir := copyFixtures(t, "bundle.rar")
+	r := runCLI(t, dir, "-y", "-q", "-a", "bundle.rar")
+	expect(t, r, 0, "", "")
+	if _, err := os.Stat(filepath.Join(dir, "bundle.rar")); err == nil {
+		t.Error("bundle.rar should have become bundle.rar.bak")
+	}
+	if b, _ := os.ReadFile(filepath.Join(dir, "bundle.rar.bak")); !bytes.Equal(b, orig) {
+		t.Error("backup differs from the original")
+	}
+	r = runCLI(t, dir, "-n", "-x", "bundle.7z")
+	expect(t, r, 0, "bundle.7z  [7Z]\n  no removable metadata found\n", "*")
+
+	// Without backups the original is removed.
+	dir = copyFixtures(t, "bundle.rar")
+	expect(t, runCLI(t, dir, "-y", "-q", "-a", "--backup=false", "bundle.rar"), 0, "", "")
+	entries, _ := os.ReadDir(dir)
+	if len(entries) != 1 || entries[0].Name() != "bundle.7z" {
+		t.Errorf("directory holds %v, want only bundle.7z", entries)
+	}
+
+	// An existing .7z is never overwritten.
+	dir = copyFixtures(t, "bundle.rar", "bundle.7z")
+	r = runCLI(t, dir, "-y", "-a", "bundle.rar")
+	if r.code != 1 || !strings.Contains(r.stderr, "cannot convert: bundle.7z already exists") {
+		t.Errorf("got %+v", r)
+	}
+
+	// -o must name a .7z file; the input is left alone.
+	dir = copyFixtures(t, "bundle.rar")
+	r = runCLI(t, dir, "-a", "-o", "clean.rar", "bundle.rar")
+	if r.code != 1 || !strings.Contains(r.stderr, "give -o/--output a .7z name") {
+		t.Errorf("got %+v", r)
+	}
+	expect(t, runCLI(t, dir, "-q", "-a", "-o", "clean.7z", "bundle.rar"), 0, "", "")
+	if b, _ := os.ReadFile(filepath.Join(dir, "bundle.rar")); !bytes.Equal(b, orig) {
+		t.Error("-o modified the input")
+	}
+
+	// Dry run shows the new name.
+	dir = copyFixtures(t, "bundle.rar")
+	r = runCLI(t, dir, "-n", "-a", "bundle.rar")
+	if !strings.Contains(r.stdout, "Output:          bundle.7z") {
+		t.Errorf("dry run does not show the converted name:\n%s", r.stdout)
+	}
+}
+
+func Test7zRepackCLI(t *testing.T) {
+	need7zCLI(t)
+	dir := copyFixtures(t, "bundle.7z")
+	expect(t, runCLI(t, dir, "-y", "-q", "-x", "bundle.7z"), 0, "", "")
+	r := runCLI(t, dir, "-n", "-x", "bundle.7z")
+	expect(t, r, 0, "bundle.7z  [7Z]\n  no removable metadata found\n", "*")
 }

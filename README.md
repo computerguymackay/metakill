@@ -5,9 +5,12 @@ metadata from images, documents, audio and video: GPS coordinates,
 timestamps, camera and device identifiers, software/encoder strings, authors,
 comments, thumbnails and (by default) media ID tags.
 
-- **Pure Go, no cgo, no external tools.** Nothing is shelled out (no
-  ffmpeg, exiftool or ImageMagick). Builds for linux/amd64, linux/arm64,
-  darwin/amd64, darwin/arm64 and windows/amd64 with `CGO_ENABLED=0`.
+- **Pure Go, no cgo, no external tools by default.** Nothing is shelled out
+  (no ffmpeg, exiftool or ImageMagick). The one opt-in exception is
+  repacking 7z and RAR archives, which needs 7-Zip or rar and the
+  `-x/--external-tools` flag; see [7z and RAR](#7z-and-rar). Builds for
+  linux/amd64, linux/arm64, darwin/amd64, darwin/arm64 and windows/amd64
+  with `CGO_ENABLED=0`.
 - **No network access, no telemetry.** See [Network](#network) for details.
 - **Aggressive by default.** Everything that is not needed to display or
   play the file is removed unless you ask to keep it.
@@ -73,6 +76,8 @@ Every flag has a short and a long form.
 | `-t`  | `--keep-thumbnails` | bool   | false   | Keep embedded thumbnails and cover art (implies `-k`) |
 | `-c`  | `--keep-icc`        | bool   | false   | Keep ICC colour profiles in images |
 | `-z`  | `--no-zero-pad`     | bool   | false   | Do not zero pre-existing padding/free-space regions |
+| `-x`  | `--external-tools`  | bool   | false   | Allow running 7-Zip or rar to repack 7z and RAR archives |
+| `-a`  | `--convert-rar`     | bool   | false   | Convert RAR to 7z when no rar tool is installed (implies `-x`) |
 | `-v`  | `--verbose`         | bool   | false   | One line per field, with its namespace |
 | `-h`  | `--help`            |        |         | Help |
 |       | `--version`         |        |         | Print the version |
@@ -182,8 +187,11 @@ The schema is identical for real runs except for `dry_run` and the byte
 count label: `bytes_removable` becomes `bytes_saved`. Real runs also add
 `backup` or `output` where relevant. Other fields:
 
-- **`status`:** one of `cleaned`, `already_clean`, `skipped` or `error`.
-  In a dry run, `cleaned` means "would be cleaned".
+- **`status`:** one of `cleaned`, `already_clean`, `skipped`, `inspected`
+  or `error`. In a dry run, `cleaned` means "would be cleaned". `inspected`
+  means metadata was found and listed but the file was deliberately left
+  unchanged (a 7z or RAR without `-x`, or without a tool to repack it); such
+  files count as not fully clean.
 - **`error`:** present only when `status` is `error`.
 - **`embedded`:** present only when a nested file was found.
 - **Arrays** are always arrays, never `null`.
@@ -216,6 +224,8 @@ happens.
 | **ZIP** (`.zip`, `.cbz`, unsigned `.jar`) | Full\* | Member timestamps (→ 1980-01-01), extra fields (uid/gid, Unix/NTFS times), archive and member comments, OS clutter (`__MACOSX/`, `._*` AppleDouble files, `.DS_Store`, `Thumbs.db`, `desktop.ini`), and the metadata inside every member a handler recognises, including nested archives | Unrecognised members are copied byte-for-byte without being decompressed. Permissions are normalised to 644/755, keeping directories, symlinks and executable bits. Member names are never changed, but home-directory-looking paths produce a warning. \*Members over 512 MB that a handler recognises are copied unchanged and reported not fully clean. Encrypted archives are refused. Signed or integrity-checked packages (APK/AAB, IPA, signed JAR/XPI, Python wheels, NuGet, VSIX, APPX/MSIX) are skipped, because repacking would break them. |
 | **TAR** (`.tar`, `.tar.gz`/`.tgz`, `.tar.xz`, `.tar.zst`, `.tar.bz2`) | Full\* | Modification times (→ Unix epoch), access and change times, owner user/group names and IDs, extended attributes (e.g. macOS quarantine and download-source "where-from" data, SELinux labels), all other PAX records, global PAX headers, OS clutter (`._*` AppleDouble files, `.DS_Store`, `Thumbs.db`, `desktop.ini`), the gzip header's original file name/time/comment, and the metadata inside every member a handler recognises, including nested archives | Streamed, so unrecognised members are never held in memory. Permissions are normalised to 644/755, keeping executable bits, and directories, symlinks, hard links and device entries are kept. Member names are never changed (home-directory-looking paths produce a warning). GNU sparse files are written out in full. \*Recognised members over 512 MB are copied unchanged and reported not fully clean. bzip2 output is decompressed again with Go's standard library and compared before it is accepted, because the bzip2 encoder is an older third-party library. For compressed archives, `bytes_removable` is measured on the uncompressed data. |
 | **Compressed single files** (`.gz`, `.xz`, `.zst`, `.bz2`, `.svgz`) | Full | The gzip header's original file name, time and comment, plus the metadata in the content if a handler recognises it (e.g. `.svgz` is cleaned as SVG) | xz, zstd and bzip2 wrappers carry no metadata of their own, so they are only rewritten when the content changes. |
+| **7z** | Full with `-x`\*, inspect-only without | Modification times (→ 1980-01-01), creation and access times, OS clutter, and the metadata inside every member a handler recognises | Read in pure Go; repacked with 7-Zip (`7zz`, `7z`, `7za`) or `bsdtar`. See [7z and RAR](#7z-and-rar). \*Encrypted archives and archives containing links are refused; incomplete ones (multi-volume sets, truncated files) are skipped. |
+| **RAR** (RAR4 and RAR5) | Full with `-x` + rar, or converted to 7z with `-a`; inspect-only otherwise | Modification times (→ 1980-01-01), creation and access times, Unix owner names and IDs, the archive comment, owner/ACL/NTFS-stream records, authenticity data, the locked flag, OS clutter, and the metadata inside every member a handler recognises | Read in pure Go; repacked with rar/WinRAR. Encrypted and multi-volume archives and links are refused or skipped as for 7z. |
 | **MP3** | Full | ID3v2.2/2.3/2.4 (leading and appended), ID3v1 and v1 extended, APEv1/v2, Lyrics3v2, the LAME/Xing encoder version string (CRC recomputed) | With `-k`, a fresh minimal ID3v2.4 tag holds the kept fields. Audio frames are copied unchanged. |
 | **FLAC** | Full | Vorbis comments (vendor string blanked), PICTURE (unless `-t`), APPLICATION blocks, stray ID3v2/ID3v1 | PADDING is kept but zeroed. |
 | **Ogg Vorbis / Opus / Theora / Speex** | Full | Comment headers (vendor blanked), pictures (unless `-t`), Opus extra tag data | Header pages are re-paginated, and later page sequence numbers and CRCs are rewritten. Ogg FLAC is refused. Streams with unknown codecs are reported not fully clean. |
@@ -265,6 +275,47 @@ edits, and by default they are zeroed and reported.
 Because the original is never modified before validation succeeds, there
 is nothing to restore when validation fails.
 
+## 7z and RAR
+
+metakill reads 7z and RAR archives in pure Go, so dry runs, reports and
+post-write validation never run anything external. Writing them is
+different: there is no mature pure-Go 7z writer, and RAR can only be
+created by RARLAB's own `rar`/WinRAR. Repacking therefore uses a tool that
+is already installed, and only when you allow it:
+
+| Format | Tools found | Without `-x` | With `-x` | With `-a` |
+|---|---|---|---|---|
+| 7z | 7-Zip or `bsdtar` | Inspected only (exit 3) | Cleaned and repacked as 7z | Same as `-x` |
+| RAR | rar/WinRAR | Inspected only (exit 3) | Cleaned and repacked as RAR | Same as `-x` |
+| RAR | Only 7-Zip or `bsdtar` | Inspected only (exit 3) | Inspected only (exit 3) | Cleaned and written as `name.7z`; the original is kept as `name.rar.bak` (deleted with `--backup=false`) |
+| Either | None | Inspected only (exit 3) | Inspected only (exit 3) | Inspected only (exit 3) |
+
+How a repack works:
+
+1. Members are extracted into a private temporary directory (owner-only
+   permissions), refusing any name that would escape it.
+2. Each member is cleaned with the normal handlers (nested archives
+   included) and OS clutter is dropped.
+3. Every file and directory gets the timestamp 1980-01-01 and permissions
+   644/755, so the new archive stores only those values. 7-Zip is also told
+   not to store creation or access times; rar is never asked to store
+   owners, comments or extra times.
+4. The tool runs by absolute path with its arguments passed directly (never
+   through a shell). The report names the tool used.
+5. The new archive is read back and validated in pure Go before it replaces
+   the original, as for every other format. The temporary directory is
+   always deleted.
+
+Conversion never overwrites an existing `name.7z`. With `-o`, the output
+name must end in `.7z`. A RAR nested inside another file is never converted
+(a member cannot change its name); it is reported and the outer file is
+marked not fully clean.
+
+Limitations: on Windows, executable bits of 7z/RAR members are not kept
+(Windows filesystems have no such bit). RAR repacking with a real `rar` is
+not covered by CI, because rar needs a paid licence; RAR reading and
+RAR → 7z conversion are.
+
 ## Network
 
 metakill makes no network calls and has no telemetry. Its own packages
@@ -291,6 +342,8 @@ race detector, which requires cgo.
 | `github.com/beevik/etree` | Namespace-preserving XML editing (SVG, OOXML, ODF, EPUB, XMP) |
 | `github.com/ulikunitz/xz` | xz compression (`.tar.xz`, `.xz`) |
 | `github.com/klauspost/compress` | zstd compression (`.tar.zst`, `.zst`) |
+| `github.com/bodgit/sevenzip` | Reading 7z (plus the pure-Go decompressors it uses: brotli, lz4, PPMd) |
+| `github.com/nwaples/rardecode/v2` | Reading RAR4 and RAR5. Archive comments, owner records and similar headers are found by a small scanner in metakill itself |
 | `github.com/dsnet/compress` | bzip2 *writing* (Go's standard library can only read bzip2). Its last release was in 2019, so every output is verified with the standard-library reader before it is accepted |
 
 EXIF/TIFF, IPTC, ID3, APE, Vorbis comments, FLAC, Ogg, RIFF and EBML

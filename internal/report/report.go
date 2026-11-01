@@ -115,6 +115,9 @@ const (
 	StatusAlreadyClean Status = "already_clean"
 	StatusSkipped      Status = "skipped"
 	StatusError        Status = "error"
+	// StatusInspected means metadata was found and reported but the file was
+	// deliberately left unchanged (e.g. a 7z archive without -x).
+	StatusInspected Status = "inspected"
 )
 
 // Report describes one file. Bytes is emitted as bytes_removable in dry-run
@@ -133,6 +136,13 @@ type Report struct {
 	Output     string
 	Backup     string
 	Embedded   []Report
+
+	// ReportOnly is set by handlers that can list metadata but must not
+	// rewrite the file in this run. Not serialised; it drives Status.
+	ReportOnly bool
+	// ConvertTo is set by handlers that will write a different format
+	// (e.g. ".7z" for a RAR converted with -a). Not serialised.
+	ConvertTo string
 }
 
 // New returns a report with non-nil slices and FullyClean set.
@@ -196,6 +206,7 @@ type Summary struct {
 	Cleaned       int
 	AlreadyClean  int
 	Skipped       int
+	Inspected     int
 	Errors        int
 	NotFullyClean int
 	FieldsRemoved int
@@ -222,6 +233,8 @@ func (run *Run) Finish() {
 			s.Cleaned++
 		case StatusAlreadyClean:
 			s.AlreadyClean++
+		case StatusInspected:
+			s.Inspected++
 		case StatusSkipped:
 			s.Skipped++
 		case StatusError:
@@ -230,7 +243,7 @@ func (run *Run) Finish() {
 		if !r.FullyClean && r.Status != StatusSkipped {
 			s.NotFullyClean++
 		}
-		if r.Status != StatusError && r.Status != StatusSkipped {
+		if r.Status == StatusCleaned || r.Status == StatusAlreadyClean {
 			s.FieldsRemoved += r.TotalFields()
 			s.Bytes += r.Bytes
 		}

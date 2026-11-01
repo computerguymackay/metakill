@@ -37,6 +37,8 @@ type Config struct {
 	KeepThumbnails bool
 	KeepICC        bool
 	NoZeroPad      bool
+	ExternalTools  bool
+	ConvertRAR     bool
 	Verbose        bool
 	Args           []string
 
@@ -70,12 +72,17 @@ func Run(cfg Config) int {
 	if cfg.KeepThumbnails {
 		cfg.KeepTags = true
 	}
+	if cfg.ConvertRAR {
+		cfg.ExternalTools = true
+	}
 	r := &runner{cfg: cfg, opts: handlers.Options{
 		KeepTags:       cfg.KeepTags,
 		KeepThumbnails: cfg.KeepThumbnails,
 		KeepICC:        cfg.KeepICC,
 		ZeroPad:        !cfg.NoZeroPad,
 		DryRun:         cfg.DryRun,
+		ExternalTools:  cfg.ExternalTools,
+		ConvertRAR:     cfg.ConvertRAR,
 	}}
 	code, err := r.run()
 	if err != nil {
@@ -314,7 +321,7 @@ func (r *runner) confirm(jobs []job) (bool, error) {
 			continue
 		}
 		rep, err := r.inspect(j)
-		if err != nil {
+		if err != nil || rep.ReportOnly {
 			continue
 		}
 		if c := rep.TotalFields(); c > 0 {

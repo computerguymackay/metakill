@@ -46,6 +46,7 @@ type summaryJSON struct {
 	Cleaned        int    `json:"cleaned"`
 	AlreadyClean   int    `json:"already_clean"`
 	Skipped        int    `json:"skipped"`
+	Inspected      int    `json:"inspected"`
 	Errors         int    `json:"errors"`
 	NotFullyClean  int    `json:"not_fully_clean"`
 	FieldsRemoved  int    `json:"fields_removed"`
@@ -65,7 +66,7 @@ func WriteJSON(w io.Writer, run *Run) error {
 	b := s.Bytes
 	sj := summaryJSON{
 		Files: s.Files, Cleaned: s.Cleaned, AlreadyClean: s.AlreadyClean,
-		Skipped: s.Skipped, Errors: s.Errors, NotFullyClean: s.NotFullyClean,
+		Skipped: s.Skipped, Inspected: s.Inspected, Errors: s.Errors, NotFullyClean: s.NotFullyClean,
 		FieldsRemoved: s.FieldsRemoved,
 	}
 	if run.DryRun {

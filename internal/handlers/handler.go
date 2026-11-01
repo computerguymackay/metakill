@@ -23,6 +23,8 @@ type Options struct {
 	KeepICC        bool // -c: keep ICC colour profiles
 	ZeroPad        bool // zero existing padding regions (disabled by -z)
 	DryRun         bool // informational; Strip is never called in dry-run mode
+	ExternalTools  bool // -x: allow running 7-Zip / rar to repack 7z and RAR archives
+	ConvertRAR     bool // -a: allow converting RAR to 7z when no rar tool exists
 	Depth          int  // nesting level for embedded media
 }
 
@@ -130,6 +132,15 @@ func StripEmbedded(name string, data []byte, opts Options) (out []byte, rep repo
 		return nil, rep, true
 	}
 	pre.Path = name
+	if pre.ReportOnly || pre.ConvertTo != "" {
+		// Nested archives that need conversion or tools we may not use are
+		// reported but left as they are (a member cannot change its name).
+		if pre.ConvertTo != "" {
+			pre.Unclean("nested RAR archives cannot be converted inside another file; left unchanged")
+		}
+		pre.Status = report.StatusInspected
+		return data, pre, true
+	}
 	if len(pre.Fields) == 0 && len(pre.Embedded) == 0 {
 		pre.Status = report.StatusAlreadyClean
 		return data, pre, true

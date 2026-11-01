@@ -1,0 +1,43 @@
+bundle.7z  [7Z]
+  Timestamps:
+      archive:member timestamps (latest) = "2023-04-12T18:33:02Z"
+      archive:creation/access times = "8 member(s)"
+  Custom:
+      archive:docs/.DS_Store = <binary, 21 bytes>
+  > docs/photo.jpg  [JPEG]
+  >   GPS:
+  >       exif:GPSLatitudeRef = "N"
+  >       exif:GPSLatitude = "37 46 29.64"
+  >       exif:GPSLongitudeRef = "W"
+  >       exif:GPSLongitude = "122 25 9.84"
+  >       exif:GPSAltitude = "16"
+  >       xmp:exif:GPSLatitude = "37,46.494N"
+  >       iptc:City = "San Francisco"
+  >   Timestamps:
+  >       exif:DateTime = "2023:04:12 18:33:02"
+  >       exif:DateTimeOriginal = "2023:04:12 18:33:02"
+  >       exif:DateTimeDigitized = "2023:04:12 18:33:02"
+  >       xmp:xmp:CreateDate = "2023-04-12T18:33:02"
+  >   Device:
+  >       exif:Make = "Apple"
+  >       exif:Model = "iPhone 14 Pro"
+  >       exif:BodySerialNumber = "SN-0042-SECRET"
+  >       exif:LensModel = "iPhone 14 Pro back camera"
+  >   Author:
+  >       exif:Artist = "Jane Photographer"
+  >       xmp:dc:creator = "Jane Photographer"
+  >       iptc:By-line = "Jane Photographer"
+  >   Software:
+  >       exif:Software = "iOS 16.4"
+  >       xmp:xmp:CreatorTool = "Adobe Photoshop 24.0"
+  >   Thumbnail:
+  >       exif:ThumbnailImage = <binary, 631 bytes>
+  >   ICC profile:
+  >       icc:ICC_PROFILE = <binary, 150 bytes>
+  >   Custom:
+  >       exif:UserComment = "secret comment"
+  >       jpeg:Comment = "secret comment"
+  >       jpeg:TrailingData = <binary, 25 bytes>
+  >   Kept Custom:
+  >       exif:Orientation = "6"
+  --- 28 fields, ~0 B removable
