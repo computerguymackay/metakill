@@ -157,8 +157,6 @@ func VoiceOgg(codec string) []byte {
 	return out
 }
 
-func riffChunkLE(id string, body []byte) []byte { return riffChunk(id, body) }
-
 func riffList(typ string, kids ...[]byte) []byte {
 	body := []byte(typ)
 	for _, k := range kids {

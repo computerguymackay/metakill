@@ -82,7 +82,9 @@ func TestYesSkipsPrompt(t *testing.T) {
 func TestNothingToDoSkipsPrompt(t *testing.T) {
 	dir := t.TempDir()
 	p := filepath.Join(dir, "clean.jpg")
-	os.WriteFile(p, fixtures.BaseJPEG(8, 8), 0o644)
+	if err := os.WriteFile(p, fixtures.BaseJPEG(8, 8), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	code, _, stderr := runWith(p, "", nil)
 	if code != ExitOK || strings.Contains(stderr, "[y/N]") {
 		t.Fatalf("code %d stderr %q", code, stderr)

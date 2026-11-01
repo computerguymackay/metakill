@@ -227,7 +227,7 @@ func inflate(b []byte) ([]byte, bool) {
 	if err != nil {
 		return nil, false
 	}
-	defer zr.Close()
+	defer func() { _ = zr.Close() }()
 	out, err := io.ReadAll(io.LimitReader(zr, maxInflate))
 	if err != nil {
 		return nil, false

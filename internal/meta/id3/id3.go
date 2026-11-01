@@ -136,7 +136,7 @@ func Parse(b []byte) (*Tag, error) {
 
 func validID(id string) bool {
 	for _, c := range id {
-		if !(c >= 'A' && c <= 'Z' || c >= '0' && c <= '9') {
+		if (c < 'A' || c > 'Z') && (c < '0' || c > '9') {
 			return false
 		}
 	}

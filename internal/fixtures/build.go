@@ -190,7 +190,7 @@ func PNGChunk(out []byte, typ string, body []byte) []byte {
 func deflate(b []byte) []byte {
 	var buf bytes.Buffer
 	zw := zlib.NewWriter(&buf)
-	zw.Write(b)
-	zw.Close()
+	_, _ = zw.Write(b) // writes to a bytes.Buffer cannot fail
+	_ = zw.Close()
 	return buf.Bytes()
 }

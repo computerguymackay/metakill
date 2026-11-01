@@ -89,7 +89,7 @@ func zipMimetype(z *zip.Reader) string {
 			if err != nil {
 				return ""
 			}
-			defer rc.Close()
+			defer func() { _ = rc.Close() }()
 			b, _ := io.ReadAll(io.LimitReader(rc, 256))
 			return strings.TrimSpace(string(b))
 		}
@@ -118,7 +118,7 @@ func loadZipDoc(r io.ReadSeeker, format string, opts Options) (*zipDoc, error) {
 			return nil, fmt.Errorf("%s: %s: %w", format, f.Name, err)
 		}
 		data, err := io.ReadAll(io.LimitReader(rc, maxZipEntry))
-		rc.Close()
+		_ = rc.Close()
 		if err != nil {
 			return nil, fmt.Errorf("%s: %s: %w", format, f.Name, err)
 		}
@@ -182,9 +182,11 @@ func (z *zipDoc) write(w io.Writer) error {
 			method = zip.Store
 		}
 		hdr := &zip.FileHeader{
-			Name:         e.name,
-			Method:       method,
-			ModifiedDate: 0x21, // 1980-01-01 in MS-DOS format; Modified is left zero so no extended-timestamp extra field is written
+			Name:   e.name,
+			Method: method,
+			// 1980-01-01 in MS-DOS format. Setting Modified instead would make
+			// archive/zip add an extended-timestamp extra field.
+			ModifiedDate: 0x21, //nolint:staticcheck // deliberate, see above
 		}
 		hdr.SetMode(0o644)
 		hdr.ExternalAttrs = 0

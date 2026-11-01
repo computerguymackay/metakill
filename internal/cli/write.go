@@ -29,7 +29,7 @@ func (r *runner) processOne(j job) report.Report {
 	srcOpen := true
 	defer func() {
 		if srcOpen {
-			src.Close()
+			_ = src.Close()
 		}
 	}()
 	st, err := src.Stat()
@@ -80,8 +80,8 @@ func (r *runner) processOne(j job) report.Report {
 	}
 	tmpName := tmp.Name()
 	cleanup := func() {
-		tmp.Close()
-		os.Remove(tmpName)
+		_ = tmp.Close()
+		_ = os.Remove(tmpName)
 	}
 
 	if _, err := src.Seek(0, io.SeekStart); err != nil {
@@ -120,20 +120,23 @@ func (r *runner) processOne(j job) report.Report {
 	}
 	_ = tmp.Chmod(st.Mode().Perm()) // best effort; not supported everywhere
 	if err := tmp.Close(); err != nil {
-		os.Remove(tmpName)
+		_ = os.Remove(tmpName)
 		return fail(err)
 	}
-	src.Close()
+	if err := src.Close(); err != nil {
+		_ = os.Remove(tmpName)
+		return fail(err)
+	}
 	srcOpen = false
 
 	if backup != "" {
 		if err := copyFileExcl(target, backup, st.Mode().Perm()); err != nil {
-			os.Remove(tmpName)
+			_ = os.Remove(tmpName)
 			return fail(fmt.Errorf("creating backup: %w", err))
 		}
 	}
 	if err := os.Rename(tmpName, target); err != nil {
-		os.Remove(tmpName)
+		_ = os.Remove(tmpName)
 		return fail(fmt.Errorf("replacing file: %w", err))
 	}
 
@@ -221,17 +224,17 @@ func copyWithFlags(src, dst string, perm os.FileMode, flags int) error {
 	if err != nil {
 		return err
 	}
-	defer in.Close()
+	defer func() { _ = in.Close() }()
 	out, err := os.OpenFile(dst, flags, perm)
 	if err != nil {
 		return err
 	}
 	if _, err := io.Copy(out, in); err != nil {
-		out.Close()
+		_ = out.Close()
 		return err
 	}
 	if err := out.Sync(); err != nil {
-		out.Close()
+		_ = out.Close()
 		return err
 	}
 	return out.Close()

@@ -47,7 +47,7 @@ func TestMain(m *testing.M) {
 		os.Exit(1)
 	}
 	code := m.Run()
-	os.RemoveAll(dir)
+	_ = os.RemoveAll(dir)
 	os.Exit(code)
 }
 
@@ -244,9 +244,15 @@ func setupTree(t *testing.T) string {
 		t.Fatal(err)
 	}
 	b, _ := os.ReadFile(filepath.Join(fixturesDir(t), "song.mp3"))
-	os.WriteFile(filepath.Join(sub, "song.mp3"), b, 0o644)
-	os.WriteFile(filepath.Join(dir, "data.xyz"), []byte("unknown format"), 0o644)
-	os.WriteFile(filepath.Join(dir, "old.jpg.bak"), b, 0o644) // backups are never processed
+	for name, data := range map[string][]byte{
+		filepath.Join(sub, "song.mp3"):    b,
+		filepath.Join(dir, "data.xyz"):    []byte("unknown format"),
+		filepath.Join(dir, "old.jpg.bak"): b, // backups are never processed
+	} {
+		if err := os.WriteFile(name, data, 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
 	return dir
 }
 
@@ -333,7 +339,9 @@ func TestRealRunWithBackup(t *testing.T) {
 	expect(t, runCLI(t, dir, "-y", "photo.jpg"), 0, "photo.jpg  [JPEG]\n  no removable metadata found\n  Kept:            Orientation = \"6\"\n", "")
 
 	// An existing backup blocks a new in-place edit.
-	os.WriteFile(filepath.Join(dir, "photo.jpg"), orig, 0o644)
+	if err := os.WriteFile(filepath.Join(dir, "photo.jpg"), orig, 0o644); err != nil {
+		t.Fatal(err)
+	}
 	r = runCLI(t, dir, "-y", "photo.jpg")
 	expect(t, r, 1, "", "metakill: error: photo.jpg: backup photo.jpg.bak already exists; remove it or pass --backup=false\n")
 	cur, _ := os.ReadFile(filepath.Join(dir, "photo.jpg"))
@@ -445,7 +453,9 @@ func TestNotFullyCleanExitCode(t *testing.T) {
 	dir := t.TempDir()
 	// A HEIF with a thumbnail item cannot be fully cleaned without -t.
 	b := heicWithThumb(t)
-	os.WriteFile(filepath.Join(dir, "thumb.heic"), b, 0o644)
+	if err := os.WriteFile(filepath.Join(dir, "thumb.heic"), b, 0o644); err != nil {
+		t.Fatal(err)
+	}
 	r := runCLI(t, dir, "-n", "-q", "thumb.heic")
 	expect(t, r, 3, "", "metakill: error: thumb.heic: cannot be fully scrubbed: 1 embedded thumbnail image(s) kept: removing them would require rewriting item locations\n")
 	r = runCLI(t, dir, "-n", "-j", "-q", "thumb.heic")
@@ -464,7 +474,9 @@ func TestMissingFile(t *testing.T) {
 
 func TestCorruptFileIsAnError(t *testing.T) {
 	dir := t.TempDir()
-	os.WriteFile(filepath.Join(dir, "bad.png"), []byte("\x89PNG\r\n\x1a\ngarbage"), 0o644)
+	if err := os.WriteFile(filepath.Join(dir, "bad.png"), []byte("\x89PNG\r\n\x1a\ngarbage"), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	r := runCLI(t, dir, "-y", "bad.png")
 	if r.code != 1 || !strings.Contains(r.stderr, "bad.png: png:") {
 		t.Errorf("got %+v", r)
@@ -493,7 +505,9 @@ func TestCorpus(t *testing.T) {
 		}
 		rel, _ := filepath.Rel(src, p)
 		dst := filepath.Join(dir, rel)
-		os.MkdirAll(filepath.Dir(dst), 0o755)
+		if err := os.MkdirAll(filepath.Dir(dst), 0o755); err != nil {
+			return err
+		}
 		b, err := os.ReadFile(p)
 		if err != nil {
 			return err

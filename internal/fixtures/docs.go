@@ -33,12 +33,12 @@ func buildZip(comment string, members ...zipMember) []byte {
 			h.Method = zip.Store
 		}
 		w, _ := zw.CreateHeader(h)
-		w.Write([]byte(m.data))
+		_, _ = w.Write([]byte(m.data)) // in-memory; cannot fail
 	}
 	if comment != "" {
-		zw.SetComment(comment)
+		_ = zw.SetComment(comment)
 	}
-	zw.Close()
+	_ = zw.Close()
 	return b.Bytes()
 }
 

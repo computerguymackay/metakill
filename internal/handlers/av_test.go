@@ -34,7 +34,7 @@ func TestFLAC(t *testing.T) {
 				assertPresent(t, out, "DATE=2023\x00"[:9])
 			}
 			// Walk metadata blocks: last flag must be set exactly once.
-			pos, lasts, pic := 4, 0, false
+			pos, pic := 4, false
 			for {
 				h := out[pos]
 				n := int(out[pos+1])<<16 | int(out[pos+2])<<8 | int(out[pos+3])
@@ -47,7 +47,6 @@ func TestFLAC(t *testing.T) {
 				}
 				pos += 4 + n
 				if h&0x80 != 0 {
-					lasts++
 					break
 				}
 			}

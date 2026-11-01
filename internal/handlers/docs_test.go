@@ -36,7 +36,7 @@ func unzip(t *testing.T, b []byte) (map[string][]byte, []string) {
 			t.Fatal(err)
 		}
 		data, _ := io.ReadAll(rc)
-		rc.Close()
+		_ = rc.Close()
 		out[f.Name] = data
 		order = append(order, f.Name)
 		if strings.HasSuffix(f.Name, ".xml") || strings.HasSuffix(f.Name, ".rels") || strings.HasSuffix(f.Name, ".opf") {

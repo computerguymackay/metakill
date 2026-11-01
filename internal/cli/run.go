@@ -227,7 +227,7 @@ func (r *runner) classify(path string) job {
 		rep := errorReport(path, err)
 		return job{path: path, rep: &rep}
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 	st, err := f.Stat()
 	if err != nil {
 		rep := errorReport(path, err)
@@ -343,6 +343,6 @@ func (r *runner) inspect(j job) (report.Report, error) {
 	if err != nil {
 		return report.Report{}, err
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 	return j.handler.Inspect(f, r.opts)
 }

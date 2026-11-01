@@ -80,12 +80,3 @@ func hasField(fs []report.Field, cat report.Category, key string) bool {
 	}
 	return false
 }
-
-func mustFixture(t *testing.T, name string) fixtures.Fixture {
-	t.Helper()
-	f, ok := fixtures.Get(name)
-	if !ok {
-		t.Fatalf("no fixture %s", name)
-	}
-	return f
-}

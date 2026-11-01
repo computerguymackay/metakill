@@ -185,7 +185,7 @@ func epubOPF(z *zipDoc, e *zipEntry) error {
 	for _, c := range meta.ChildElements() {
 		var attrs []etree.Attr
 		for _, a := range c.Attr {
-			if a.Space == "opf" && (a.Key == "file-as" || a.Key == "role") && !(c.Tag == "creator" && z.opts.KeepTags) {
+			if a.Space == "opf" && (a.Key == "file-as" || a.Key == "role") && (c.Tag != "creator" || !z.opts.KeepTags) {
 				z.rep.Add(report.Text(report.CatAuthor, "epub", c.FullTag()+"@opf:"+a.Key, a.Value))
 				changed = true
 				continue

@@ -4,3 +4,11 @@ linters:
   enable:
     - misspell
     - unconvert
+  settings:
+    errcheck:
+      # Writes of human-readable output to stdout/stderr have no useful
+      # recovery path; real file I/O errors are always checked.
+      exclude-functions:
+        - fmt.Fprint
+        - fmt.Fprintf
+        - fmt.Fprintln
