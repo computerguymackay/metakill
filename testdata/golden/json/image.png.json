@@ -13,7 +13,7 @@
           "namespace": "png",
           "key": "iCCP",
           "value": null,
-          "size": 42
+          "size": 45
         },
         {
           "category": "author",
@@ -176,7 +176,7 @@
           "value": "6"
         }
       ],
-      "bytes_removable": 1346,
+      "bytes_removable": 1348,
       "warnings": []
     }
   ],
@@ -188,6 +188,6 @@
     "errors": 0,
     "not_fully_clean": 0,
     "fields_removed": 26,
-    "bytes_removable": 1346
+    "bytes_removable": 1348
   }
 }

@@ -31,11 +31,12 @@ lint:
 
 # Regenerate testdata/fixtures from internal/fixtures.
 fixtures:
-	go generate ./internal/fixtures
+	GOTOOLCHAIN=$$(sed -n 's/^toolchain //p' go.mod) go generate ./internal/fixtures
 
 # Rewrite the golden dry-run outputs in testdata/golden.
+# Use the toolchain pinned in go.mod (CI's version) so stored byte counts match.
 golden: fixtures
-	go test $(PKG) -update
+	GOTOOLCHAIN=$$(sed -n 's/^toolchain //p' go.mod) go test $(PKG) -update
 
 selftest: build
 	./bin/$(BINARY) --selftest

@@ -160,4 +160,4 @@ bundle.zip  [ZIP]
   >   >       exif:UserComment = "secret comment"
   >   >   Kept Custom:
   >   >       exif:Orientation = "6"
-  --- 113 fields, ~1019 B removable
+  --- 113 fields, ~1016 B removable

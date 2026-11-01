@@ -16,6 +16,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"reflect"
+	"regexp"
 	"runtime"
 	"sort"
 	"strings"
@@ -133,9 +134,32 @@ func golden(t *testing.T, name, got string) {
 	if err != nil {
 		t.Fatalf("missing golden file %s (run with -update): %v", path, err)
 	}
-	if got != strings.ReplaceAll(string(want), "\r\n", "\n") {
+	w := strings.ReplaceAll(string(want), "\r\n", "\n")
+	if compressorDependent(name) {
+		got, w = maskBytes(got), maskBytes(w)
+	}
+	if got != w {
 		t.Errorf("%s mismatch.\n--- got ---\n%s\n--- want ---\n%s", name, got, want)
 	}
+}
+
+// compressorDependent reports fixtures whose byte counts depend on the Go
+// version's DEFLATE output (ZIP-based formats recompress changed members).
+func compressorDependent(golden string) bool {
+	for _, ext := range []string{".docx.", ".odt.", ".epub.", ".zip.", ".jar."} {
+		if strings.Contains(golden, ext) {
+			return true
+		}
+	}
+	return false
+}
+
+var byteCounts = regexp.MustCompile(`("bytes_(removable|saved)": )\d+|~[0-9.]+ (B|KiB|MiB) removable`)
+
+// maskBytes hides byte counts so golden comparisons of ZIP-based formats do
+// not depend on the Go version. Every field and value is still compared.
+func maskBytes(s string) string {
+	return byteCounts.ReplaceAllString(s, "${1}N")
 }
 
 func expect(t *testing.T, r result, code int, stdout, stderr string) {

@@ -44,4 +44,4 @@ bundle.zip  [ZIP]
   >   >   Software:        Software = "iOS 16.4"
   >   >   Custom:          UserComment = "secret comment"
   >   >   Kept:            Orientation = "6"
-  --- 113 fields, ~1019 B removable
+  --- 113 fields, ~1016 B removable

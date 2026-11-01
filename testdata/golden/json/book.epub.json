@@ -90,7 +90,7 @@
           "value": "Secret Letter Title"
         }
       ],
-      "bytes_removable": 548,
+      "bytes_removable": 547,
       "warnings": [],
       "embedded": [
         {
@@ -213,6 +213,6 @@
     "errors": 0,
     "not_fully_clean": 0,
     "fields_removed": 26,
-    "bytes_removable": 548
+    "bytes_removable": 547
   }
 }

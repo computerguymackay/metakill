@@ -16,7 +16,7 @@ notes.odt  [ODF]
   ID tags:
       odf.meta:dc:title = "Secret Letter Title"
   Thumbnail:
-      odf:Thumbnails/thumbnail.png = <binary, 122 bytes>
+      odf:Thumbnails/thumbnail.png = <binary, 89 bytes>
   Custom:
       zip:extra fields (uid/gid, timestamps) = "7 member(s)"
       odf:content.xml rsid attributes = "2"
@@ -48,4 +48,4 @@ notes.odt  [ODF]
   >       exif:UserComment = "secret comment"
   >   Kept Custom:
   >       exif:Orientation = "6"
-  --- 33 fields, ~736 B removable
+  --- 33 fields, ~728 B removable

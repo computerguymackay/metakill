@@ -4,7 +4,7 @@ image.png  [PNG]
   Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
   Author:          Author = "Jane Photographer", dc:creator = "Jane Photographer", Artist = "Jane Photographer"
   Software:        Software = "iOS 16.4", xmp:CreatorTool = "Adobe Photoshop 24.0", Software = "iOS 16.4"
-  ICC profile:     iCCP = <binary, 42 bytes>
+  ICC profile:     iCCP = <binary, 45 bytes>
   Custom:          Comment = "secret comment", UserComment = "secret comment", prVW = <binary, 15 bytes>, TrailingData = <binary, 13 bytes>
   Kept:            Orientation = "6"
   --- 26 fields, ~1.3 KiB removable

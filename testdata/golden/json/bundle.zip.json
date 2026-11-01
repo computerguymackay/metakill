@@ -55,7 +55,7 @@
         }
       ],
       "kept": [],
-      "bytes_removable": 1019,
+      "bytes_removable": 1016,
       "warnings": [
         "member names look like absolute or home-directory paths (e.g. \"Users/jane/notes.txt\"); names are not changed"
       ],
@@ -550,7 +550,7 @@
             }
           ],
           "kept": [],
-          "bytes_removable": 1857,
+          "bytes_removable": 1829,
           "warnings": [],
           "embedded": [
             {
@@ -810,6 +810,6 @@
     "errors": 0,
     "not_fully_clean": 0,
     "fields_removed": 113,
-    "bytes_removable": 1019
+    "bytes_removable": 1016
   }
 }

@@ -26,7 +26,7 @@ image.png  [PNG]
       xmp:xmp:CreatorTool = "Adobe Photoshop 24.0"
       exif:Software = "iOS 16.4"
   ICC profile:
-      png:iCCP = <binary, 42 bytes>
+      png:iCCP = <binary, 45 bytes>
   Custom:
       png:Comment = "secret comment"
       exif:UserComment = "secret comment"

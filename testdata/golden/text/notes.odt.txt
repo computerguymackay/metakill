@@ -4,7 +4,7 @@ notes.odt  [ODF]
   Author:          content.xml author = "Jane Photographer", meta:initial-creator = "Jane Photographer", dc:creator = "Jane Photographer"
   Software:        meta:generator = "SecretEncoder 1.0"
   ID tags:         dc:title = "Secret Letter Title"
-  Thumbnail:       Thumbnails/thumbnail.png = <binary, 122 bytes>
+  Thumbnail:       Thumbnails/thumbnail.png = <binary, 89 bytes>
   Custom:          extra fields (uid/gid, timestamps) = "7 member(s)", content.xml rsid attributes = "2", meta:editing-cycles = "3", meta:template = "file:///home/jane/Templates/secret.ott", user-defined:Client = "iPhone 14 Pro", Rsid = "1234"
   > Pictures/photo.jpg  [JPEG]
   >   GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16"
@@ -14,4 +14,4 @@ notes.odt  [ODF]
   >   Software:        Software = "iOS 16.4"
   >   Custom:          UserComment = "secret comment"
   >   Kept:            Orientation = "6"
-  --- 33 fields, ~736 B removable
+  --- 33 fields, ~728 B removable
