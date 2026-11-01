@@ -107,7 +107,7 @@
           "value": "regenerated on write"
         }
       ],
-      "bytes_removable": 1375,
+      "bytes_removable": 1379,
       "warnings": [],
       "embedded": [
         {
@@ -230,6 +230,6 @@
     "errors": 0,
     "not_fully_clean": 0,
     "fields_removed": 30,
-    "bytes_removable": 1375
+    "bytes_removable": 1379
   }
 }

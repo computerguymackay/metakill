@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"bytes"
+	"context"
 	"errors"
 	"fmt"
 	"io"
@@ -29,10 +30,7 @@ import (
 // which leaves every byte offset (and so the xref table) valid.
 type pdfHandler struct{}
 
-func init() {
-	api.DisableConfigDir() // never read or create ~/.config/pdfcpu
-	Register(pdfHandler{})
-}
+func init() { Register(pdfHandler{}) }
 
 func (pdfHandler) Name() string { return "pdf" }
 
@@ -42,7 +40,8 @@ func (pdfHandler) CanHandle(r io.ReadSeeker, path string) bool {
 }
 
 func pdfConfig() *model.Configuration {
-	conf := model.NewDefaultConfiguration()
+	// Stateless: pdfcpu never reads or creates ~/.config/pdfcpu.
+	conf := model.NewStatelessConfiguration()
 	conf.WriteObjectStream = false
 	conf.WriteXRefStream = false
 	conf.ValidationMode = model.ValidationRelaxed
@@ -54,7 +53,7 @@ func readPDF(r io.ReadSeeker) (*model.Context, error) {
 	if _, err := r.Seek(0, io.SeekStart); err != nil {
 		return nil, err
 	}
-	ctx, err := api.ReadContext(r, pdfConfig())
+	ctx, err := api.ReadContext(context.Background(), r, pdfConfig())
 	if err != nil {
 		return nil, fmt.Errorf("pdf: %w", err)
 	}
@@ -101,7 +100,7 @@ func (h pdfHandler) Strip(r io.ReadSeeker, w io.WriteSeeker, opts Options) (repo
 	ctx.ID = nil // regenerate both halves of the file identifier
 
 	var buf bytes.Buffer
-	if err := api.WriteContext(ctx, &buf); err != nil {
+	if err := api.WriteContext(context.Background(), ctx, &buf); err != nil {
 		return rep, fmt.Errorf("pdf: write: %w", err)
 	}
 	out := buf.Bytes()
@@ -164,7 +163,7 @@ func scrubPDF(ctx *model.Context, raw []byte, opts Options, rep *report.Report, 
 		switch o := e.Object.(type) {
 		case types.StreamDict:
 			if t := o.Type(); t != nil && *t == "Metadata" || o.Subtype() != nil && *o.Subtype() == "XML" {
-				if err := o.Decode(); err == nil {
+				if err := o.DecodeWithLimit(maxMetaBox); err == nil {
 					rep.Add(xmp.Fields(o.Content)...)
 				} else {
 					rep.Add(report.Binary(report.CatCustom, "xmp", fmt.Sprintf("obj %d", nr), int64(len(o.Raw))))

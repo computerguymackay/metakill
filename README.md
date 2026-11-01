@@ -35,6 +35,9 @@ $ metakill -d -r -y ~/Pictures   # a whole tree
 go install github.com/computerguymackay/metakill/cmd/metakill@latest
 ```
 
+Building needs Go 1.26 or newer. An older `go` command downloads the right
+toolchain automatically.
+
 Or download a binary from the releases page, or build one yourself with
 `make build` (output in `bin/`).
 
@@ -261,8 +264,8 @@ metakill makes no network calls and has no telemetry. Its own packages
 import nothing from `net`, and a test enforces this. pdfcpu, the PDF
 library, links `net/http` for features metakill never uses: signature
 revocation checks, link validation and remote images. metakill runs pdfcpu
-with `Offline` set and with its configuration directory disabled, so pdfcpu
-also never reads or creates `~/.config/pdfcpu`.
+with `Offline` set and in its stateless configuration mode, so pdfcpu also
+never reads or creates `~/.config/pdfcpu` (a test checks this).
 
 ## cgo
 
@@ -276,7 +279,7 @@ race detector, which requires cgo.
 |---|---|
 | `github.com/spf13/cobra` (+ `pflag`) | CLI, short/long flags, grouped help |
 | `golang.org/x/term` | TTY detection for the confirmation prompt |
-| `github.com/pdfcpu/pdfcpu` v0.15.0 | PDF parsing and rewriting (v0.15.0 is the newest release that builds with Go 1.25) |
+| `github.com/pdfcpu/pdfcpu` | PDF parsing and rewriting |
 | `github.com/abema/go-mp4` | ISO-BMFF box parsing (MP4/MOV/M4A/HEIF) |
 | `github.com/beevik/etree` | Namespace-preserving XML editing (SVG, OOXML, ODF, EPUB, XMP) |
 

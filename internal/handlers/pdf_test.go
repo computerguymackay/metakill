@@ -2,6 +2,8 @@ package handlers
 
 import (
 	"bytes"
+	"context"
+	"os"
 	"testing"
 
 	"github.com/pdfcpu/pdfcpu/pkg/api"
@@ -53,7 +55,7 @@ func TestPDF(t *testing.T) {
 			}
 			assertPresent(t, out, "/Im1 Do", "/DCTDecode")
 			conf := pdfConfig()
-			if _, err := api.ReadAndValidate(bytes.NewReader(out), conf); err != nil {
+			if _, err := api.ReadAndValidate(context.Background(), bytes.NewReader(out), conf); err != nil {
 				t.Fatalf("output does not validate: %v", err)
 			}
 		})
@@ -63,5 +65,21 @@ func TestPDF(t *testing.T) {
 func TestPDFGarbageErrors(t *testing.T) {
 	if _, err := (pdfHandler{}).Inspect(bytes.NewReader([]byte("%PDF-1.4\ngarbage")), defaultOpts); err == nil {
 		t.Fatal("expected error for broken PDF")
+	}
+}
+
+// pdfcpu must never touch its configuration directory.
+func TestPDFDoesNotTouchConfigDir(t *testing.T) {
+	home := t.TempDir()
+	t.Setenv("HOME", home)
+	t.Setenv("XDG_CONFIG_HOME", home)
+	t.Setenv("AppData", home)
+	roundTrip(t, "report.pdf", "pdf", fixtures.ReportPDF(), defaultOpts)
+	entries, err := os.ReadDir(home)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(entries) != 0 {
+		t.Fatalf("pdfcpu wrote to the config directory: %v", entries)
 	}
 }
