@@ -1,0 +1,7 @@
+notes.txt.gz  [GZ]
+  Timestamps:
+      gzip:modification time = "2023-04-12T18:33:02Z"
+  Custom:
+      gzip:original file name = "secret-plans.tar"
+      gzip:comment = "made by Jane Photographer"
+  --- 3 fields, ~0 B removable

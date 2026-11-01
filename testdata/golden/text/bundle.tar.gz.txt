@@ -1,0 +1,32 @@
+bundle.tar.gz  [TAR.GZ]
+  Timestamps:      modification time = "2023-04-12T18:33:02Z", member timestamps (latest) = "2023-04-12T18:33:02Z", access/change times = "12 member(s)"
+  Author:          owners = "jane:staff (501:20)"
+  Custom:          original file name = "secret-plans.tar", comment = "made by Jane Photographer", docs/._photo.jpg = <binary, 54 bytes>, docs/.DS_Store = <binary, 21 bytes>, extended attributes = "com.apple.metadata:kMDItemWhereFroms, com.apple.quarantine", PAX records = "comment", global PAX headers = "1"
+  > docs/photo.jpg  [JPEG]
+  >   GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16", exif:GPSLatitude = "37,46.494N", City = "San Francisco"
+  >   Timestamps:      DateTime = "2023:04:12 18:33:02", DateTimeOriginal = "2023:04:12 18:33:02", DateTimeDigitized = "2023:04:12 18:33:02", xmp:CreateDate = "2023-04-12T18:33:02"
+  >   Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
+  >   Author:          Artist = "Jane Photographer", dc:creator = "Jane Photographer", By-line = "Jane Photographer"
+  >   Software:        Software = "iOS 16.4", xmp:CreatorTool = "Adobe Photoshop 24.0"
+  >   Thumbnail:       ThumbnailImage = <binary, 631 bytes>
+  >   ICC profile:     ICC_PROFILE = <binary, 150 bytes>
+  >   Custom:          UserComment = "secret comment", Comment = "secret comment", TrailingData = <binary, 25 bytes>
+  >   Kept:            Orientation = "6"
+  > docs/song.mp3  [MP3]
+  >   Timestamps:      TYER = "2023", TDAT = "1204", Year = "2023"
+  >   Software:        TSSE = "SecretEncoder 1.0", TENC = "Jane Photographer", Encoder = "SecretEncoder 1.0", EncoderVersion = "LAME3.100"
+  >   ID tags:         TIT2 = "Test Song", TPE1 = "Test Artist", TALB = "Test Album", TRCK = "3/12", Title = "Test Song", Artist = "Test Artist", Album = "Test Album", Track = "3", Title = "Test Song"
+  >   Thumbnail:       APIC = <binary, 1111 bytes>
+  >   Custom:          COMM = "secret comment", PRIV:www.amazon.com = <binary, 29 bytes>, Comment = "secret comment", Comment = "secret comment"
+  > docs/inner.zip  [ZIP]
+  >   Timestamps:      member timestamps (latest) = "2023-04-12T18:33:02Z"
+  >   Custom:          extra fields (uid/gid, timestamps) = "1 member(s)"
+  >   > inner/photo.jpg  [JPEG]
+  >   >   GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16"
+  >   >   Timestamps:      DateTime = "2023:04:12 18:33:02", DateTimeOriginal = "2023:04:12 18:33:02", DateTimeDigitized = "2023:04:12 18:33:02"
+  >   >   Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
+  >   >   Author:          Artist = "Jane Photographer"
+  >   >   Software:        Software = "iOS 16.4"
+  >   >   Custom:          UserComment = "secret comment"
+  >   >   Kept:            Orientation = "6"
+  --- 74 fields, ~15.0 KiB removable

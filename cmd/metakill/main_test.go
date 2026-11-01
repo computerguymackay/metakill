@@ -146,7 +146,7 @@ func golden(t *testing.T, name, got string) {
 // compressorDependent reports fixtures whose byte counts depend on the Go
 // version's DEFLATE output (ZIP-based formats recompress changed members).
 func compressorDependent(golden string) bool {
-	for _, ext := range []string{".docx.", ".odt.", ".epub.", ".zip.", ".jar."} {
+	for _, ext := range []string{".docx.", ".odt.", ".epub.", ".zip.", ".jar.", ".gz.", ".svgz."} {
 		if strings.Contains(golden, ext) {
 			return true
 		}
@@ -611,5 +611,29 @@ func TestZipInDirectoryMode(t *testing.T) {
 	}
 	if r.code != 0 {
 		t.Errorf("exit %d", r.code)
+	}
+}
+
+func TestTarRealRun(t *testing.T) {
+	dir := copyFixtures(t, "bundle.tar.gz", "notes.txt.gz", "drawing.svgz")
+	r := runCLI(t, dir, "-y", "-q", "--backup=false", "-d", ".")
+	expect(t, r, 0, "", "")
+	r = runCLI(t, dir, "-n", "-j", "-d", ".")
+	var doc struct {
+		Results []struct {
+			Path, Format, Status string
+		}
+		Summary map[string]any
+	}
+	if err := json.Unmarshal([]byte(r.stdout), &doc); err != nil {
+		t.Fatal(err)
+	}
+	var got []string
+	for _, x := range doc.Results {
+		got = append(got, x.Path+"="+x.Format+"/"+x.Status)
+	}
+	want := []string{"bundle.tar.gz=tar.gz/already_clean", "drawing.svgz=gz/already_clean", "notes.txt.gz=gz/already_clean"}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("after cleaning: %v, want %v", got, want)
 	}
 }

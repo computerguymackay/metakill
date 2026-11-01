@@ -7,9 +7,12 @@ toolchain go1.26.10
 require (
 	github.com/abema/go-mp4 v1.7.4
 	github.com/beevik/etree v1.8.1
+	github.com/dsnet/compress v0.0.1
+	github.com/klauspost/compress v1.20.3
 	github.com/pdfcpu/pdfcpu v0.16.3
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/pflag v1.0.10
+	github.com/ulikunitz/xz v0.5.17
 	golang.org/x/image v0.47.0
 	golang.org/x/term v0.47.0
 )

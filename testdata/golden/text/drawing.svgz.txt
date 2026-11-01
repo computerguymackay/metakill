@@ -1,0 +1,18 @@
+drawing.svgz  [GZ]
+  Timestamps:      modification time = "2023-04-12T18:33:02Z"
+  Custom:          original file name = "secret-plans.tar", comment = "made by Jane Photographer"
+  > (compressed content)  [SVG]
+  >   Timestamps:      rdf:RDF/cc:Work/dc:date = "2023-04-12"
+  >   Author:          rdf:RDF/cc:Work/dc:creator/cc:Agent/dc:title = "Jane Photographer"
+  >   Software:        comment = "Created with Inkscape (http://www.inkscape.org/)", inkscape:version = "1.2 (dc2aedaf03, 2022-05-15)", sodipodi:namedview = "<sodipodi:namedview id=\"base\" inkscape:window-width=\"1920\" inkscape:current-layer=\"layer1\"/>", inkscape:label = "Layer 1", inkscape:groupmode = "layer", xmlns:inkscape = "http://www.inkscape.org/namespaces/inkscape", xmlns:sodipodi = "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd", xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#", xmlns:dc = "http://purl.org/dc/elements/1.1/", xmlns:cc = "http://creativecommons.org/ns#"
+  >   ID tags:         title = "My Drawing"
+  >   Custom:          sodipodi:docname = "secret-plans.svg", inkscape:export-filename = "/home/jane/Desktop/secret-plans.png", desc = "secret comment"
+  >   > data: URI image  [JPEG]
+  >   >   GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16"
+  >   >   Timestamps:      DateTime = "2023:04:12 18:33:02", DateTimeOriginal = "2023:04:12 18:33:02", DateTimeDigitized = "2023:04:12 18:33:02"
+  >   >   Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
+  >   >   Author:          Artist = "Jane Photographer"
+  >   >   Software:        Software = "iOS 16.4"
+  >   >   Custom:          UserComment = "secret comment"
+  >   >   Kept:            Orientation = "6"
+  --- 34 fields, ~0 B removable
