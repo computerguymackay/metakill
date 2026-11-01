@@ -547,3 +547,45 @@ func TestCorpus(t *testing.T) {
 	}
 	t.Logf("strip summary: %v", strip.Summary)
 }
+
+func TestZipArchiveRealRun(t *testing.T) {
+	dir := copyFixtures(t, "bundle.zip", "plugin.jar")
+	jar, _ := os.ReadFile(filepath.Join(dir, "plugin.jar"))
+
+	r := runCLI(t, dir, "-y", "-q", "--backup=false", "bundle.zip", "plugin.jar")
+	expect(t, r, 0, "", "")
+
+	// Re-inspecting finds nothing left, and the signed JAR is untouched.
+	r = runCLI(t, dir, "-n", "bundle.zip", "plugin.jar")
+	expect(t, r, 0,
+		"bundle.zip  [ZIP]\n  no removable metadata found\n"+
+			"2 files: 0 cleaned, 1 already clean, 1 skipped, 0 errors (dry run); 0 fields removable, ~0 B removable\n",
+		"metakill: warning: bundle.zip: member names look like absolute or home-directory paths (e.g. \"Users/jane/notes.txt\"); names are not changed\n"+
+			"metakill: warning: plugin.jar: signed Java or browser-extension package (JAR/XPI): repacking would break its signature or integrity checks; skipped\n")
+	after, _ := os.ReadFile(filepath.Join(dir, "plugin.jar"))
+	if !bytes.Equal(after, jar) {
+		t.Fatal("signed JAR was modified")
+	}
+}
+
+func TestZipInDirectoryMode(t *testing.T) {
+	dir := copyFixtures(t, "bundle.zip", "plugin.jar", "photo.jpg")
+	r := runCLI(t, dir, "-n", "-j", "-d", ".")
+	var doc struct {
+		Results []struct{ Path, Format, Status string }
+	}
+	if err := json.Unmarshal([]byte(r.stdout), &doc); err != nil {
+		t.Fatal(err)
+	}
+	var got []string
+	for _, x := range doc.Results {
+		got = append(got, x.Path+"="+x.Format+"/"+x.Status)
+	}
+	want := []string{"bundle.zip=zip/cleaned", "photo.jpg=jpeg/cleaned", "plugin.jar=zip/skipped"}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v, want %v", got, want)
+	}
+	if r.code != 0 {
+		t.Errorf("exit %d", r.code)
+	}
+}

@@ -94,6 +94,12 @@ func Detect(r io.ReadSeeker, path string) Handler {
 // ErrUnsupported is returned for recognised-but-unsupported variants.
 var ErrUnsupported = errors.New("unsupported format variant")
 
+// ErrSkip is wrapped by handlers that recognise a file but deliberately leave
+// it alone (for example a signed Android package, which repacking would
+// break). The CLI reports such files as skipped with the error text as the
+// warning, rather than as failures.
+var ErrSkip = errors.New("skipped")
+
 // StripEmbedded cleans a nested file (an image inside a document, say). It
 // returns ok=false when no handler recognises the data or the depth limit is
 // reached; the caller should then keep the original bytes.
@@ -109,6 +115,13 @@ func StripEmbedded(name string, data []byte, opts Options) (out []byte, rep repo
 	sub := opts
 	sub.Depth++
 	pre, err := h.Inspect(r, sub)
+	if errors.Is(err, ErrSkip) {
+		rep = report.New(h.Name())
+		rep.Path = name
+		rep.Status = report.StatusSkipped
+		rep.Warn(err.Error())
+		return nil, rep, true
+	}
 	if err != nil {
 		rep = report.New(h.Name())
 		rep.Path = name

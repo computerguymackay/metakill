@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"hash/crc32"
 	"io"
+	"os"
 	"path"
 	"sort"
 	"strings"
@@ -27,14 +28,15 @@ const (
 
 // zipEntry is one archive member being processed.
 type zipEntry struct {
-	file *zip.File
-	name string
-	data []byte // decompressed content
-	out  []byte // replacement content; nil means unchanged
-	drop bool
+	file   *zip.File
+	name   string
+	data   []byte // decompressed content (nil until loaded)
+	loaded bool
+	out    []byte // replacement content; nil means unchanged
+	drop   bool
 }
 
-// zipDoc is a ZIP-based document being cleaned.
+// zipDoc is a ZIP-based document or archive being cleaned.
 type zipDoc struct {
 	rep     report.Report
 	opts    Options
@@ -49,9 +51,11 @@ type zipFormat interface {
 	process(z *zipDoc) error
 }
 
-const maxZipEntry = 512 << 20
+// maxZipEntry caps how much of a single member is decompressed into memory.
+// It is a variable so tests can lower it.
+var maxZipEntry uint64 = 512 << 20
 
-// openZip reads every member of a ZIP archive into memory.
+// openZip opens a ZIP archive's central directory.
 func openZip(r io.ReadSeeker) (*zip.Reader, error) {
 	size, err := streamSize(r)
 	if err != nil {
@@ -68,9 +72,9 @@ func openZip(r io.ReadSeeker) (*zip.Reader, error) {
 	return zip.NewReader(ra, size)
 }
 
-// zipHasMember checks for a member name (used by CanHandle).
+// zipHasMember opens r as a ZIP (used by CanHandle) and applies pred.
 func zipHasMember(r io.ReadSeeker, pred func(z *zip.Reader) bool) bool {
-	if b := peek(r, 4); !bytes.Equal(b, []byte("PK\x03\x04")) {
+	if b := peek(r, 4); !bytes.Equal(b, []byte("PK\x03\x04")) && !bytes.Equal(b, []byte("PK\x05\x06")) {
 		return false
 	}
 	zr, err := openZip(r)
@@ -97,7 +101,60 @@ func zipMimetype(z *zip.Reader) string {
 	return ""
 }
 
-func loadZipDoc(r io.ReadSeeker, format string, opts Options) (*zipDoc, error) {
+// specialPackage recognises ZIP-based packages whose signatures or integrity
+// manifests would be broken by repacking. It returns a description, or "".
+func specialPackage(z *zip.Reader) string {
+	for _, f := range z.File {
+		n := f.Name
+		ln := strings.ToLower(n)
+		switch {
+		case path.Base(n) == "AndroidManifest.xml":
+			return "Android package (APK/AAB)"
+		case strings.HasPrefix(n, "Payload/") && strings.Contains(n, ".app/"):
+			return "iOS app package (IPA)"
+		case strings.HasPrefix(ln, "meta-inf/") && (strings.HasSuffix(ln, ".sf") || strings.HasSuffix(ln, ".rsa") ||
+			strings.HasSuffix(ln, ".dsa") || strings.HasSuffix(ln, ".ec")):
+			return "signed Java or browser-extension package (JAR/XPI)"
+		case n == "AppxSignature.p7x" || n == "AppxManifest.xml" || strings.HasPrefix(n, "AppxMetadata/"):
+			return "Windows app package (APPX/MSIX)"
+		case strings.HasSuffix(n, ".dist-info/RECORD"):
+			return "Python wheel"
+		case strings.HasSuffix(ln, ".nuspec") && !strings.Contains(n, "/"):
+			return "NuGet package"
+		case n == "extension.vsixmanifest":
+			return "Visual Studio extension (VSIX)"
+		case strings.HasPrefix(n, "package/services/digital-signature/"):
+			return "signed OPC package"
+		}
+	}
+	return ""
+}
+
+func errSpecialPackage(kind string) error {
+	return fmt.Errorf("%s: repacking would break its signature or integrity checks; %w", kind, ErrSkip)
+}
+
+// identifyingExtra reports whether a ZIP extra field holds anything other
+// than Zip64 size records (uid/gid, timestamps, NTFS times, ...).
+func identifyingExtra(extra []byte) bool {
+	for len(extra) >= 4 {
+		id := uint16(extra[0]) | uint16(extra[1])<<8
+		n := int(uint16(extra[2]) | uint16(extra[3])<<8)
+		if id != 0x0001 {
+			return true
+		}
+		if 4+n > len(extra) {
+			return true
+		}
+		extra = extra[4+n:]
+	}
+	return len(extra) > 0
+}
+
+// loadZipDoc reads the central directory and reports archive-level
+// metadata. With eager, every member is decompressed into memory (document
+// formats); otherwise members are loaded on demand with z.load.
+func loadZipDoc(r io.ReadSeeker, format string, opts Options, eager bool) (*zipDoc, error) {
 	zr, err := openZip(r)
 	if err != nil {
 		return nil, fmt.Errorf("%s: %w", format, err)
@@ -110,26 +167,19 @@ func loadZipDoc(r io.ReadSeeker, format string, opts Options) (*zipDoc, error) {
 		if f.Flags&1 != 0 {
 			return nil, fmt.Errorf("%s: encrypted archive members are %w", format, ErrUnsupported)
 		}
-		if f.UncompressedSize64 > maxZipEntry {
-			return nil, fmt.Errorf("%s: member %s is too large", format, f.Name)
-		}
-		rc, err := f.Open()
-		if err != nil {
-			return nil, fmt.Errorf("%s: %s: %w", format, f.Name, err)
-		}
-		data, err := io.ReadAll(io.LimitReader(rc, maxZipEntry))
-		_ = rc.Close()
-		if err != nil {
-			return nil, fmt.Errorf("%s: %s: %w", format, f.Name, err)
-		}
-		e := &zipEntry{file: f, name: f.Name, data: data}
+		e := &zipEntry{file: f, name: f.Name}
 		z.entries = append(z.entries, e)
 		z.byName[f.Name] = e
+		if eager {
+			if err := z.load(e); err != nil {
+				return nil, fmt.Errorf("%s: %w", format, err)
+			}
+		}
 		mod := f.Modified.UTC()
 		if !f.Modified.IsZero() && !sameDay(mod, dosEpoch) && mod.After(latest) {
 			latest = mod
 		}
-		if len(f.Extra) > 0 {
+		if identifyingExtra(f.Extra) {
 			extras++
 		}
 		if f.Comment != "" {
@@ -145,7 +195,64 @@ func loadZipDoc(r io.ReadSeeker, format string, opts Options) (*zipDoc, error) {
 	if extras > 0 {
 		z.rep.Add(report.Text(report.CatCustom, "zip", "extra fields (uid/gid, timestamps)", fmt.Sprintf("%d member(s)", extras)))
 	}
+	z.dropJunk()
 	return z, nil
+}
+
+// load decompresses a member into memory (at most maxZipEntry bytes).
+func (z *zipDoc) load(e *zipEntry) error {
+	if e.loaded {
+		return nil
+	}
+	if e.file.UncompressedSize64 > maxZipEntry {
+		return fmt.Errorf("member %s is too large (%d bytes)", e.name, e.file.UncompressedSize64)
+	}
+	rc, err := e.file.Open()
+	if err != nil {
+		return fmt.Errorf("%s: %w", e.name, err)
+	}
+	data, err := io.ReadAll(io.LimitReader(rc, int64(maxZipEntry)+1))
+	_ = rc.Close()
+	if err != nil {
+		return fmt.Errorf("%s: %w", e.name, err)
+	}
+	if uint64(len(data)) > maxZipEntry {
+		return fmt.Errorf("member %s is too large", e.name)
+	}
+	e.data, e.loaded = data, true
+	return nil
+}
+
+// junkKind classifies operating-system clutter that only carries metadata.
+func junkKind(name string) (report.Category, bool) {
+	base := strings.ToLower(path.Base(strings.TrimSuffix(name, "/")))
+	switch {
+	case strings.HasPrefix(name, "__MACOSX/") || name == "__MACOSX/":
+		return report.CatCustom, true
+	case strings.HasPrefix(base, "._"):
+		return report.CatCustom, true // AppleDouble: Finder info, quarantine, where-from
+	case base == ".ds_store":
+		return report.CatCustom, true
+	case base == "thumbs.db" || base == "ehthumbs.db" || base == "ehthumbs_vista.db":
+		return report.CatThumbnail, true
+	case base == "desktop.ini":
+		return report.CatCustom, true
+	}
+	return "", false
+}
+
+// dropJunk removes macOS/Windows clutter files (AppleDouble, .DS_Store,
+// Thumbs.db, desktop.ini) from every ZIP-based format.
+func (z *zipDoc) dropJunk() {
+	for _, e := range z.entries {
+		if cat, ok := junkKind(e.name); ok {
+			if strings.HasSuffix(e.name, "/") {
+				e.drop = true // the __MACOSX/ directory entry itself
+				continue
+			}
+			z.dropMember(e, report.Binary(cat, "zip", e.name, int64(e.file.UncompressedSize64)))
+		}
+	}
 }
 
 func sameDay(a, b time.Time) bool {
@@ -160,8 +267,25 @@ func (e *zipEntry) content() []byte {
 	return e.data
 }
 
-// write serialises the cleaned archive. mimetype (if present) is written
-// first and stored uncompressed, as ODF and EPUB require.
+// normalMode keeps only what matters for extraction: directory, symlink and
+// executable bits. Everything else (owner-only modes, set-uid, MS-DOS
+// attributes) is normalised.
+func normalMode(m os.FileMode) os.FileMode {
+	switch {
+	case m.IsDir():
+		return os.ModeDir | 0o755
+	case m&os.ModeSymlink != 0:
+		return os.ModeSymlink | 0o777
+	case m&0o111 != 0:
+		return 0o755
+	}
+	return 0o644
+}
+
+// write serialises the cleaned archive. Unchanged members are copied as their
+// original compressed bytes. mimetype (if present) is written first and
+// stored uncompressed, as ODF and EPUB require. Every member gets the same
+// 1980-01-01 timestamp, no extra fields and no comment.
 func (z *zipDoc) write(w io.Writer) error {
 	zw := zip.NewWriter(w)
 	order := make([]*zipEntry, 0, len(z.entries))
@@ -176,21 +300,45 @@ func (z *zipDoc) write(w io.Writer) error {
 		if e.drop {
 			continue
 		}
-		data := e.content()
-		method := e.file.Method
-		if e.name == "mimetype" {
-			method = zip.Store
-		}
+		f := e.file
 		hdr := &zip.FileHeader{
-			Name:   e.name,
-			Method: method,
+			Name: e.name,
 			// 1980-01-01 in MS-DOS format. Setting Modified instead would make
 			// archive/zip add an extended-timestamp extra field.
 			ModifiedDate: 0x21, //nolint:staticcheck // deliberate, see above
 		}
-		hdr.SetMode(0o644)
-		hdr.ExternalAttrs = 0
-		if method == zip.Store {
+		hdr.SetMode(normalMode(f.Mode()))
+		hdr.Flags = f.Flags & 0x800 // keep only the UTF-8 name flag
+
+		mustStore := e.name == "mimetype" && f.Method != zip.Store
+		if e.out == nil && !mustStore {
+			// Copy the original compressed bytes untouched.
+			hdr.Method = f.Method
+			hdr.Flags |= f.Flags & 0x6 // deflate option bits
+			hdr.CRC32 = f.CRC32
+			hdr.CompressedSize64 = f.CompressedSize64
+			hdr.UncompressedSize64 = f.UncompressedSize64
+			raw, err := f.OpenRaw()
+			if err != nil {
+				return err
+			}
+			fw, err := zw.CreateRaw(hdr)
+			if err != nil {
+				return err
+			}
+			if _, err := io.Copy(fw, raw); err != nil {
+				return err
+			}
+			continue
+		}
+		if !e.loaded {
+			if err := z.load(e); err != nil {
+				return err
+			}
+		}
+		data := e.content()
+		if e.name == "mimetype" || strings.HasSuffix(e.name, "/") || len(data) == 0 {
+			hdr.Method = zip.Store
 			hdr.CRC32 = crc32.ChecksumIEEE(data)
 			hdr.CompressedSize64 = uint64(len(data))
 			hdr.UncompressedSize64 = uint64(len(data))
@@ -217,11 +365,17 @@ func (z *zipDoc) write(w io.Writer) error {
 
 // stripMember cleans an embedded file (image, nested document) in place.
 func (z *zipDoc) stripMember(e *zipEntry) {
+	if !e.loaded {
+		if err := z.load(e); err != nil {
+			z.rep.Unclean(err.Error())
+			return
+		}
+	}
 	out, sub, ok := StripEmbedded(e.name, e.data, z.opts)
 	if !ok {
 		return
 	}
-	if sub.TotalFields() > 0 || !sub.FullyClean {
+	if sub.TotalFields() > 0 || !sub.FullyClean || len(sub.Warnings) > 0 {
 		z.rep.AddEmbedded(sub)
 	}
 	if out != nil && !bytes.Equal(out, e.data) {
@@ -302,7 +456,7 @@ func sortedKeys2(m map[string]bool) []string {
 
 // zipInspect / zipStrip are the shared Handler bodies for ZIP documents.
 func zipInspect(r io.ReadSeeker, format string, f zipFormat, opts Options) (report.Report, error) {
-	z, err := loadZipDoc(r, format, opts)
+	z, err := loadZipDoc(r, format, opts, format != "zip")
 	if err != nil {
 		return report.Report{}, err
 	}
@@ -310,10 +464,10 @@ func zipInspect(r io.ReadSeeker, format string, f zipFormat, opts Options) (repo
 		return z.rep, err
 	}
 	if z.rep.TotalFields() > 0 {
-		var buf bytes.Buffer
-		if err := z.write(&buf); err == nil {
-			if size, err := streamSize(r); err == nil && size > int64(buf.Len()) {
-				z.rep.Bytes = size - int64(buf.Len())
+		var cw countWriter // count the rewritten size without holding it in memory
+		if err := z.write(&cw); err == nil {
+			if size, err := streamSize(r); err == nil && size > cw.n {
+				z.rep.Bytes = size - cw.n
 			}
 		}
 	}
@@ -321,7 +475,7 @@ func zipInspect(r io.ReadSeeker, format string, f zipFormat, opts Options) (repo
 }
 
 func zipStrip(r io.ReadSeeker, w io.Writer, format string, f zipFormat, opts Options) (report.Report, error) {
-	z, err := loadZipDoc(r, format, opts)
+	z, err := loadZipDoc(r, format, opts, format != "zip")
 	if err != nil {
 		return report.Report{}, err
 	}

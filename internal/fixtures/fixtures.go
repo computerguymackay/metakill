@@ -12,6 +12,9 @@ type Fixture struct {
 	Data   []byte
 	// Clean is true for fixtures that carry no metadata at all.
 	Clean bool
+	// Skipped is true for fixtures the handler recognises but deliberately
+	// leaves alone (signed packages).
+	Skipped bool
 }
 
 var generators = map[string]func() Fixture{}

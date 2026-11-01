@@ -1,0 +1,815 @@
+{
+  "dry_run": true,
+  "results": [
+    {
+      "path": "bundle.zip",
+      "format": "zip",
+      "dry_run": true,
+      "status": "cleaned",
+      "fully_clean": true,
+      "fields": [
+        {
+          "category": "custom",
+          "namespace": "zip",
+          "key": "comment:docs/photo.jpg",
+          "value": "taken at home"
+        },
+        {
+          "category": "custom",
+          "namespace": "zip",
+          "key": "archive comment",
+          "value": "Packed by Jane Photographer"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "zip",
+          "key": "member timestamps (latest)",
+          "value": "2023-04-12T18:33:02Z"
+        },
+        {
+          "category": "custom",
+          "namespace": "zip",
+          "key": "extra fields (uid/gid, timestamps)",
+          "value": "13 member(s)"
+        },
+        {
+          "category": "custom",
+          "namespace": "zip",
+          "key": "docs/.DS_Store",
+          "value": null,
+          "size": 21
+        },
+        {
+          "category": "thumbnail",
+          "namespace": "zip",
+          "key": "docs/Thumbs.db",
+          "value": null,
+          "size": 15
+        },
+        {
+          "category": "custom",
+          "namespace": "zip",
+          "key": "__MACOSX/docs/._photo.jpg",
+          "value": null,
+          "size": 54
+        }
+      ],
+      "kept": [],
+      "bytes_removable": 1019,
+      "warnings": [
+        "member names look like absolute or home-directory paths (e.g. \"Users/jane/notes.txt\"); names are not changed"
+      ],
+      "embedded": [
+        {
+          "path": "docs/photo.jpg",
+          "format": "jpeg",
+          "dry_run": true,
+          "status": "cleaned",
+          "fully_clean": true,
+          "fields": [
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "Make",
+              "value": "Apple"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "Model",
+              "value": "iPhone 14 Pro"
+            },
+            {
+              "category": "software",
+              "namespace": "exif",
+              "key": "Software",
+              "value": "iOS 16.4"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTime",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "author",
+              "namespace": "exif",
+              "key": "Artist",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTimeOriginal",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTimeDigitized",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "custom",
+              "namespace": "exif",
+              "key": "UserComment",
+              "value": "secret comment"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "BodySerialNumber",
+              "value": "SN-0042-SECRET"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "LensModel",
+              "value": "iPhone 14 Pro back camera"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLatitudeRef",
+              "value": "N"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLatitude",
+              "value": "37 46 29.64"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLongitudeRef",
+              "value": "W"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLongitude",
+              "value": "122 25 9.84"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSAltitude",
+              "value": "16"
+            },
+            {
+              "category": "thumbnail",
+              "namespace": "exif",
+              "key": "ThumbnailImage",
+              "value": null,
+              "size": 631
+            },
+            {
+              "category": "software",
+              "namespace": "xmp",
+              "key": "xmp:CreatorTool",
+              "value": "Adobe Photoshop 24.0"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "xmp",
+              "key": "xmp:CreateDate",
+              "value": "2023-04-12T18:33:02"
+            },
+            {
+              "category": "author",
+              "namespace": "xmp",
+              "key": "dc:creator",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "gps",
+              "namespace": "xmp",
+              "key": "exif:GPSLatitude",
+              "value": "37,46.494N"
+            },
+            {
+              "category": "author",
+              "namespace": "iptc",
+              "key": "By-line",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "gps",
+              "namespace": "iptc",
+              "key": "City",
+              "value": "San Francisco"
+            },
+            {
+              "category": "custom",
+              "namespace": "jpeg",
+              "key": "Comment",
+              "value": "secret comment"
+            },
+            {
+              "category": "icc",
+              "namespace": "icc",
+              "key": "ICC_PROFILE",
+              "value": null,
+              "size": 150
+            },
+            {
+              "category": "custom",
+              "namespace": "jpeg",
+              "key": "TrailingData",
+              "value": null,
+              "size": 25
+            }
+          ],
+          "kept": [
+            {
+              "category": "custom",
+              "namespace": "exif",
+              "key": "Orientation",
+              "value": "6"
+            }
+          ],
+          "bytes_removable": 2059,
+          "warnings": []
+        },
+        {
+          "path": "docs/song.mp3",
+          "format": "mp3",
+          "dry_run": true,
+          "status": "cleaned",
+          "fully_clean": true,
+          "fields": [
+            {
+              "category": "id_tag",
+              "namespace": "id3v2.3",
+              "key": "TIT2",
+              "value": "Test Song"
+            },
+            {
+              "category": "id_tag",
+              "namespace": "id3v2.3",
+              "key": "TPE1",
+              "value": "Test Artist"
+            },
+            {
+              "category": "id_tag",
+              "namespace": "id3v2.3",
+              "key": "TALB",
+              "value": "Test Album"
+            },
+            {
+              "category": "id_tag",
+              "namespace": "id3v2.3",
+              "key": "TRCK",
+              "value": "3/12"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "id3v2.3",
+              "key": "TYER",
+              "value": "2023"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "id3v2.3",
+              "key": "TDAT",
+              "value": "1204"
+            },
+            {
+              "category": "software",
+              "namespace": "id3v2.3",
+              "key": "TSSE",
+              "value": "SecretEncoder 1.0"
+            },
+            {
+              "category": "software",
+              "namespace": "id3v2.3",
+              "key": "TENC",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "custom",
+              "namespace": "id3v2.3",
+              "key": "COMM",
+              "value": "secret comment"
+            },
+            {
+              "category": "custom",
+              "namespace": "id3v2.3",
+              "key": "PRIV:www.amazon.com",
+              "value": null,
+              "size": 29
+            },
+            {
+              "category": "thumbnail",
+              "namespace": "id3v2.3",
+              "key": "APIC",
+              "value": null,
+              "size": 1111
+            },
+            {
+              "category": "id_tag",
+              "namespace": "id3v1",
+              "key": "Title",
+              "value": "Test Song"
+            },
+            {
+              "category": "id_tag",
+              "namespace": "id3v1",
+              "key": "Artist",
+              "value": "Test Artist"
+            },
+            {
+              "category": "id_tag",
+              "namespace": "id3v1",
+              "key": "Album",
+              "value": "Test Album"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "id3v1",
+              "key": "Year",
+              "value": "2023"
+            },
+            {
+              "category": "custom",
+              "namespace": "id3v1",
+              "key": "Comment",
+              "value": "secret comment"
+            },
+            {
+              "category": "id_tag",
+              "namespace": "id3v1",
+              "key": "Track",
+              "value": "3"
+            },
+            {
+              "category": "id_tag",
+              "namespace": "ape",
+              "key": "Title",
+              "value": "Test Song"
+            },
+            {
+              "category": "software",
+              "namespace": "ape",
+              "key": "Encoder",
+              "value": "SecretEncoder 1.0"
+            },
+            {
+              "category": "custom",
+              "namespace": "ape",
+              "key": "Comment",
+              "value": "secret comment"
+            },
+            {
+              "category": "software",
+              "namespace": "lame",
+              "key": "EncoderVersion",
+              "value": "LAME3.100"
+            }
+          ],
+          "kept": [],
+          "bytes_removable": 1719,
+          "warnings": []
+        },
+        {
+          "path": "docs/letter.docx",
+          "format": "ooxml",
+          "dry_run": true,
+          "status": "cleaned",
+          "fully_clean": true,
+          "fields": [
+            {
+              "category": "custom",
+              "namespace": "zip",
+              "key": "archive comment",
+              "value": "Created by iOS 16.4"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "zip",
+              "key": "member timestamps (latest)",
+              "value": "2023-04-12T18:33:02Z"
+            },
+            {
+              "category": "custom",
+              "namespace": "zip",
+              "key": "extra fields (uid/gid, timestamps)",
+              "value": "13 member(s)"
+            },
+            {
+              "category": "author",
+              "namespace": "ooxml",
+              "key": "word/document.xml author",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "ooxml",
+              "key": "word/document.xml date",
+              "value": "2023-04-12T18:33:02Z"
+            },
+            {
+              "category": "custom",
+              "namespace": "ooxml",
+              "key": "word/document.xml rsid attributes",
+              "value": "3"
+            },
+            {
+              "category": "author",
+              "namespace": "ooxml",
+              "key": "word/comments.xml author",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "ooxml",
+              "key": "word/comments.xml date",
+              "value": "2023-04-12T18:33:02Z"
+            },
+            {
+              "category": "author",
+              "namespace": "ooxml",
+              "key": "word/people.xml author",
+              "value": "AD"
+            },
+            {
+              "category": "author",
+              "namespace": "ooxml",
+              "key": "word/people.xml author",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "author",
+              "namespace": "ooxml",
+              "key": "word/people.xml author",
+              "value": "S::jane@example.com::1234"
+            },
+            {
+              "category": "custom",
+              "namespace": "ooxml",
+              "key": "w:attachedTemplate",
+              "value": ""
+            },
+            {
+              "category": "custom",
+              "namespace": "ooxml",
+              "key": "w:docVars",
+              "value": ""
+            },
+            {
+              "category": "custom",
+              "namespace": "ooxml",
+              "key": "w:rsids",
+              "value": "2 session IDs"
+            },
+            {
+              "category": "id_tag",
+              "namespace": "ooxml.core",
+              "key": "dc:title",
+              "value": "Secret Letter Title"
+            },
+            {
+              "category": "author",
+              "namespace": "ooxml.core",
+              "key": "dc:creator",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "author",
+              "namespace": "ooxml.core",
+              "key": "cp:lastModifiedBy",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "custom",
+              "namespace": "ooxml.core",
+              "key": "cp:revision",
+              "value": "7"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "ooxml.core",
+              "key": "dcterms:created",
+              "value": "2023-04-12T18:33:02Z"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "ooxml.core",
+              "key": "dcterms:modified",
+              "value": "2023-04-12T18:33:02Z"
+            },
+            {
+              "category": "custom",
+              "namespace": "ooxml.app",
+              "key": "Template",
+              "value": "Normal.dotm"
+            },
+            {
+              "category": "custom",
+              "namespace": "ooxml.app",
+              "key": "TotalTime",
+              "value": "42"
+            },
+            {
+              "category": "software",
+              "namespace": "ooxml.app",
+              "key": "Application",
+              "value": "SecretEncoder 1.0"
+            },
+            {
+              "category": "author",
+              "namespace": "ooxml.app",
+              "key": "Company",
+              "value": "Apple Inc"
+            },
+            {
+              "category": "software",
+              "namespace": "ooxml.app",
+              "key": "AppVersion",
+              "value": "16.0000"
+            },
+            {
+              "category": "custom",
+              "namespace": "ooxml.custom",
+              "key": "ClientId",
+              "value": "iPhone 14 Pro"
+            },
+            {
+              "category": "thumbnail",
+              "namespace": "ooxml",
+              "key": "docProps/thumbnail.jpeg",
+              "value": null,
+              "size": 631
+            },
+            {
+              "category": "custom",
+              "namespace": "ooxml",
+              "key": "attachedTemplate path",
+              "value": "file:///C:\\Users\\jane\\AppData\\Roaming\\Microsoft\\Templates\\Normal.dotm"
+            }
+          ],
+          "kept": [],
+          "bytes_removable": 1857,
+          "warnings": [],
+          "embedded": [
+            {
+              "path": "word/media/image1.jpeg",
+              "format": "jpeg",
+              "dry_run": true,
+              "status": "cleaned",
+              "fully_clean": true,
+              "fields": [
+                {
+                  "category": "device",
+                  "namespace": "exif",
+                  "key": "Make",
+                  "value": "Apple"
+                },
+                {
+                  "category": "device",
+                  "namespace": "exif",
+                  "key": "Model",
+                  "value": "iPhone 14 Pro"
+                },
+                {
+                  "category": "software",
+                  "namespace": "exif",
+                  "key": "Software",
+                  "value": "iOS 16.4"
+                },
+                {
+                  "category": "timestamp",
+                  "namespace": "exif",
+                  "key": "DateTime",
+                  "value": "2023:04:12 18:33:02"
+                },
+                {
+                  "category": "author",
+                  "namespace": "exif",
+                  "key": "Artist",
+                  "value": "Jane Photographer"
+                },
+                {
+                  "category": "timestamp",
+                  "namespace": "exif",
+                  "key": "DateTimeOriginal",
+                  "value": "2023:04:12 18:33:02"
+                },
+                {
+                  "category": "timestamp",
+                  "namespace": "exif",
+                  "key": "DateTimeDigitized",
+                  "value": "2023:04:12 18:33:02"
+                },
+                {
+                  "category": "custom",
+                  "namespace": "exif",
+                  "key": "UserComment",
+                  "value": "secret comment"
+                },
+                {
+                  "category": "device",
+                  "namespace": "exif",
+                  "key": "BodySerialNumber",
+                  "value": "SN-0042-SECRET"
+                },
+                {
+                  "category": "device",
+                  "namespace": "exif",
+                  "key": "LensModel",
+                  "value": "iPhone 14 Pro back camera"
+                },
+                {
+                  "category": "gps",
+                  "namespace": "exif",
+                  "key": "GPSLatitudeRef",
+                  "value": "N"
+                },
+                {
+                  "category": "gps",
+                  "namespace": "exif",
+                  "key": "GPSLatitude",
+                  "value": "37 46 29.64"
+                },
+                {
+                  "category": "gps",
+                  "namespace": "exif",
+                  "key": "GPSLongitudeRef",
+                  "value": "W"
+                },
+                {
+                  "category": "gps",
+                  "namespace": "exif",
+                  "key": "GPSLongitude",
+                  "value": "122 25 9.84"
+                },
+                {
+                  "category": "gps",
+                  "namespace": "exif",
+                  "key": "GPSAltitude",
+                  "value": "16"
+                }
+              ],
+              "kept": [
+                {
+                  "category": "custom",
+                  "namespace": "exif",
+                  "key": "Orientation",
+                  "value": "6"
+                }
+              ],
+              "bytes_removable": 444,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "path": "docs/inner.zip",
+          "format": "zip",
+          "dry_run": true,
+          "status": "cleaned",
+          "fully_clean": true,
+          "fields": [
+            {
+              "category": "timestamp",
+              "namespace": "zip",
+              "key": "member timestamps (latest)",
+              "value": "2023-04-12T18:33:02Z"
+            },
+            {
+              "category": "custom",
+              "namespace": "zip",
+              "key": "extra fields (uid/gid, timestamps)",
+              "value": "1 member(s)"
+            }
+          ],
+          "kept": [],
+          "bytes_removable": 34,
+          "warnings": [],
+          "embedded": [
+            {
+              "path": "inner/photo.jpg",
+              "format": "jpeg",
+              "dry_run": true,
+              "status": "cleaned",
+              "fully_clean": true,
+              "fields": [
+                {
+                  "category": "device",
+                  "namespace": "exif",
+                  "key": "Make",
+                  "value": "Apple"
+                },
+                {
+                  "category": "device",
+                  "namespace": "exif",
+                  "key": "Model",
+                  "value": "iPhone 14 Pro"
+                },
+                {
+                  "category": "software",
+                  "namespace": "exif",
+                  "key": "Software",
+                  "value": "iOS 16.4"
+                },
+                {
+                  "category": "timestamp",
+                  "namespace": "exif",
+                  "key": "DateTime",
+                  "value": "2023:04:12 18:33:02"
+                },
+                {
+                  "category": "author",
+                  "namespace": "exif",
+                  "key": "Artist",
+                  "value": "Jane Photographer"
+                },
+                {
+                  "category": "timestamp",
+                  "namespace": "exif",
+                  "key": "DateTimeOriginal",
+                  "value": "2023:04:12 18:33:02"
+                },
+                {
+                  "category": "timestamp",
+                  "namespace": "exif",
+                  "key": "DateTimeDigitized",
+                  "value": "2023:04:12 18:33:02"
+                },
+                {
+                  "category": "custom",
+                  "namespace": "exif",
+                  "key": "UserComment",
+                  "value": "secret comment"
+                },
+                {
+                  "category": "device",
+                  "namespace": "exif",
+                  "key": "BodySerialNumber",
+                  "value": "SN-0042-SECRET"
+                },
+                {
+                  "category": "device",
+                  "namespace": "exif",
+                  "key": "LensModel",
+                  "value": "iPhone 14 Pro back camera"
+                },
+                {
+                  "category": "gps",
+                  "namespace": "exif",
+                  "key": "GPSLatitudeRef",
+                  "value": "N"
+                },
+                {
+                  "category": "gps",
+                  "namespace": "exif",
+                  "key": "GPSLatitude",
+                  "value": "37 46 29.64"
+                },
+                {
+                  "category": "gps",
+                  "namespace": "exif",
+                  "key": "GPSLongitudeRef",
+                  "value": "W"
+                },
+                {
+                  "category": "gps",
+                  "namespace": "exif",
+                  "key": "GPSLongitude",
+                  "value": "122 25 9.84"
+                },
+                {
+                  "category": "gps",
+                  "namespace": "exif",
+                  "key": "GPSAltitude",
+                  "value": "16"
+                }
+              ],
+              "kept": [
+                {
+                  "category": "custom",
+                  "namespace": "exif",
+                  "key": "Orientation",
+                  "value": "6"
+                }
+              ],
+              "bytes_removable": 444,
+              "warnings": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "cleaned": 1,
+    "already_clean": 0,
+    "skipped": 0,
+    "errors": 0,
+    "not_fully_clean": 0,
+    "fields_removed": 113,
+    "bytes_removable": 1019
+  }
+}

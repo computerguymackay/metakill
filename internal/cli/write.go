@@ -1,12 +1,14 @@
 package cli
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"os"
 	"path/filepath"
 	"strings"
 
+	"github.com/computerguymackay/metakill/internal/handlers"
 	"github.com/computerguymackay/metakill/internal/report"
 )
 
@@ -38,6 +40,13 @@ func (r *runner) processOne(j job) report.Report {
 	}
 
 	pre, err := j.handler.Inspect(src, r.opts)
+	if errors.Is(err, handlers.ErrSkip) {
+		rep := report.New(j.handler.Name())
+		rep.Path = j.path
+		rep.Status = report.StatusSkipped
+		rep.Warn(err.Error())
+		return rep
+	}
 	if err != nil {
 		return fail(prefixed(j.handler.Name(), err))
 	}

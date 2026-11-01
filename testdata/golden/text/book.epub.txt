@@ -11,4 +11,4 @@ book.epub  [EPUB]
   >   Software:        Software = "iOS 16.4"
   >   Custom:          UserComment = "secret comment"
   >   Kept:            Orientation = "6"
-  --- 26 fields, ~499 B removable
+  --- 26 fields, ~548 B removable

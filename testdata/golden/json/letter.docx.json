@@ -179,7 +179,7 @@
         }
       ],
       "kept": [],
-      "bytes_removable": 1797,
+      "bytes_removable": 1857,
       "warnings": [],
       "embedded": [
         {
@@ -302,6 +302,6 @@
     "errors": 0,
     "not_fully_clean": 0,
     "fields_removed": 43,
-    "bytes_removable": 1797
+    "bytes_removable": 1857
   }
 }

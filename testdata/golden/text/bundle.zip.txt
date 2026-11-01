@@ -1,0 +1,47 @@
+bundle.zip  [ZIP]
+  Timestamps:      member timestamps (latest) = "2023-04-12T18:33:02Z"
+  Thumbnail:       docs/Thumbs.db = <binary, 15 bytes>
+  Custom:          comment:docs/photo.jpg = "taken at home", archive comment = "Packed by Jane Photographer", extra fields (uid/gid, timestamps) = "13 member(s)", docs/.DS_Store = <binary, 21 bytes>, __MACOSX/docs/._photo.jpg = <binary, 54 bytes>
+  > docs/photo.jpg  [JPEG]
+  >   GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16", exif:GPSLatitude = "37,46.494N", City = "San Francisco"
+  >   Timestamps:      DateTime = "2023:04:12 18:33:02", DateTimeOriginal = "2023:04:12 18:33:02", DateTimeDigitized = "2023:04:12 18:33:02", xmp:CreateDate = "2023-04-12T18:33:02"
+  >   Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
+  >   Author:          Artist = "Jane Photographer", dc:creator = "Jane Photographer", By-line = "Jane Photographer"
+  >   Software:        Software = "iOS 16.4", xmp:CreatorTool = "Adobe Photoshop 24.0"
+  >   Thumbnail:       ThumbnailImage = <binary, 631 bytes>
+  >   ICC profile:     ICC_PROFILE = <binary, 150 bytes>
+  >   Custom:          UserComment = "secret comment", Comment = "secret comment", TrailingData = <binary, 25 bytes>
+  >   Kept:            Orientation = "6"
+  > docs/song.mp3  [MP3]
+  >   Timestamps:      TYER = "2023", TDAT = "1204", Year = "2023"
+  >   Software:        TSSE = "SecretEncoder 1.0", TENC = "Jane Photographer", Encoder = "SecretEncoder 1.0", EncoderVersion = "LAME3.100"
+  >   ID tags:         TIT2 = "Test Song", TPE1 = "Test Artist", TALB = "Test Album", TRCK = "3/12", Title = "Test Song", Artist = "Test Artist", Album = "Test Album", Track = "3", Title = "Test Song"
+  >   Thumbnail:       APIC = <binary, 1111 bytes>
+  >   Custom:          COMM = "secret comment", PRIV:www.amazon.com = <binary, 29 bytes>, Comment = "secret comment", Comment = "secret comment"
+  > docs/letter.docx  [OOXML]
+  >   Timestamps:      member timestamps (latest) = "2023-04-12T18:33:02Z", word/document.xml date = "2023-04-12T18:33:02Z", word/comments.xml date = "2023-04-12T18:33:02Z", dcterms:created = "2023-04-12T18:33:02Z", dcterms:modified = "2023-04-12T18:33:02Z"
+  >   Author:          word/document.xml author = "Jane Photographer", word/comments.xml author = "Jane Photographer", word/people.xml author = "AD", word/people.xml author = "Jane Photographer", word/people.xml author = "S::jane@example.com::1234", dc:creator = "Jane Photographer", cp:lastModifiedBy = "Jane Photographer", Company = "Apple Inc"
+  >   Software:        Application = "SecretEncoder 1.0", AppVersion = "16.0000"
+  >   ID tags:         dc:title = "Secret Letter Title"
+  >   Thumbnail:       docProps/thumbnail.jpeg = <binary, 631 bytes>
+  >   Custom:          archive comment = "Created by iOS 16.4", extra fields (uid/gid, timestamps) = "13 member(s)", word/document.xml rsid attributes = "3", w:attachedTemplate = "", w:docVars = "", w:rsids = "2 session IDs", cp:revision = "7", Template = "Normal.dotm", TotalTime = "42", ClientId = "iPhone 14 Pro", attachedTemplate path = "file:///C:\\Users\\jane\\AppData\\Roaming\\Microsoft\\Templates\\Normal.dotm"
+  >   > word/media/image1.jpeg  [JPEG]
+  >   >   GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16"
+  >   >   Timestamps:      DateTime = "2023:04:12 18:33:02", DateTimeOriginal = "2023:04:12 18:33:02", DateTimeDigitized = "2023:04:12 18:33:02"
+  >   >   Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
+  >   >   Author:          Artist = "Jane Photographer"
+  >   >   Software:        Software = "iOS 16.4"
+  >   >   Custom:          UserComment = "secret comment"
+  >   >   Kept:            Orientation = "6"
+  > docs/inner.zip  [ZIP]
+  >   Timestamps:      member timestamps (latest) = "2023-04-12T18:33:02Z"
+  >   Custom:          extra fields (uid/gid, timestamps) = "1 member(s)"
+  >   > inner/photo.jpg  [JPEG]
+  >   >   GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16"
+  >   >   Timestamps:      DateTime = "2023:04:12 18:33:02", DateTimeOriginal = "2023:04:12 18:33:02", DateTimeDigitized = "2023:04:12 18:33:02"
+  >   >   Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
+  >   >   Author:          Artist = "Jane Photographer"
+  >   >   Software:        Software = "iOS 16.4"
+  >   >   Custom:          UserComment = "secret comment"
+  >   >   Kept:            Orientation = "6"
+  --- 113 fields, ~1019 B removable

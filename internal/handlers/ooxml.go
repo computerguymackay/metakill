@@ -29,14 +29,7 @@ func init() { Register(ooxmlHandler{}) }
 func (ooxmlHandler) Name() string { return "ooxml" }
 
 func (ooxmlHandler) CanHandle(r io.ReadSeeker, p string) bool {
-	if zipHasMember(r, func(z *zip.Reader) bool {
-		for _, f := range z.File {
-			if f.Name == "[Content_Types].xml" {
-				return true
-			}
-		}
-		return false
-	}) {
+	if zipHasMember(r, isOOXMLDoc) {
 		return true
 	}
 	return hasExt(p, ".docx", ".docm", ".dotx", ".dotm", ".xlsx", ".xlsm", ".xltx", ".xltm",
@@ -51,6 +44,20 @@ func (h ooxmlHandler) Strip(r io.ReadSeeker, w io.WriteSeeker, opts Options) (re
 	return zipStrip(r, w, "ooxml", ooxmlFormat{}, opts)
 }
 
+// isOOXMLDoc reports an Office document: an OPC package that is not one of
+// the signed/special packages (NuGet, VSIX, APPX) that share its layout.
+func isOOXMLDoc(z *zip.Reader) bool {
+	if specialPackage(z) != "" {
+		return false
+	}
+	for _, f := range z.File {
+		if f.Name == "[Content_Types].xml" {
+			return true
+		}
+	}
+	return false
+}
+
 type ooxmlFormat struct{}
 
 // app.xml properties that identify the author, organisation or software.
@@ -61,6 +68,12 @@ var appIdentifying = map[string]report.Category{
 }
 
 func (ooxmlFormat) process(z *zipDoc) error {
+	for _, e := range z.entries {
+		if strings.HasPrefix(e.name, "_xmlsignatures/") {
+			z.rep.Warn("document is digitally signed; stripping invalidates the signature")
+			break
+		}
+	}
 	for _, e := range z.entries {
 		n := e.name
 		ln := strings.ToLower(n)

@@ -116,11 +116,11 @@
           "namespace": "odf",
           "key": "Thumbnails/thumbnail.png",
           "value": null,
-          "size": 89
+          "size": 122
         }
       ],
       "kept": [],
-      "bytes_removable": 712,
+      "bytes_removable": 736,
       "warnings": [],
       "embedded": [
         {
@@ -243,6 +243,6 @@
     "errors": 0,
     "not_fully_clean": 0,
     "fields_removed": 33,
-    "bytes_removable": 712
+    "bytes_removable": 736
   }
 }

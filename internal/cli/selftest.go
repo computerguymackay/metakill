@@ -2,6 +2,7 @@ package cli
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"io"
 
@@ -42,6 +43,12 @@ func selfTestOne(fx fixtures.Fixture, opts handlers.Options) error {
 		return fmt.Errorf("detected as %s, want %s", h.Name(), fx.Format)
 	}
 	pre, err := h.Inspect(r, opts)
+	if fx.Skipped {
+		if !errors.Is(err, handlers.ErrSkip) {
+			return fmt.Errorf("expected the handler to skip this file, got %v", err)
+		}
+		return nil
+	}
 	if err != nil {
 		return fmt.Errorf("inspect: %w", err)
 	}
