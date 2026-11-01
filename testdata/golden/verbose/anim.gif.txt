@@ -1,0 +1,16 @@
+anim.gif  [GIF]
+  GPS:
+      xmp:exif:GPSLatitude = "37,46.494N"
+  Timestamps:
+      xmp:xmp:CreateDate = "2023-04-12T18:33:02"
+  Author:
+      xmp:dc:creator = "Jane Photographer"
+  Software:
+      xmp:xmp:CreatorTool = "Adobe Photoshop 24.0"
+  ICC profile:
+      gif:ICCRGBG1012 = <binary, 136 bytes>
+  Custom:
+      gif:Comment = "secret comment"
+      gif:Application MGKIPTC0000 = <binary, 28 bytes>
+      gif:TrailingData = <binary, 8 bytes>
+  --- 8 fields, ~1.1 KiB removable

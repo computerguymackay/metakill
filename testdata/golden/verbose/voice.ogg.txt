@@ -1,0 +1,18 @@
+voice.ogg  [OGG]
+  Timestamps:
+      vorbis:DATE = "2023-04-12"
+  Author:
+      vorbis:COMPOSER = "Jane Photographer"
+  Software:
+      vorbis:vendor = "Xiph.Org libVorbis I 20200704 SecretEncoder 1.0"
+      vorbis:ENCODER = "SecretEncoder 1.0"
+  ID tags:
+      vorbis:TITLE = "Test Song"
+      vorbis:ARTIST = "Test Artist"
+      vorbis:ALBUM = "Test Album"
+      vorbis:TRACKNUMBER = "3"
+  Thumbnail:
+      vorbis:METADATA_BLOCK_PICTURE = <binary, 1167 bytes>
+  Custom:
+      vorbis:COMMENT = "secret comment"
+  --- 10 fields, ~1.8 KiB removable

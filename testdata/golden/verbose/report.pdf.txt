@@ -1,0 +1,49 @@
+report.pdf  [PDF]
+  GPS:
+      xmp:exif:GPSLatitude = "37,46.494N"
+  Timestamps:
+      pdf.info:CreationDate = "D:20230412183302Z"
+      pdf.info:ModDate = "D:20230412183302Z"
+      pdf:LastModified = "D:20230412183302Z"
+      pdf.annot:M = "D:20230412183302Z"
+      xmp:xmp:CreateDate = "2023-04-12T18:33:02"
+  Author:
+      pdf.info:Author = "Jane Photographer"
+      pdf.info:Creator = "SecretEncoder 1.0"
+      pdf.annot:T (author) = "Jane Photographer"
+      xmp:dc:creator = "Jane Photographer"
+  Software:
+      pdf.info:Producer = "iOS 16.4"
+      pdf:PieceInfo = "Illustrator"
+      xmp:xmp:CreatorTool = "Adobe Photoshop 24.0"
+  ID tags:
+      pdf.info:Title = "Quarterly Report"
+  Custom:
+      pdf:PreviousRevisions = "1"
+  Kept Custom:
+      pdf:DocumentID = "regenerated on write"
+  > obj 5 (JPEG image)  [JPEG]
+  >   GPS:
+  >       exif:GPSLatitudeRef = "N"
+  >       exif:GPSLatitude = "37 46 29.64"
+  >       exif:GPSLongitudeRef = "W"
+  >       exif:GPSLongitude = "122 25 9.84"
+  >       exif:GPSAltitude = "16"
+  >   Timestamps:
+  >       exif:DateTime = "2023:04:12 18:33:02"
+  >       exif:DateTimeOriginal = "2023:04:12 18:33:02"
+  >       exif:DateTimeDigitized = "2023:04:12 18:33:02"
+  >   Device:
+  >       exif:Make = "Apple"
+  >       exif:Model = "iPhone 14 Pro"
+  >       exif:BodySerialNumber = "SN-0042-SECRET"
+  >       exif:LensModel = "iPhone 14 Pro back camera"
+  >   Author:
+  >       exif:Artist = "Jane Photographer"
+  >   Software:
+  >       exif:Software = "iOS 16.4"
+  >   Custom:
+  >       exif:UserComment = "secret comment"
+  >   Kept Custom:
+  >       exif:Orientation = "6"
+  --- 30 fields, ~1.3 KiB removable

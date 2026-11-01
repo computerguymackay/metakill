@@ -1,0 +1,51 @@
+notes.odt  [ODF]
+  Timestamps:
+      zip:member timestamps (latest) = "2023-04-12T18:33:02Z"
+      odf:content.xml date = "2023-04-12T18:33:02"
+      odf.meta:meta:creation-date = "2023-04-12T18:33:02"
+      odf.meta:dc:date = "2023-04-12T18:33:02"
+  Device:
+      odf.settings:PrinterName = "SN-0042-SECRET LaserJet"
+      odf.settings:PrinterSetup = <binary, 8 bytes>
+  Author:
+      odf:content.xml author = "Jane Photographer"
+      odf.meta:meta:initial-creator = "Jane Photographer"
+      odf.meta:dc:creator = "Jane Photographer"
+  Software:
+      odf.meta:meta:generator = "SecretEncoder 1.0"
+  ID tags:
+      odf.meta:dc:title = "Secret Letter Title"
+  Thumbnail:
+      odf:Thumbnails/thumbnail.png = <binary, 89 bytes>
+  Custom:
+      zip:extra fields (uid/gid, timestamps) = "7 member(s)"
+      odf:content.xml rsid attributes = "2"
+      odf.meta:meta:editing-cycles = "3"
+      odf.meta:meta:template = "file:///home/jane/Templates/secret.ott"
+      odf.meta:user-defined:Client = "iPhone 14 Pro"
+      odf.settings:Rsid = "1234"
+  > Pictures/photo.jpg  [JPEG]
+  >   GPS:
+  >       exif:GPSLatitudeRef = "N"
+  >       exif:GPSLatitude = "37 46 29.64"
+  >       exif:GPSLongitudeRef = "W"
+  >       exif:GPSLongitude = "122 25 9.84"
+  >       exif:GPSAltitude = "16"
+  >   Timestamps:
+  >       exif:DateTime = "2023:04:12 18:33:02"
+  >       exif:DateTimeOriginal = "2023:04:12 18:33:02"
+  >       exif:DateTimeDigitized = "2023:04:12 18:33:02"
+  >   Device:
+  >       exif:Make = "Apple"
+  >       exif:Model = "iPhone 14 Pro"
+  >       exif:BodySerialNumber = "SN-0042-SECRET"
+  >       exif:LensModel = "iPhone 14 Pro back camera"
+  >   Author:
+  >       exif:Artist = "Jane Photographer"
+  >   Software:
+  >       exif:Software = "iOS 16.4"
+  >   Custom:
+  >       exif:UserComment = "secret comment"
+  >   Kept Custom:
+  >       exif:Orientation = "6"
+  --- 33 fields, ~712 B removable

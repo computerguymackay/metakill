@@ -1,0 +1,82 @@
+{
+  "dry_run": true,
+  "results": [
+    {
+      "path": "cam.avi",
+      "format": "avi",
+      "dry_run": true,
+      "status": "cleaned",
+      "fully_clean": true,
+      "fields": [
+        {
+          "category": "custom",
+          "namespace": "avi",
+          "key": "strn",
+          "value": "iPhone 14 Pro video"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "avi",
+          "key": "IDIT",
+          "value": "WED APR 12 18:33:02 2023"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "riff.info",
+          "key": "INAM",
+          "value": "Test Song"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "riff.info",
+          "key": "IART",
+          "value": "Test Artist"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "riff.info",
+          "key": "ICRD",
+          "value": "2023-04-12"
+        },
+        {
+          "category": "software",
+          "namespace": "riff.info",
+          "key": "ISFT",
+          "value": "SecretEncoder 1.0"
+        },
+        {
+          "category": "custom",
+          "namespace": "riff.info",
+          "key": "ICMT",
+          "value": "secret comment"
+        },
+        {
+          "category": "author",
+          "namespace": "riff.info",
+          "key": "IENG",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "custom",
+          "namespace": "avi",
+          "key": "LIST ncdt",
+          "value": null,
+          "size": 32
+        }
+      ],
+      "kept": [],
+      "bytes_removable": 248,
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "cleaned": 1,
+    "already_clean": 0,
+    "skipped": 0,
+    "errors": 0,
+    "not_fully_clean": 0,
+    "fields_removed": 9,
+    "bytes_removable": 248
+  }
+}

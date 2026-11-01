@@ -1,0 +1,10 @@
+clip.mp4  [MP4]
+  GPS:             timed metadata track (meta/gpmd) = <binary, 40 bytes>, ©xyz = "+37.7749-122.4194/", com.apple.quicktime.location.ISO6709 = "+37.7749-122.4194/", exif:GPSLatitude = "37,46.494N"
+  Timestamps:      mvhd.creation_time = "2023-04-12T18:33:02Z", mvhd.modification_time = "2023-04-12T18:33:02Z", tkhd.creation_time = "2023-04-12T18:33:02Z", tkhd.modification_time = "2023-04-12T18:33:02Z", mdhd.creation_time = "2023-04-12T18:33:02Z", mdhd.modification_time = "2023-04-12T18:33:02Z", ©day = "2023-04-12", xmp:CreateDate = "2023-04-12T18:33:02"
+  Device:          ©mak = "Apple", com.apple.quicktime.make = "Apple", com.apple.quicktime.model = "iPhone 14 Pro"
+  Author:          dc:creator = "Jane Photographer"
+  Software:        hdlr:vide name = "Core Media Video", avc1 compressorname = "SecretEncoder 1.0", ©too = "SecretEncoder 1.0", com.apple.quicktime.software = "iOS 16.4", xmp:CreatorTool = "Adobe Photoshop 24.0"
+  ID tags:         ©nam = "Test Song", ©ART = "Test Artist", ©alb = "Test Album", trkn = "3/12"
+  Thumbnail:       covr = <binary, 1111 bytes>
+  Custom:          free (non-zero padding) = <binary, 31 bytes>
+  --- 27 fields, ~2.7 KiB removable

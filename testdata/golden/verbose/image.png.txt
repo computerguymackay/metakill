@@ -1,0 +1,37 @@
+image.png  [PNG]
+  GPS:
+      xmp:exif:GPSLatitude = "37,46.494N"
+      exif:GPSLatitudeRef = "N"
+      exif:GPSLatitude = "37 46 29.64"
+      exif:GPSLongitudeRef = "W"
+      exif:GPSLongitude = "122 25 9.84"
+      exif:GPSAltitude = "16"
+  Timestamps:
+      xmp:xmp:CreateDate = "2023-04-12T18:33:02"
+      exif:DateTime = "2023:04:12 18:33:02"
+      exif:DateTimeOriginal = "2023:04:12 18:33:02"
+      exif:DateTimeDigitized = "2023:04:12 18:33:02"
+      png:tIME = "2023-04-12T18:33:02"
+  Device:
+      exif:Make = "Apple"
+      exif:Model = "iPhone 14 Pro"
+      exif:BodySerialNumber = "SN-0042-SECRET"
+      exif:LensModel = "iPhone 14 Pro back camera"
+  Author:
+      png:Author = "Jane Photographer"
+      xmp:dc:creator = "Jane Photographer"
+      exif:Artist = "Jane Photographer"
+  Software:
+      png:Software = "iOS 16.4"
+      xmp:xmp:CreatorTool = "Adobe Photoshop 24.0"
+      exif:Software = "iOS 16.4"
+  ICC profile:
+      png:iCCP = <binary, 45 bytes>
+  Custom:
+      png:Comment = "secret comment"
+      exif:UserComment = "secret comment"
+      png:prVW = <binary, 15 bytes>
+      png:TrailingData = <binary, 13 bytes>
+  Kept Custom:
+      exif:Orientation = "6"
+  --- 26 fields, ~1.3 KiB removable

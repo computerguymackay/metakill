@@ -1,0 +1,7 @@
+song.mp3  [MP3]
+  Timestamps:      TYER = "2023", TDAT = "1204", Year = "2023"
+  Software:        TSSE = "SecretEncoder 1.0", TENC = "Jane Photographer", Encoder = "SecretEncoder 1.0", EncoderVersion = "LAME3.100"
+  ID tags:         TIT2 = "Test Song", TPE1 = "Test Artist", TALB = "Test Album", TRCK = "3/12", Title = "Test Song", Artist = "Test Artist", Album = "Test Album", Track = "3", Title = "Test Song"
+  Thumbnail:       APIC = <binary, 1111 bytes>
+  Custom:          COMM = "secret comment", PRIV:www.amazon.com = <binary, 29 bytes>, Comment = "secret comment", Comment = "secret comment"
+  --- 21 fields, ~1.7 KiB removable

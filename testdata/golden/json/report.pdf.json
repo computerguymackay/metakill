@@ -1,0 +1,235 @@
+{
+  "dry_run": true,
+  "results": [
+    {
+      "path": "report.pdf",
+      "format": "pdf",
+      "dry_run": true,
+      "status": "cleaned",
+      "fully_clean": true,
+      "fields": [
+        {
+          "category": "custom",
+          "namespace": "pdf",
+          "key": "PreviousRevisions",
+          "value": "1"
+        },
+        {
+          "category": "author",
+          "namespace": "pdf.info",
+          "key": "Author",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "pdf.info",
+          "key": "CreationDate",
+          "value": "D:20230412183302Z"
+        },
+        {
+          "category": "author",
+          "namespace": "pdf.info",
+          "key": "Creator",
+          "value": "SecretEncoder 1.0"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "pdf.info",
+          "key": "ModDate",
+          "value": "D:20230412183302Z"
+        },
+        {
+          "category": "software",
+          "namespace": "pdf.info",
+          "key": "Producer",
+          "value": "iOS 16.4"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "pdf.info",
+          "key": "Title",
+          "value": "Quarterly Report"
+        },
+        {
+          "category": "software",
+          "namespace": "pdf",
+          "key": "PieceInfo",
+          "value": "Illustrator"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "pdf",
+          "key": "LastModified",
+          "value": "D:20230412183302Z"
+        },
+        {
+          "category": "author",
+          "namespace": "pdf.annot",
+          "key": "T (author)",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "pdf.annot",
+          "key": "M",
+          "value": "D:20230412183302Z"
+        },
+        {
+          "category": "software",
+          "namespace": "xmp",
+          "key": "xmp:CreatorTool",
+          "value": "Adobe Photoshop 24.0"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "xmp",
+          "key": "xmp:CreateDate",
+          "value": "2023-04-12T18:33:02"
+        },
+        {
+          "category": "author",
+          "namespace": "xmp",
+          "key": "dc:creator",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "gps",
+          "namespace": "xmp",
+          "key": "exif:GPSLatitude",
+          "value": "37,46.494N"
+        }
+      ],
+      "kept": [
+        {
+          "category": "custom",
+          "namespace": "pdf",
+          "key": "DocumentID",
+          "value": "regenerated on write"
+        }
+      ],
+      "bytes_removable": 1375,
+      "warnings": [],
+      "embedded": [
+        {
+          "path": "obj 5 (JPEG image)",
+          "format": "jpeg",
+          "dry_run": true,
+          "status": "cleaned",
+          "fully_clean": true,
+          "fields": [
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "Make",
+              "value": "Apple"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "Model",
+              "value": "iPhone 14 Pro"
+            },
+            {
+              "category": "software",
+              "namespace": "exif",
+              "key": "Software",
+              "value": "iOS 16.4"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTime",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "author",
+              "namespace": "exif",
+              "key": "Artist",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTimeOriginal",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTimeDigitized",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "custom",
+              "namespace": "exif",
+              "key": "UserComment",
+              "value": "secret comment"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "BodySerialNumber",
+              "value": "SN-0042-SECRET"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "LensModel",
+              "value": "iPhone 14 Pro back camera"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLatitudeRef",
+              "value": "N"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLatitude",
+              "value": "37 46 29.64"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLongitudeRef",
+              "value": "W"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLongitude",
+              "value": "122 25 9.84"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSAltitude",
+              "value": "16"
+            }
+          ],
+          "kept": [
+            {
+              "category": "custom",
+              "namespace": "exif",
+              "key": "Orientation",
+              "value": "6"
+            }
+          ],
+          "bytes_removable": 444,
+          "warnings": []
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "cleaned": 1,
+    "already_clean": 0,
+    "skipped": 0,
+    "errors": 0,
+    "not_fully_clean": 0,
+    "fields_removed": 30,
+    "bytes_removable": 1375
+  }
+}

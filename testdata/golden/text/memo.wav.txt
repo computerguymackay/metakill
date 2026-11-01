@@ -1,0 +1,7 @@
+memo.wav  [WAV]
+  Timestamps:      OriginationDate = "2023-04-12", OriginationTime = "18:33:02", ICRD = "2023-04-12"
+  Author:          Originator = "Jane Photographer", IENG = "Jane Photographer"
+  Software:        CodingHistory = "A=PCM,F=8000,W=8,M=mono,T=SecretEncoder 1.0", ISFT = "SecretEncoder 1.0", TSSE = "SecretEncoder 1.0"
+  ID tags:         INAM = "Test Song", IART = "Test Artist", TIT2 = "Test Song"
+  Custom:          Description = "secret comment", ICMT = "secret comment", iXML = <binary, 50 bytes>, JUNK (non-zero padding) = <binary, 17 bytes>
+  --- 15 fields, ~1012 B removable

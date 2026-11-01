@@ -1,0 +1,26 @@
+track.flac  [FLAC]
+  Timestamps:
+      vorbis:DATE = "2023-04-12"
+      id3v1:Year = "2023"
+  Author:
+      vorbis:COMPOSER = "Jane Photographer"
+  Software:
+      vorbis:vendor = "reference libFLAC 1.4.2 SecretEncoder 1.0"
+      vorbis:ENCODER = "SecretEncoder 1.0"
+  ID tags:
+      vorbis:TITLE = "Test Song"
+      vorbis:ARTIST = "Test Artist"
+      vorbis:ALBUM = "Test Album"
+      vorbis:TRACKNUMBER = "3"
+      id3v1:Title = "Test Song"
+      id3v1:Artist = "Test Artist"
+      id3v1:Album = "Test Album"
+      id3v1:Track = "3"
+  Thumbnail:
+      flac:PICTURE = <binary, 1111 bytes>
+  Custom:
+      flac:APPLICATION:riff = <binary, 21 bytes>
+      vorbis:COMMENT = "secret comment"
+      flac:PADDING (non-zero) = <binary, 84 bytes>
+      id3v1:Comment = "secret comment"
+  --- 18 fields, ~1.5 KiB removable

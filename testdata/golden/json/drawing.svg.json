@@ -1,0 +1,234 @@
+{
+  "dry_run": true,
+  "results": [
+    {
+      "path": "drawing.svg",
+      "format": "svg",
+      "dry_run": true,
+      "status": "cleaned",
+      "fully_clean": true,
+      "fields": [
+        {
+          "category": "software",
+          "namespace": "svg",
+          "key": "comment",
+          "value": "Created with Inkscape (http://www.inkscape.org/)"
+        },
+        {
+          "category": "software",
+          "namespace": "svg",
+          "key": "inkscape:version",
+          "value": "1.2 (dc2aedaf03, 2022-05-15)"
+        },
+        {
+          "category": "custom",
+          "namespace": "svg",
+          "key": "sodipodi:docname",
+          "value": "secret-plans.svg"
+        },
+        {
+          "category": "custom",
+          "namespace": "svg",
+          "key": "inkscape:export-filename",
+          "value": "/home/jane/Desktop/secret-plans.png"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "svg",
+          "key": "title",
+          "value": "My Drawing"
+        },
+        {
+          "category": "custom",
+          "namespace": "svg",
+          "key": "desc",
+          "value": "secret comment"
+        },
+        {
+          "category": "author",
+          "namespace": "svg.metadata",
+          "key": "rdf:RDF/cc:Work/dc:creator/cc:Agent/dc:title",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "svg.metadata",
+          "key": "rdf:RDF/cc:Work/dc:date",
+          "value": "2023-04-12"
+        },
+        {
+          "category": "software",
+          "namespace": "svg",
+          "key": "sodipodi:namedview",
+          "value": "\u003csodipodi:namedview id=\"base\" inkscape:window-width=\"1920\" inkscape:current-layer=\"layer1\"/\u003e"
+        },
+        {
+          "category": "software",
+          "namespace": "svg",
+          "key": "inkscape:label",
+          "value": "Layer 1"
+        },
+        {
+          "category": "software",
+          "namespace": "svg",
+          "key": "inkscape:groupmode",
+          "value": "layer"
+        },
+        {
+          "category": "software",
+          "namespace": "svg",
+          "key": "xmlns:inkscape",
+          "value": "http://www.inkscape.org/namespaces/inkscape"
+        },
+        {
+          "category": "software",
+          "namespace": "svg",
+          "key": "xmlns:sodipodi",
+          "value": "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        },
+        {
+          "category": "software",
+          "namespace": "svg",
+          "key": "xmlns:rdf",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        },
+        {
+          "category": "software",
+          "namespace": "svg",
+          "key": "xmlns:dc",
+          "value": "http://purl.org/dc/elements/1.1/"
+        },
+        {
+          "category": "software",
+          "namespace": "svg",
+          "key": "xmlns:cc",
+          "value": "http://creativecommons.org/ns#"
+        }
+      ],
+      "kept": [],
+      "bytes_removable": 941,
+      "warnings": [],
+      "embedded": [
+        {
+          "path": "data: URI image",
+          "format": "jpeg",
+          "dry_run": true,
+          "status": "cleaned",
+          "fully_clean": true,
+          "fields": [
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "Make",
+              "value": "Apple"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "Model",
+              "value": "iPhone 14 Pro"
+            },
+            {
+              "category": "software",
+              "namespace": "exif",
+              "key": "Software",
+              "value": "iOS 16.4"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTime",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "author",
+              "namespace": "exif",
+              "key": "Artist",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTimeOriginal",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTimeDigitized",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "custom",
+              "namespace": "exif",
+              "key": "UserComment",
+              "value": "secret comment"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "BodySerialNumber",
+              "value": "SN-0042-SECRET"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "LensModel",
+              "value": "iPhone 14 Pro back camera"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLatitudeRef",
+              "value": "N"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLatitude",
+              "value": "37 46 29.64"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLongitudeRef",
+              "value": "W"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLongitude",
+              "value": "122 25 9.84"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSAltitude",
+              "value": "16"
+            }
+          ],
+          "kept": [
+            {
+              "category": "custom",
+              "namespace": "exif",
+              "key": "Orientation",
+              "value": "6"
+            }
+          ],
+          "bytes_removable": 444,
+          "warnings": []
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "cleaned": 1,
+    "already_clean": 0,
+    "skipped": 0,
+    "errors": 0,
+    "not_fully_clean": 0,
+    "fields_removed": 31,
+    "bytes_removable": 941
+  }
+}

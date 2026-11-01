@@ -1,0 +1,155 @@
+{
+  "dry_run": true,
+  "results": [
+    {
+      "path": "song.mp3",
+      "format": "mp3",
+      "dry_run": true,
+      "status": "cleaned",
+      "fully_clean": true,
+      "fields": [
+        {
+          "category": "id_tag",
+          "namespace": "id3v2.3",
+          "key": "TIT2",
+          "value": "Test Song"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "id3v2.3",
+          "key": "TPE1",
+          "value": "Test Artist"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "id3v2.3",
+          "key": "TALB",
+          "value": "Test Album"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "id3v2.3",
+          "key": "TRCK",
+          "value": "3/12"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "id3v2.3",
+          "key": "TYER",
+          "value": "2023"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "id3v2.3",
+          "key": "TDAT",
+          "value": "1204"
+        },
+        {
+          "category": "software",
+          "namespace": "id3v2.3",
+          "key": "TSSE",
+          "value": "SecretEncoder 1.0"
+        },
+        {
+          "category": "software",
+          "namespace": "id3v2.3",
+          "key": "TENC",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "custom",
+          "namespace": "id3v2.3",
+          "key": "COMM",
+          "value": "secret comment"
+        },
+        {
+          "category": "custom",
+          "namespace": "id3v2.3",
+          "key": "PRIV:www.amazon.com",
+          "value": null,
+          "size": 29
+        },
+        {
+          "category": "thumbnail",
+          "namespace": "id3v2.3",
+          "key": "APIC",
+          "value": null,
+          "size": 1111
+        },
+        {
+          "category": "id_tag",
+          "namespace": "id3v1",
+          "key": "Title",
+          "value": "Test Song"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "id3v1",
+          "key": "Artist",
+          "value": "Test Artist"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "id3v1",
+          "key": "Album",
+          "value": "Test Album"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "id3v1",
+          "key": "Year",
+          "value": "2023"
+        },
+        {
+          "category": "custom",
+          "namespace": "id3v1",
+          "key": "Comment",
+          "value": "secret comment"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "id3v1",
+          "key": "Track",
+          "value": "3"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "ape",
+          "key": "Title",
+          "value": "Test Song"
+        },
+        {
+          "category": "software",
+          "namespace": "ape",
+          "key": "Encoder",
+          "value": "SecretEncoder 1.0"
+        },
+        {
+          "category": "custom",
+          "namespace": "ape",
+          "key": "Comment",
+          "value": "secret comment"
+        },
+        {
+          "category": "software",
+          "namespace": "lame",
+          "key": "EncoderVersion",
+          "value": "LAME3.100"
+        }
+      ],
+      "kept": [],
+      "bytes_removable": 1719,
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "cleaned": 1,
+    "already_clean": 0,
+    "skipped": 0,
+    "errors": 0,
+    "not_fully_clean": 0,
+    "fields_removed": 21,
+    "bytes_removable": 1719
+  }
+}

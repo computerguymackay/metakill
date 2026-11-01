@@ -1,0 +1,14 @@
+book.epub  [EPUB]
+  Timestamps:      member timestamps (latest) = "2023-04-12T18:33:02Z", dc:date = "2023-04-12", dcterms:modified = "2023-04-12T18:33:02Z", calibre:timestamp = "2023-04-12T18:33:02+00:00"
+  Author:          dc:creator = "Jane Photographer", dc:contributor = "calibre (6.0.0) [https://calibre-ebook.com]", dc:publisher = "Apple Books"
+  Custom:          extra fields (uid/gid, timestamps) = "6 member(s)", dc:identifier = "calibre:SN-0042-SECRET", file-as = "Photographer, Jane", META-INF/calibre_bookmarks.txt = <binary, 39 bytes>
+  Kept:            dc:identifier (required) = "urn:uuid:12345678-1234-1234-1234-123456789abc", dc:title (required) = "Secret Letter Title"
+  > OEBPS/cover.jpg  [JPEG]
+  >   GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16"
+  >   Timestamps:      DateTime = "2023:04:12 18:33:02", DateTimeOriginal = "2023:04:12 18:33:02", DateTimeDigitized = "2023:04:12 18:33:02"
+  >   Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
+  >   Author:          Artist = "Jane Photographer"
+  >   Software:        Software = "iOS 16.4"
+  >   Custom:          UserComment = "secret comment"
+  >   Kept:            Orientation = "6"
+  --- 26 fields, ~499 B removable

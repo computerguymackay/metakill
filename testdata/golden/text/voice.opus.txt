@@ -1,0 +1,8 @@
+voice.opus  [OGG]
+  Timestamps:      DATE = "2023-04-12"
+  Author:          COMPOSER = "Jane Photographer"
+  Software:        vendor = "libopus 1.4 SecretEncoder 1.0", ENCODER = "SecretEncoder 1.0"
+  ID tags:         TITLE = "Test Song", ARTIST = "Test Artist", ALBUM = "Test Album", TRACKNUMBER = "3"
+  Thumbnail:       METADATA_BLOCK_PICTURE = <binary, 1167 bytes>
+  Custom:          COMMENT = "secret comment"
+  --- 10 fields, ~1.8 KiB removable

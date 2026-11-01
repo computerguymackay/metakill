@@ -1,0 +1,7 @@
+cam.avi  [AVI]
+  Timestamps:      IDIT = "WED APR 12 18:33:02 2023", ICRD = "2023-04-12"
+  Author:          IENG = "Jane Photographer"
+  Software:        ISFT = "SecretEncoder 1.0"
+  ID tags:         INAM = "Test Song", IART = "Test Artist"
+  Custom:          strn = "iPhone 14 Pro video", ICMT = "secret comment", LIST ncdt = <binary, 32 bytes>
+  --- 9 fields, ~248 B removable

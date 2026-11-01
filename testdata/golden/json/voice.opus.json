@@ -1,0 +1,88 @@
+{
+  "dry_run": true,
+  "results": [
+    {
+      "path": "voice.opus",
+      "format": "ogg",
+      "dry_run": true,
+      "status": "cleaned",
+      "fully_clean": true,
+      "fields": [
+        {
+          "category": "software",
+          "namespace": "opus",
+          "key": "vendor",
+          "value": "libopus 1.4 SecretEncoder 1.0"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "opus",
+          "key": "TITLE",
+          "value": "Test Song"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "opus",
+          "key": "ARTIST",
+          "value": "Test Artist"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "opus",
+          "key": "ALBUM",
+          "value": "Test Album"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "opus",
+          "key": "TRACKNUMBER",
+          "value": "3"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "opus",
+          "key": "DATE",
+          "value": "2023-04-12"
+        },
+        {
+          "category": "software",
+          "namespace": "opus",
+          "key": "ENCODER",
+          "value": "SecretEncoder 1.0"
+        },
+        {
+          "category": "custom",
+          "namespace": "opus",
+          "key": "COMMENT",
+          "value": "secret comment"
+        },
+        {
+          "category": "author",
+          "namespace": "opus",
+          "key": "COMPOSER",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "thumbnail",
+          "namespace": "opus",
+          "key": "METADATA_BLOCK_PICTURE",
+          "value": null,
+          "size": 1167
+        }
+      ],
+      "kept": [],
+      "bytes_removable": 1828,
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "cleaned": 1,
+    "already_clean": 0,
+    "skipped": 0,
+    "errors": 0,
+    "not_fully_clean": 0,
+    "fields_removed": 10,
+    "bytes_removable": 1828
+  }
+}

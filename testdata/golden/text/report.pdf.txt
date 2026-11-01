@@ -1,0 +1,17 @@
+report.pdf  [PDF]
+  GPS:             exif:GPSLatitude = "37,46.494N"
+  Timestamps:      CreationDate = "D:20230412183302Z", ModDate = "D:20230412183302Z", LastModified = "D:20230412183302Z", M = "D:20230412183302Z", xmp:CreateDate = "2023-04-12T18:33:02"
+  Author:          Author = "Jane Photographer", Creator = "SecretEncoder 1.0", T (author) = "Jane Photographer", dc:creator = "Jane Photographer"
+  Software:        Producer = "iOS 16.4", PieceInfo = "Illustrator", xmp:CreatorTool = "Adobe Photoshop 24.0"
+  ID tags:         Title = "Quarterly Report"
+  Custom:          PreviousRevisions = "1"
+  Kept:            DocumentID = "regenerated on write"
+  > obj 5 (JPEG image)  [JPEG]
+  >   GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16"
+  >   Timestamps:      DateTime = "2023:04:12 18:33:02", DateTimeOriginal = "2023:04:12 18:33:02", DateTimeDigitized = "2023:04:12 18:33:02"
+  >   Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
+  >   Author:          Artist = "Jane Photographer"
+  >   Software:        Software = "iOS 16.4"
+  >   Custom:          UserComment = "secret comment"
+  >   Kept:            Orientation = "6"
+  --- 30 fields, ~1.3 KiB removable

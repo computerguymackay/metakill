@@ -1,0 +1,307 @@
+{
+  "dry_run": true,
+  "results": [
+    {
+      "path": "letter.docx",
+      "format": "ooxml",
+      "dry_run": true,
+      "status": "cleaned",
+      "fully_clean": true,
+      "fields": [
+        {
+          "category": "custom",
+          "namespace": "zip",
+          "key": "archive comment",
+          "value": "Created by iOS 16.4"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "zip",
+          "key": "member timestamps (latest)",
+          "value": "2023-04-12T18:33:02Z"
+        },
+        {
+          "category": "custom",
+          "namespace": "zip",
+          "key": "extra fields (uid/gid, timestamps)",
+          "value": "13 member(s)"
+        },
+        {
+          "category": "author",
+          "namespace": "ooxml",
+          "key": "word/document.xml author",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "ooxml",
+          "key": "word/document.xml date",
+          "value": "2023-04-12T18:33:02Z"
+        },
+        {
+          "category": "custom",
+          "namespace": "ooxml",
+          "key": "word/document.xml rsid attributes",
+          "value": "3"
+        },
+        {
+          "category": "author",
+          "namespace": "ooxml",
+          "key": "word/comments.xml author",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "ooxml",
+          "key": "word/comments.xml date",
+          "value": "2023-04-12T18:33:02Z"
+        },
+        {
+          "category": "author",
+          "namespace": "ooxml",
+          "key": "word/people.xml author",
+          "value": "AD"
+        },
+        {
+          "category": "author",
+          "namespace": "ooxml",
+          "key": "word/people.xml author",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "author",
+          "namespace": "ooxml",
+          "key": "word/people.xml author",
+          "value": "S::jane@example.com::1234"
+        },
+        {
+          "category": "custom",
+          "namespace": "ooxml",
+          "key": "w:attachedTemplate",
+          "value": ""
+        },
+        {
+          "category": "custom",
+          "namespace": "ooxml",
+          "key": "w:docVars",
+          "value": ""
+        },
+        {
+          "category": "custom",
+          "namespace": "ooxml",
+          "key": "w:rsids",
+          "value": "2 session IDs"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "ooxml.core",
+          "key": "dc:title",
+          "value": "Secret Letter Title"
+        },
+        {
+          "category": "author",
+          "namespace": "ooxml.core",
+          "key": "dc:creator",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "author",
+          "namespace": "ooxml.core",
+          "key": "cp:lastModifiedBy",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "custom",
+          "namespace": "ooxml.core",
+          "key": "cp:revision",
+          "value": "7"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "ooxml.core",
+          "key": "dcterms:created",
+          "value": "2023-04-12T18:33:02Z"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "ooxml.core",
+          "key": "dcterms:modified",
+          "value": "2023-04-12T18:33:02Z"
+        },
+        {
+          "category": "custom",
+          "namespace": "ooxml.app",
+          "key": "Template",
+          "value": "Normal.dotm"
+        },
+        {
+          "category": "custom",
+          "namespace": "ooxml.app",
+          "key": "TotalTime",
+          "value": "42"
+        },
+        {
+          "category": "software",
+          "namespace": "ooxml.app",
+          "key": "Application",
+          "value": "SecretEncoder 1.0"
+        },
+        {
+          "category": "author",
+          "namespace": "ooxml.app",
+          "key": "Company",
+          "value": "Apple Inc"
+        },
+        {
+          "category": "software",
+          "namespace": "ooxml.app",
+          "key": "AppVersion",
+          "value": "16.0000"
+        },
+        {
+          "category": "custom",
+          "namespace": "ooxml.custom",
+          "key": "ClientId",
+          "value": "iPhone 14 Pro"
+        },
+        {
+          "category": "thumbnail",
+          "namespace": "ooxml",
+          "key": "docProps/thumbnail.jpeg",
+          "value": null,
+          "size": 631
+        },
+        {
+          "category": "custom",
+          "namespace": "ooxml",
+          "key": "attachedTemplate path",
+          "value": "file:///C:\\Users\\jane\\AppData\\Roaming\\Microsoft\\Templates\\Normal.dotm"
+        }
+      ],
+      "kept": [],
+      "bytes_removable": 1797,
+      "warnings": [],
+      "embedded": [
+        {
+          "path": "word/media/image1.jpeg",
+          "format": "jpeg",
+          "dry_run": true,
+          "status": "cleaned",
+          "fully_clean": true,
+          "fields": [
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "Make",
+              "value": "Apple"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "Model",
+              "value": "iPhone 14 Pro"
+            },
+            {
+              "category": "software",
+              "namespace": "exif",
+              "key": "Software",
+              "value": "iOS 16.4"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTime",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "author",
+              "namespace": "exif",
+              "key": "Artist",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTimeOriginal",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTimeDigitized",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "custom",
+              "namespace": "exif",
+              "key": "UserComment",
+              "value": "secret comment"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "BodySerialNumber",
+              "value": "SN-0042-SECRET"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "LensModel",
+              "value": "iPhone 14 Pro back camera"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLatitudeRef",
+              "value": "N"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLatitude",
+              "value": "37 46 29.64"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLongitudeRef",
+              "value": "W"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLongitude",
+              "value": "122 25 9.84"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSAltitude",
+              "value": "16"
+            }
+          ],
+          "kept": [
+            {
+              "category": "custom",
+              "namespace": "exif",
+              "key": "Orientation",
+              "value": "6"
+            }
+          ],
+          "bytes_removable": 444,
+          "warnings": []
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "cleaned": 1,
+    "already_clean": 0,
+    "skipped": 0,
+    "errors": 0,
+    "not_fully_clean": 0,
+    "fields_removed": 43,
+    "bytes_removable": 1797
+  }
+}

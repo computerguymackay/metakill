@@ -1,0 +1,4 @@
+# Keep fixtures and golden files byte-exact on every platform.
+* text=auto eol=lf
+testdata/fixtures/** binary
+*.go text eol=lf

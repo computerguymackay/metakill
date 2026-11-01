@@ -1,0 +1,47 @@
+drawing.svg  [SVG]
+  Timestamps:
+      svg.metadata:rdf:RDF/cc:Work/dc:date = "2023-04-12"
+  Author:
+      svg.metadata:rdf:RDF/cc:Work/dc:creator/cc:Agent/dc:title = "Jane Photographer"
+  Software:
+      svg:comment = "Created with Inkscape (http://www.inkscape.org/)"
+      svg:inkscape:version = "1.2 (dc2aedaf03, 2022-05-15)"
+      svg:sodipodi:namedview = "<sodipodi:namedview id=\"base\" inkscape:window-width=\"1920\" inkscape:current-layer=\"layer1\"/>"
+      svg:inkscape:label = "Layer 1"
+      svg:inkscape:groupmode = "layer"
+      svg:xmlns:inkscape = "http://www.inkscape.org/namespaces/inkscape"
+      svg:xmlns:sodipodi = "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+      svg:xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      svg:xmlns:dc = "http://purl.org/dc/elements/1.1/"
+      svg:xmlns:cc = "http://creativecommons.org/ns#"
+  ID tags:
+      svg:title = "My Drawing"
+  Custom:
+      svg:sodipodi:docname = "secret-plans.svg"
+      svg:inkscape:export-filename = "/home/jane/Desktop/secret-plans.png"
+      svg:desc = "secret comment"
+  > data: URI image  [JPEG]
+  >   GPS:
+  >       exif:GPSLatitudeRef = "N"
+  >       exif:GPSLatitude = "37 46 29.64"
+  >       exif:GPSLongitudeRef = "W"
+  >       exif:GPSLongitude = "122 25 9.84"
+  >       exif:GPSAltitude = "16"
+  >   Timestamps:
+  >       exif:DateTime = "2023:04:12 18:33:02"
+  >       exif:DateTimeOriginal = "2023:04:12 18:33:02"
+  >       exif:DateTimeDigitized = "2023:04:12 18:33:02"
+  >   Device:
+  >       exif:Make = "Apple"
+  >       exif:Model = "iPhone 14 Pro"
+  >       exif:BodySerialNumber = "SN-0042-SECRET"
+  >       exif:LensModel = "iPhone 14 Pro back camera"
+  >   Author:
+  >       exif:Artist = "Jane Photographer"
+  >   Software:
+  >       exif:Software = "iOS 16.4"
+  >   Custom:
+  >       exif:UserComment = "secret comment"
+  >   Kept Custom:
+  >       exif:Orientation = "6"
+  --- 31 fields, ~941 B removable

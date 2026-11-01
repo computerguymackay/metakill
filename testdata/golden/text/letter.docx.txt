@@ -1,0 +1,16 @@
+letter.docx  [OOXML]
+  Timestamps:      member timestamps (latest) = "2023-04-12T18:33:02Z", word/document.xml date = "2023-04-12T18:33:02Z", word/comments.xml date = "2023-04-12T18:33:02Z", dcterms:created = "2023-04-12T18:33:02Z", dcterms:modified = "2023-04-12T18:33:02Z"
+  Author:          word/document.xml author = "Jane Photographer", word/comments.xml author = "Jane Photographer", word/people.xml author = "AD", word/people.xml author = "Jane Photographer", word/people.xml author = "S::jane@example.com::1234", dc:creator = "Jane Photographer", cp:lastModifiedBy = "Jane Photographer", Company = "Apple Inc"
+  Software:        Application = "SecretEncoder 1.0", AppVersion = "16.0000"
+  ID tags:         dc:title = "Secret Letter Title"
+  Thumbnail:       docProps/thumbnail.jpeg = <binary, 631 bytes>
+  Custom:          archive comment = "Created by iOS 16.4", extra fields (uid/gid, timestamps) = "13 member(s)", word/document.xml rsid attributes = "3", w:attachedTemplate = "", w:docVars = "", w:rsids = "2 session IDs", cp:revision = "7", Template = "Normal.dotm", TotalTime = "42", ClientId = "iPhone 14 Pro", attachedTemplate path = "file:///C:\\Users\\jane\\AppData\\Roaming\\Microsoft\\Templates\\Normal.dotm"
+  > word/media/image1.jpeg  [JPEG]
+  >   GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16"
+  >   Timestamps:      DateTime = "2023:04:12 18:33:02", DateTimeOriginal = "2023:04:12 18:33:02", DateTimeDigitized = "2023:04:12 18:33:02"
+  >   Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
+  >   Author:          Artist = "Jane Photographer"
+  >   Software:        Software = "iOS 16.4"
+  >   Custom:          UserComment = "secret comment"
+  >   Kept:            Orientation = "6"
+  --- 43 fields, ~1.8 KiB removable

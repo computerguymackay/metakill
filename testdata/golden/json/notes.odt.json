@@ -1,0 +1,248 @@
+{
+  "dry_run": true,
+  "results": [
+    {
+      "path": "notes.odt",
+      "format": "odf",
+      "dry_run": true,
+      "status": "cleaned",
+      "fully_clean": true,
+      "fields": [
+        {
+          "category": "timestamp",
+          "namespace": "zip",
+          "key": "member timestamps (latest)",
+          "value": "2023-04-12T18:33:02Z"
+        },
+        {
+          "category": "custom",
+          "namespace": "zip",
+          "key": "extra fields (uid/gid, timestamps)",
+          "value": "7 member(s)"
+        },
+        {
+          "category": "author",
+          "namespace": "odf",
+          "key": "content.xml author",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "odf",
+          "key": "content.xml date",
+          "value": "2023-04-12T18:33:02"
+        },
+        {
+          "category": "custom",
+          "namespace": "odf",
+          "key": "content.xml rsid attributes",
+          "value": "2"
+        },
+        {
+          "category": "software",
+          "namespace": "odf.meta",
+          "key": "meta:generator",
+          "value": "SecretEncoder 1.0"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "odf.meta",
+          "key": "dc:title",
+          "value": "Secret Letter Title"
+        },
+        {
+          "category": "author",
+          "namespace": "odf.meta",
+          "key": "meta:initial-creator",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "author",
+          "namespace": "odf.meta",
+          "key": "dc:creator",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "odf.meta",
+          "key": "meta:creation-date",
+          "value": "2023-04-12T18:33:02"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "odf.meta",
+          "key": "dc:date",
+          "value": "2023-04-12T18:33:02"
+        },
+        {
+          "category": "custom",
+          "namespace": "odf.meta",
+          "key": "meta:editing-cycles",
+          "value": "3"
+        },
+        {
+          "category": "custom",
+          "namespace": "odf.meta",
+          "key": "meta:template",
+          "value": "file:///home/jane/Templates/secret.ott"
+        },
+        {
+          "category": "custom",
+          "namespace": "odf.meta",
+          "key": "user-defined:Client",
+          "value": "iPhone 14 Pro"
+        },
+        {
+          "category": "device",
+          "namespace": "odf.settings",
+          "key": "PrinterName",
+          "value": "SN-0042-SECRET LaserJet"
+        },
+        {
+          "category": "device",
+          "namespace": "odf.settings",
+          "key": "PrinterSetup",
+          "value": null,
+          "size": 8
+        },
+        {
+          "category": "custom",
+          "namespace": "odf.settings",
+          "key": "Rsid",
+          "value": "1234"
+        },
+        {
+          "category": "thumbnail",
+          "namespace": "odf",
+          "key": "Thumbnails/thumbnail.png",
+          "value": null,
+          "size": 89
+        }
+      ],
+      "kept": [],
+      "bytes_removable": 712,
+      "warnings": [],
+      "embedded": [
+        {
+          "path": "Pictures/photo.jpg",
+          "format": "jpeg",
+          "dry_run": true,
+          "status": "cleaned",
+          "fully_clean": true,
+          "fields": [
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "Make",
+              "value": "Apple"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "Model",
+              "value": "iPhone 14 Pro"
+            },
+            {
+              "category": "software",
+              "namespace": "exif",
+              "key": "Software",
+              "value": "iOS 16.4"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTime",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "author",
+              "namespace": "exif",
+              "key": "Artist",
+              "value": "Jane Photographer"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTimeOriginal",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "timestamp",
+              "namespace": "exif",
+              "key": "DateTimeDigitized",
+              "value": "2023:04:12 18:33:02"
+            },
+            {
+              "category": "custom",
+              "namespace": "exif",
+              "key": "UserComment",
+              "value": "secret comment"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "BodySerialNumber",
+              "value": "SN-0042-SECRET"
+            },
+            {
+              "category": "device",
+              "namespace": "exif",
+              "key": "LensModel",
+              "value": "iPhone 14 Pro back camera"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLatitudeRef",
+              "value": "N"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLatitude",
+              "value": "37 46 29.64"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLongitudeRef",
+              "value": "W"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSLongitude",
+              "value": "122 25 9.84"
+            },
+            {
+              "category": "gps",
+              "namespace": "exif",
+              "key": "GPSAltitude",
+              "value": "16"
+            }
+          ],
+          "kept": [
+            {
+              "category": "custom",
+              "namespace": "exif",
+              "key": "Orientation",
+              "value": "6"
+            }
+          ],
+          "bytes_removable": 444,
+          "warnings": []
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "cleaned": 1,
+    "already_clean": 0,
+    "skipped": 0,
+    "errors": 0,
+    "not_fully_clean": 0,
+    "fields_removed": 33,
+    "bytes_removable": 712
+  }
+}

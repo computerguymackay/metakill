@@ -1,0 +1,22 @@
+memo.wav  [WAV]
+  Timestamps:
+      bext:OriginationDate = "2023-04-12"
+      bext:OriginationTime = "18:33:02"
+      riff.info:ICRD = "2023-04-12"
+  Author:
+      bext:Originator = "Jane Photographer"
+      riff.info:IENG = "Jane Photographer"
+  Software:
+      bext:CodingHistory = "A=PCM,F=8000,W=8,M=mono,T=SecretEncoder 1.0"
+      riff.info:ISFT = "SecretEncoder 1.0"
+      id3v2.3:TSSE = "SecretEncoder 1.0"
+  ID tags:
+      riff.info:INAM = "Test Song"
+      riff.info:IART = "Test Artist"
+      id3v2.3:TIT2 = "Test Song"
+  Custom:
+      bext:Description = "secret comment"
+      riff.info:ICMT = "secret comment"
+      riff:iXML = <binary, 50 bytes>
+      riff:JUNK (non-zero padding) = <binary, 17 bytes>
+  --- 15 fields, ~1012 B removable

@@ -1,0 +1,78 @@
+{
+  "dry_run": true,
+  "results": [
+    {
+      "path": "anim.gif",
+      "format": "gif",
+      "dry_run": true,
+      "status": "cleaned",
+      "fully_clean": true,
+      "fields": [
+        {
+          "category": "custom",
+          "namespace": "gif",
+          "key": "Comment",
+          "value": "secret comment"
+        },
+        {
+          "category": "software",
+          "namespace": "xmp",
+          "key": "xmp:CreatorTool",
+          "value": "Adobe Photoshop 24.0"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "xmp",
+          "key": "xmp:CreateDate",
+          "value": "2023-04-12T18:33:02"
+        },
+        {
+          "category": "author",
+          "namespace": "xmp",
+          "key": "dc:creator",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "gps",
+          "namespace": "xmp",
+          "key": "exif:GPSLatitude",
+          "value": "37,46.494N"
+        },
+        {
+          "category": "custom",
+          "namespace": "gif",
+          "key": "Application MGKIPTC0000",
+          "value": null,
+          "size": 28
+        },
+        {
+          "category": "custom",
+          "namespace": "gif",
+          "key": "TrailingData",
+          "value": null,
+          "size": 8
+        },
+        {
+          "category": "icc",
+          "namespace": "gif",
+          "key": "ICCRGBG1012",
+          "value": null,
+          "size": 136
+        }
+      ],
+      "kept": [],
+      "bytes_removable": 1125,
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "cleaned": 1,
+    "already_clean": 0,
+    "skipped": 0,
+    "errors": 0,
+    "not_fully_clean": 0,
+    "fields_removed": 8,
+    "bytes_removable": 1125
+  }
+}

@@ -1,0 +1,16 @@
+cam.avi  [AVI]
+  Timestamps:
+      avi:IDIT = "WED APR 12 18:33:02 2023"
+      riff.info:ICRD = "2023-04-12"
+  Author:
+      riff.info:IENG = "Jane Photographer"
+  Software:
+      riff.info:ISFT = "SecretEncoder 1.0"
+  ID tags:
+      riff.info:INAM = "Test Song"
+      riff.info:IART = "Test Artist"
+  Custom:
+      avi:strn = "iPhone 14 Pro video"
+      riff.info:ICMT = "secret comment"
+      avi:LIST ncdt = <binary, 32 bytes>
+  --- 9 fields, ~248 B removable

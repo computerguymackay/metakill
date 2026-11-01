@@ -1,0 +1,60 @@
+letter.docx  [OOXML]
+  Timestamps:
+      zip:member timestamps (latest) = "2023-04-12T18:33:02Z"
+      ooxml:word/document.xml date = "2023-04-12T18:33:02Z"
+      ooxml:word/comments.xml date = "2023-04-12T18:33:02Z"
+      ooxml.core:dcterms:created = "2023-04-12T18:33:02Z"
+      ooxml.core:dcterms:modified = "2023-04-12T18:33:02Z"
+  Author:
+      ooxml:word/document.xml author = "Jane Photographer"
+      ooxml:word/comments.xml author = "Jane Photographer"
+      ooxml:word/people.xml author = "AD"
+      ooxml:word/people.xml author = "Jane Photographer"
+      ooxml:word/people.xml author = "S::jane@example.com::1234"
+      ooxml.core:dc:creator = "Jane Photographer"
+      ooxml.core:cp:lastModifiedBy = "Jane Photographer"
+      ooxml.app:Company = "Apple Inc"
+  Software:
+      ooxml.app:Application = "SecretEncoder 1.0"
+      ooxml.app:AppVersion = "16.0000"
+  ID tags:
+      ooxml.core:dc:title = "Secret Letter Title"
+  Thumbnail:
+      ooxml:docProps/thumbnail.jpeg = <binary, 631 bytes>
+  Custom:
+      zip:archive comment = "Created by iOS 16.4"
+      zip:extra fields (uid/gid, timestamps) = "13 member(s)"
+      ooxml:word/document.xml rsid attributes = "3"
+      ooxml:w:attachedTemplate = ""
+      ooxml:w:docVars = ""
+      ooxml:w:rsids = "2 session IDs"
+      ooxml.core:cp:revision = "7"
+      ooxml.app:Template = "Normal.dotm"
+      ooxml.app:TotalTime = "42"
+      ooxml.custom:ClientId = "iPhone 14 Pro"
+      ooxml:attachedTemplate path = "file:///C:\\Users\\jane\\AppData\\Roaming\\Microsoft\\Templates\\Normal.dotm"
+  > word/media/image1.jpeg  [JPEG]
+  >   GPS:
+  >       exif:GPSLatitudeRef = "N"
+  >       exif:GPSLatitude = "37 46 29.64"
+  >       exif:GPSLongitudeRef = "W"
+  >       exif:GPSLongitude = "122 25 9.84"
+  >       exif:GPSAltitude = "16"
+  >   Timestamps:
+  >       exif:DateTime = "2023:04:12 18:33:02"
+  >       exif:DateTimeOriginal = "2023:04:12 18:33:02"
+  >       exif:DateTimeDigitized = "2023:04:12 18:33:02"
+  >   Device:
+  >       exif:Make = "Apple"
+  >       exif:Model = "iPhone 14 Pro"
+  >       exif:BodySerialNumber = "SN-0042-SECRET"
+  >       exif:LensModel = "iPhone 14 Pro back camera"
+  >   Author:
+  >       exif:Artist = "Jane Photographer"
+  >   Software:
+  >       exif:Software = "iOS 16.4"
+  >   Custom:
+  >       exif:UserComment = "secret comment"
+  >   Kept Custom:
+  >       exif:Orientation = "6"
+  --- 43 fields, ~1.8 KiB removable

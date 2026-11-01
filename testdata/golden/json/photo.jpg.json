@@ -1,0 +1,187 @@
+{
+  "dry_run": true,
+  "results": [
+    {
+      "path": "photo.jpg",
+      "format": "jpeg",
+      "dry_run": true,
+      "status": "cleaned",
+      "fully_clean": true,
+      "fields": [
+        {
+          "category": "device",
+          "namespace": "exif",
+          "key": "Make",
+          "value": "Apple"
+        },
+        {
+          "category": "device",
+          "namespace": "exif",
+          "key": "Model",
+          "value": "iPhone 14 Pro"
+        },
+        {
+          "category": "software",
+          "namespace": "exif",
+          "key": "Software",
+          "value": "iOS 16.4"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "exif",
+          "key": "DateTime",
+          "value": "2023:04:12 18:33:02"
+        },
+        {
+          "category": "author",
+          "namespace": "exif",
+          "key": "Artist",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "exif",
+          "key": "DateTimeOriginal",
+          "value": "2023:04:12 18:33:02"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "exif",
+          "key": "DateTimeDigitized",
+          "value": "2023:04:12 18:33:02"
+        },
+        {
+          "category": "custom",
+          "namespace": "exif",
+          "key": "UserComment",
+          "value": "secret comment"
+        },
+        {
+          "category": "device",
+          "namespace": "exif",
+          "key": "BodySerialNumber",
+          "value": "SN-0042-SECRET"
+        },
+        {
+          "category": "device",
+          "namespace": "exif",
+          "key": "LensModel",
+          "value": "iPhone 14 Pro back camera"
+        },
+        {
+          "category": "gps",
+          "namespace": "exif",
+          "key": "GPSLatitudeRef",
+          "value": "N"
+        },
+        {
+          "category": "gps",
+          "namespace": "exif",
+          "key": "GPSLatitude",
+          "value": "37 46 29.64"
+        },
+        {
+          "category": "gps",
+          "namespace": "exif",
+          "key": "GPSLongitudeRef",
+          "value": "W"
+        },
+        {
+          "category": "gps",
+          "namespace": "exif",
+          "key": "GPSLongitude",
+          "value": "122 25 9.84"
+        },
+        {
+          "category": "gps",
+          "namespace": "exif",
+          "key": "GPSAltitude",
+          "value": "16"
+        },
+        {
+          "category": "thumbnail",
+          "namespace": "exif",
+          "key": "ThumbnailImage",
+          "value": null,
+          "size": 631
+        },
+        {
+          "category": "software",
+          "namespace": "xmp",
+          "key": "xmp:CreatorTool",
+          "value": "Adobe Photoshop 24.0"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "xmp",
+          "key": "xmp:CreateDate",
+          "value": "2023-04-12T18:33:02"
+        },
+        {
+          "category": "author",
+          "namespace": "xmp",
+          "key": "dc:creator",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "gps",
+          "namespace": "xmp",
+          "key": "exif:GPSLatitude",
+          "value": "37,46.494N"
+        },
+        {
+          "category": "author",
+          "namespace": "iptc",
+          "key": "By-line",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "gps",
+          "namespace": "iptc",
+          "key": "City",
+          "value": "San Francisco"
+        },
+        {
+          "category": "custom",
+          "namespace": "jpeg",
+          "key": "Comment",
+          "value": "secret comment"
+        },
+        {
+          "category": "icc",
+          "namespace": "icc",
+          "key": "ICC_PROFILE",
+          "value": null,
+          "size": 150
+        },
+        {
+          "category": "custom",
+          "namespace": "jpeg",
+          "key": "TrailingData",
+          "value": null,
+          "size": 25
+        }
+      ],
+      "kept": [
+        {
+          "category": "custom",
+          "namespace": "exif",
+          "key": "Orientation",
+          "value": "6"
+        }
+      ],
+      "bytes_removable": 2059,
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "cleaned": 1,
+    "already_clean": 0,
+    "skipped": 0,
+    "errors": 0,
+    "not_fully_clean": 0,
+    "fields_removed": 25,
+    "bytes_removable": 2059
+  }
+}

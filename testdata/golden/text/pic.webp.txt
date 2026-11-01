@@ -1,0 +1,9 @@
+pic.webp  [WEBP]
+  GPS:             GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64", GPSLongitudeRef = "W", GPSLongitude = "122 25 9.84", GPSAltitude = "16", exif:GPSLatitude = "37,46.494N"
+  Timestamps:      DateTime = "2023:04:12 18:33:02", DateTimeOriginal = "2023:04:12 18:33:02", DateTimeDigitized = "2023:04:12 18:33:02", xmp:CreateDate = "2023-04-12T18:33:02"
+  Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET", LensModel = "iPhone 14 Pro back camera"
+  Author:          Artist = "Jane Photographer", dc:creator = "Jane Photographer"
+  Software:        Software = "iOS 16.4", xmp:CreatorTool = "Adobe Photoshop 24.0"
+  ICC profile:     ICCP = <binary, 136 bytes>
+  Custom:          UserComment = "secret comment", Orientation = "6"
+  --- 21 fields, ~1.2 KiB removable

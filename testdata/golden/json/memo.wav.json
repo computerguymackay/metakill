@@ -1,0 +1,119 @@
+{
+  "dry_run": true,
+  "results": [
+    {
+      "path": "memo.wav",
+      "format": "wav",
+      "dry_run": true,
+      "status": "cleaned",
+      "fully_clean": true,
+      "fields": [
+        {
+          "category": "custom",
+          "namespace": "bext",
+          "key": "Description",
+          "value": "secret comment"
+        },
+        {
+          "category": "author",
+          "namespace": "bext",
+          "key": "Originator",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "bext",
+          "key": "OriginationDate",
+          "value": "2023-04-12"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "bext",
+          "key": "OriginationTime",
+          "value": "18:33:02"
+        },
+        {
+          "category": "software",
+          "namespace": "bext",
+          "key": "CodingHistory",
+          "value": "A=PCM,F=8000,W=8,M=mono,T=SecretEncoder 1.0"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "riff.info",
+          "key": "INAM",
+          "value": "Test Song"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "riff.info",
+          "key": "IART",
+          "value": "Test Artist"
+        },
+        {
+          "category": "timestamp",
+          "namespace": "riff.info",
+          "key": "ICRD",
+          "value": "2023-04-12"
+        },
+        {
+          "category": "software",
+          "namespace": "riff.info",
+          "key": "ISFT",
+          "value": "SecretEncoder 1.0"
+        },
+        {
+          "category": "custom",
+          "namespace": "riff.info",
+          "key": "ICMT",
+          "value": "secret comment"
+        },
+        {
+          "category": "author",
+          "namespace": "riff.info",
+          "key": "IENG",
+          "value": "Jane Photographer"
+        },
+        {
+          "category": "id_tag",
+          "namespace": "id3v2.3",
+          "key": "TIT2",
+          "value": "Test Song"
+        },
+        {
+          "category": "software",
+          "namespace": "id3v2.3",
+          "key": "TSSE",
+          "value": "SecretEncoder 1.0"
+        },
+        {
+          "category": "custom",
+          "namespace": "riff",
+          "key": "iXML",
+          "value": null,
+          "size": 50
+        },
+        {
+          "category": "custom",
+          "namespace": "riff",
+          "key": "JUNK (non-zero padding)",
+          "value": null,
+          "size": 17
+        }
+      ],
+      "kept": [],
+      "bytes_removable": 1012,
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "cleaned": 1,
+    "already_clean": 0,
+    "skipped": 0,
+    "errors": 0,
+    "not_fully_clean": 0,
+    "fields_removed": 15,
+    "bytes_removable": 1012
+  }
+}

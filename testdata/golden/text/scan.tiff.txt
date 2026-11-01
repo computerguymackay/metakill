@@ -1,0 +1,9 @@
+scan.tiff  [TIFF]
+  GPS:             exif:GPSLatitude = "37,46.494N", GPSLatitudeRef = "N", GPSLatitude = "37 46 29.64"
+  Timestamps:      DateTime = "2023:04:12 18:33:02", xmp:CreateDate = "2023-04-12T18:33:02", DateTimeOriginal = "2023:04:12 18:33:02"
+  Device:          Make = "Apple", Model = "iPhone 14 Pro", BodySerialNumber = "SN-0042-SECRET"
+  Author:          Artist = "Jane Photographer", dc:creator = "Jane Photographer"
+  Software:        Software = "iOS 16.4", xmp:CreatorTool = "Adobe Photoshop 24.0"
+  Thumbnail:       Page2 (reduced-resolution) = <binary, 12 bytes>
+  ICC profile:     ICCProfile = <binary, 136 bytes>
+  --- 15 fields, ~1.2 KiB removable

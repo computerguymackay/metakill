@@ -1,0 +1,7 @@
+movie.mkv  [MKV]
+  Timestamps:      DateUTC = "2024-04-11T18:33:02Z", DATE_RELEASED = "2023-04-12"
+  Software:        MuxingApp = "libebml v1.4.4 + libmatroska v1.7.1 SecretEncoder 1.0", WritingApp = "mkvmerge v80.0 ('Roundabout') 64-bit iOS 16.4", track CodecName = "SecretEncoder 1.0", ENCODER = "SecretEncoder 1.0"
+  ID tags:         Title = "Test Song", TITLE = "Test Song", ARTIST = "Test Artist"
+  Thumbnail:       cover.jpg (image/jpeg) = <binary, 1111 bytes>
+  Custom:          SegmentUID = <binary, 16 bytes>, track Name = "Recorded on iPhone 14 Pro", COMMENT = "secret comment", cover.jpg description = "Jane Photographer"
+  --- 14 fields, ~1.5 KiB removable

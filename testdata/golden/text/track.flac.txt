@@ -1,0 +1,8 @@
+track.flac  [FLAC]
+  Timestamps:      DATE = "2023-04-12", Year = "2023"
+  Author:          COMPOSER = "Jane Photographer"
+  Software:        vendor = "reference libFLAC 1.4.2 SecretEncoder 1.0", ENCODER = "SecretEncoder 1.0"
+  ID tags:         TITLE = "Test Song", ARTIST = "Test Artist", ALBUM = "Test Album", TRACKNUMBER = "3", Title = "Test Song", Artist = "Test Artist", Album = "Test Album", Track = "3"
+  Thumbnail:       PICTURE = <binary, 1111 bytes>
+  Custom:          APPLICATION:riff = <binary, 21 bytes>, COMMENT = "secret comment", PADDING (non-zero) = <binary, 84 bytes>, Comment = "secret comment"
+  --- 18 fields, ~1.5 KiB removable

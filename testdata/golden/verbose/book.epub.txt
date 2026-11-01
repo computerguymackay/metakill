@@ -1,0 +1,44 @@
+book.epub  [EPUB]
+  Timestamps:
+      zip:member timestamps (latest) = "2023-04-12T18:33:02Z"
+      epub:dc:date = "2023-04-12"
+      epub:dcterms:modified = "2023-04-12T18:33:02Z"
+      epub.meta:calibre:timestamp = "2023-04-12T18:33:02+00:00"
+  Author:
+      epub:dc:creator = "Jane Photographer"
+      epub:dc:contributor = "calibre (6.0.0) [https://calibre-ebook.com]"
+      epub:dc:publisher = "Apple Books"
+  Custom:
+      zip:extra fields (uid/gid, timestamps) = "6 member(s)"
+      epub:dc:identifier = "calibre:SN-0042-SECRET"
+      epub.meta:file-as = "Photographer, Jane"
+      epub:META-INF/calibre_bookmarks.txt = <binary, 39 bytes>
+  Kept ID tags:
+      epub:dc:title (required) = "Secret Letter Title"
+  Kept Custom:
+      epub:dc:identifier (required) = "urn:uuid:12345678-1234-1234-1234-123456789abc"
+  > OEBPS/cover.jpg  [JPEG]
+  >   GPS:
+  >       exif:GPSLatitudeRef = "N"
+  >       exif:GPSLatitude = "37 46 29.64"
+  >       exif:GPSLongitudeRef = "W"
+  >       exif:GPSLongitude = "122 25 9.84"
+  >       exif:GPSAltitude = "16"
+  >   Timestamps:
+  >       exif:DateTime = "2023:04:12 18:33:02"
+  >       exif:DateTimeOriginal = "2023:04:12 18:33:02"
+  >       exif:DateTimeDigitized = "2023:04:12 18:33:02"
+  >   Device:
+  >       exif:Make = "Apple"
+  >       exif:Model = "iPhone 14 Pro"
+  >       exif:BodySerialNumber = "SN-0042-SECRET"
+  >       exif:LensModel = "iPhone 14 Pro back camera"
+  >   Author:
+  >       exif:Artist = "Jane Photographer"
+  >   Software:
+  >       exif:Software = "iOS 16.4"
+  >   Custom:
+  >       exif:UserComment = "secret comment"
+  >   Kept Custom:
+  >       exif:Orientation = "6"
+  --- 26 fields, ~499 B removable

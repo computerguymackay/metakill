@@ -1,0 +1,2 @@
+notes.md  [TEXT]
+  no removable metadata found
