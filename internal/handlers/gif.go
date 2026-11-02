@@ -7,7 +7,7 @@ import (
 	"io"
 
 	"github.com/computerguymackay/metakill/internal/meta/xmp"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // gifHandler drops comment extensions, XMP and other application extensions

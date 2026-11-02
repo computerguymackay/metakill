@@ -15,7 +15,7 @@ import (
 	"github.com/computerguymackay/metakill/internal/meta/classify"
 	"github.com/computerguymackay/metakill/internal/meta/isobmff"
 	"github.com/computerguymackay/metakill/internal/meta/xmp"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // mp4Handler cleans MP4, M4V, M4A and QuickTime MOV files. It removes udta

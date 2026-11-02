@@ -12,7 +12,7 @@ import (
 	"strings"
 
 	"github.com/computerguymackay/metakill/internal/meta/memio"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // Options controls what a handler removes. The zero value strips everything

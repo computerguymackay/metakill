@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // Manifest attributes that identify who built a JAR, on which machine, with

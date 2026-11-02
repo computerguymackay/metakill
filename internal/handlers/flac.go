@@ -7,7 +7,7 @@ import (
 
 	"github.com/computerguymackay/metakill/internal/meta/id3"
 	"github.com/computerguymackay/metakill/internal/meta/vorbis"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // flacHandler rewrites the FLAC metadata blocks: VORBIS_COMMENT (vendor

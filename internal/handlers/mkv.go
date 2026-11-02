@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/computerguymackay/metakill/internal/meta/classify"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // mkvHandler cleans Matroska and WebM files in place, the way mkvpropedit

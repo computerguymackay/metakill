@@ -8,7 +8,7 @@ import (
 	"io"
 
 	"github.com/computerguymackay/metakill/internal/meta/xmp"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // webpHandler drops EXIF, XMP, ICCP (unless -c) and unknown chunks, and

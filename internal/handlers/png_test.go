@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/computerguymackay/metakill/internal/fixtures"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 func TestPNG(t *testing.T) {

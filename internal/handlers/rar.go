@@ -10,7 +10,7 @@ import (
 
 	"github.com/nwaples/rardecode/v2"
 
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // rarHandler cleans RAR4 and RAR5 archives. Reading is pure Go. With

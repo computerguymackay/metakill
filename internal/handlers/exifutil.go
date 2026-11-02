@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/computerguymackay/metakill/internal/meta/exif"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // scrubEXIF reports the fields in a TIFF-structured EXIF block and returns

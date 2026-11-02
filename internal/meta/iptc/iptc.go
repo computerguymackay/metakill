@@ -8,7 +8,7 @@ import (
 	"fmt"
 
 	"github.com/computerguymackay/metakill/internal/meta/classify"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // PhotoshopHeader prefixes a JPEG APP13 segment.

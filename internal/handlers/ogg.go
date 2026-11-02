@@ -8,7 +8,7 @@ import (
 	"io"
 
 	"github.com/computerguymackay/metakill/internal/meta/vorbis"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // oggHandler rewrites the comment header of every Vorbis, Opus, Theora and

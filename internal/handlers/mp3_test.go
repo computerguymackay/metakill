@@ -6,7 +6,7 @@ import (
 
 	"github.com/computerguymackay/metakill/internal/fixtures"
 	"github.com/computerguymackay/metakill/internal/meta/id3"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // audioPayload returns the bytes after the LAME info frame (pure audio).

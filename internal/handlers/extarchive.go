@@ -19,7 +19,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // cleanEpoch is the timestamp given to every file before repacking.

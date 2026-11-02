@@ -16,7 +16,7 @@ import (
 	"github.com/computerguymackay/metakill/internal/meta/classify"
 	"github.com/computerguymackay/metakill/internal/meta/memio"
 	"github.com/computerguymackay/metakill/internal/meta/xmp"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // pdfHandler rewrites the PDF with pdfcpu, which drops incremental-update

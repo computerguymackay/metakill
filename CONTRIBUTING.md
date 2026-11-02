@@ -19,12 +19,13 @@ Thanks for helping. A few ground rules keep metakill trustworthy.
 ## Layout
 
 ```
+metakill.go            public library API (Clean, CleanFile, CleanBytes, Inspect)
+report/                public Report types and the text/JSON emitters
 cmd/metakill/          CLI wiring (cobra) and the os/exec integration tests
 internal/cli/          orchestration: walking, prompting, safe writes, selftest
 internal/handlers/     one file per format family + handler.go (interface, registry)
 internal/meta/         low-level parsers/writers (exif, xmp, iptc, id3, ape,
                        vorbis, isobmff, classify, memio)
-internal/report/       Report types and the text/JSON emitters
 internal/fixtures/     Go generators for test fixtures
 testdata/fixtures/     generated fixtures (make fixtures)
 testdata/golden/       expected dry-run output (make golden)
@@ -39,8 +40,8 @@ testdata/golden/       expected dry-run output (make golden)
 2. **One code path.** Implement Inspect and Strip on top of one shared
    "plan" or "process" function, so they can never disagree.
 3. **Validation.** After Strip, Inspect of the output must report zero
-   fields. The CLI enforces this and refuses to replace the original if it
-   doesn't hold. Kept items belong in `rep.Keep(...)`, not `rep.Add(...)`.
+   fields. `handlers.StripVerified` enforces this for both the CLI and the
+   library, which refuse to replace the original if it doesn't hold. Kept items belong in `rep.Keep(...)`, not `rep.Add(...)`.
 4. **Classification.** Map new keys to categories in
    `internal/meta/classify` so categories and `-k` behave the same across
    formats.

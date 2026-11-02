@@ -11,7 +11,7 @@ import (
 	"github.com/computerguymackay/metakill/internal/meta/ape"
 	"github.com/computerguymackay/metakill/internal/meta/classify"
 	"github.com/computerguymackay/metakill/internal/meta/id3"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // mp3Handler removes ID3v2 tags (leading and appended), ID3v1, ID3v1

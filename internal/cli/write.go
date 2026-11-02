@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/computerguymackay/metakill/internal/handlers"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // processOne inspects (dry-run) or strips one file.
@@ -48,7 +48,7 @@ func (r *runner) processOne(j job) report.Report {
 		return rep
 	}
 	if err != nil {
-		return fail(prefixed(j.handler.Name(), err))
+		return fail(handlers.Prefixed(j.handler.Name(), err))
 	}
 	pre.Path = j.path
 	if pre.Format == "" {
@@ -112,49 +112,13 @@ func (r *runner) processOne(j job) report.Report {
 		_ = os.Remove(tmpName)
 	}
 
-	if _, err := src.Seek(0, io.SeekStart); err != nil {
-		cleanup()
-		return fail(err)
-	}
-	rep, err := j.handler.Strip(src, tmp, r.opts)
+	// Strip into the temp file and re-validate it before touching the original.
+	rep, newSize, err := handlers.StripVerified(j.handler, src, tmp, r.opts, convert)
 	if err != nil {
 		cleanup()
-		return fail(prefixed(j.handler.Name(), err))
+		return fail(err)
 	}
 	if err := tmp.Sync(); err != nil {
-		cleanup()
-		return fail(err)
-	}
-
-	// Post-write validation: the output must parse with the same handler and
-	// contain nothing that handler would still remove.
-	if _, err := tmp.Seek(0, io.SeekStart); err != nil {
-		cleanup()
-		return fail(err)
-	}
-	vh := j.handler
-	if convert != "" {
-		// The output is a different format; validate it with its own handler.
-		if vh = handlers.Detect(tmp, ""); vh == nil || "."+vh.Name() != convert {
-			cleanup()
-			return fail(fmt.Errorf("post-write validation failed (original left untouched): output is not a %s archive", convert))
-		}
-		if _, err := tmp.Seek(0, io.SeekStart); err != nil {
-			cleanup()
-			return fail(err)
-		}
-	}
-	check, err := vh.Inspect(tmp, r.opts)
-	if err != nil {
-		cleanup()
-		return fail(fmt.Errorf("post-write validation failed (original left untouched): %w", err))
-	}
-	if n := check.TotalFields(); n > 0 {
-		cleanup()
-		return fail(fmt.Errorf("post-write validation failed (original left untouched): %d field(s) still present, first: %s", n, firstField(&check)))
-	}
-	newSize, err := tmp.Seek(0, io.SeekEnd)
-	if err != nil {
 		cleanup()
 		return fail(err)
 	}
@@ -228,19 +192,6 @@ func statusFor(rep *report.Report) report.Status {
 	return report.StatusCleaned
 }
 
-func firstField(rep *report.Report) string {
-	if len(rep.Fields) > 0 {
-		f := rep.Fields[0]
-		return f.Namespace + ":" + f.Key
-	}
-	for i := range rep.Embedded {
-		if s := firstField(&rep.Embedded[i]); s != "" {
-			return rep.Embedded[i].Path + ": " + s
-		}
-	}
-	return ""
-}
-
 // target resolves where the cleaned file goes. In-place writes follow
 // symlinks so the link itself is preserved.
 func (r *runner) target(path string) (string, bool, error) {
@@ -303,14 +254,6 @@ func copyWithFlags(src, dst string, perm os.FileMode, flags int) error {
 		return err
 	}
 	return out.Close()
-}
-
-// prefixed adds the handler name to an error unless it already starts with it.
-func prefixed(name string, err error) error {
-	if strings.HasPrefix(err.Error(), name+":") {
-		return err
-	}
-	return fmt.Errorf("%s: %w", name, err)
 }
 
 // swapExt replaces a path's extension (e.g. holiday.rar → holiday.7z).

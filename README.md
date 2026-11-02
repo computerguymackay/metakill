@@ -44,6 +44,55 @@ toolchain automatically.
 Or download a binary from the releases page, or build one yourself with
 `make build` (output in `bin/`).
 
+## Use as a Go library
+
+The same cleaning code is available as a package, so another Go program can
+use it without running the binary:
+
+```console
+go get github.com/computerguymackay/metakill@latest
+```
+
+```go
+import (
+	"github.com/computerguymackay/metakill"
+	"github.com/computerguymackay/metakill/report"
+)
+
+// A file on disk, cleaned in place (temp file, validation, atomic rename;
+// no backup is made).
+rep, err := metakill.CleanFile("holiday.jpg", metakill.Options{})
+
+// Data in memory, e.g. an upload.
+clean, rep, err := metakill.CleanBytes(data, "upload.jpg", metakill.Options{KeepICC: true})
+
+// Streams: r must be seekable, w is any io.Writer.
+rep, err := metakill.Clean(r, w, "song.mp3", metakill.Options{KeepTags: true})
+
+// Report only; nothing is written.
+rep, err := metakill.Inspect(r, "report.pdf", metakill.Options{})
+```
+
+`Options` mirrors the stripping and archive flags (`-k`, `-t`, `-c`, `-z`,
+`-x`, `-a`); the zero value matches the command's defaults. Each call returns
+a `report.Report` with the removed and kept fields, a status, and
+`FullyClean`. Check `FullyClean` as well as the error: a file can be cleaned
+with some metadata that could not be removed, which the command reports with
+exit code 3. Errors to check with `errors.Is`:
+
+| Error | Meaning |
+|---|---|
+| `ErrUnknownFormat` | no handler recognised the input |
+| `ErrUnsupported` | recognised, but this variant can't be processed (encrypted PDF, DNG, ...) |
+| `ErrSkipped` | deliberately left alone (signed APK/JAR) |
+| `ErrNeedsTool` | a 7z/RAR archive needs `ExternalTools` or an installed tool; the report still lists the metadata |
+
+Every function is safe for concurrent use. Every output gets the same
+post-write validation as the command, and nothing is returned or written if
+that check fails. `Clean` stages its output in a temp file in `os.TempDir`.
+The library never runs external programs unless `ExternalTools` or
+`ConvertRAR` is set. The package API may still change before v1.0.
+
 ## Usage
 
 ```text

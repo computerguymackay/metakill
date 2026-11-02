@@ -8,7 +8,7 @@ import (
 	"github.com/beevik/etree"
 
 	"github.com/computerguymackay/metakill/internal/meta/classify"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 const rdfNS = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"

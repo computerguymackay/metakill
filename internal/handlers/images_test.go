@@ -12,7 +12,7 @@ import (
 	"golang.org/x/image/webp"
 
 	"github.com/computerguymackay/metakill/internal/fixtures"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 func TestGIF(t *testing.T) {

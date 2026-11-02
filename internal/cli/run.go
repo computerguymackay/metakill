@@ -12,7 +12,7 @@ import (
 	"strings"
 
 	"github.com/computerguymackay/metakill/internal/handlers"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // Exit codes.

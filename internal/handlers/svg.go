@@ -10,7 +10,7 @@ import (
 	"github.com/beevik/etree"
 
 	"github.com/computerguymackay/metakill/internal/meta/classify"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // svgHandler removes <metadata>, <title>, <desc> (title kept with -k),

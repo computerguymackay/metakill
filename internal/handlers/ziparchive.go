@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // zipArchiveHandler cleans plain ZIP archives (and .cbz comic archives):

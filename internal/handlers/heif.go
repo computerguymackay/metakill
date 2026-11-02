@@ -10,7 +10,7 @@ import (
 
 	"github.com/computerguymackay/metakill/internal/meta/isobmff"
 	"github.com/computerguymackay/metakill/internal/meta/xmp"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // heifBrands are ftyp major brands handled as HEIF still images rather than

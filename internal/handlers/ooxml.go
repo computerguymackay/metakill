@@ -9,7 +9,7 @@ import (
 	"github.com/beevik/etree"
 
 	"github.com/computerguymackay/metakill/internal/meta/classify"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // ooxmlHandler cleans Word, Excel and PowerPoint (OOXML) documents:

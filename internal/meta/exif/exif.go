@@ -12,7 +12,7 @@ import (
 	"unicode/utf16"
 
 	"github.com/computerguymackay/metakill/internal/meta/classify"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // TIFF field types.

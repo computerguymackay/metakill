@@ -17,7 +17,7 @@ import (
 	"github.com/klauspost/compress/zstd"
 	"github.com/ulikunitz/xz"
 
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // tarHandler cleans TAR archives, plain or wrapped in gzip, xz, zstd or

@@ -7,7 +7,7 @@ package classify
 import (
 	"strings"
 
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // Essential canonical names kept by -k.

@@ -9,7 +9,7 @@ import (
 	"github.com/pdfcpu/pdfcpu/pkg/api"
 
 	"github.com/computerguymackay/metakill/internal/fixtures"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 func TestPDF(t *testing.T) {

@@ -9,7 +9,7 @@ import (
 	"github.com/computerguymackay/metakill/internal/meta/exif"
 	"github.com/computerguymackay/metakill/internal/meta/iptc"
 	"github.com/computerguymackay/metakill/internal/meta/xmp"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // tiffHandler rebuilds a TIFF keeping only the tags needed to decode each

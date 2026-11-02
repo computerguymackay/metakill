@@ -15,7 +15,7 @@ import (
 
 	"github.com/beevik/etree"
 
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // Placeholder values written where a document format requires an author or

@@ -16,7 +16,7 @@ import (
 
 	"github.com/computerguymackay/metakill/internal/fixtures"
 	"github.com/computerguymackay/metakill/internal/meta/memio"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 var xOpts = Options{ZeroPad: true, ExternalTools: true}

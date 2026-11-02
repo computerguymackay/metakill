@@ -9,7 +9,7 @@ import (
 	"github.com/beevik/etree"
 
 	"github.com/computerguymackay/metakill/internal/meta/classify"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // odfHandler cleans OpenDocument files (.odt, .ods, .odp, .odg, ...):

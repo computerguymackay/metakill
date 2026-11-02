@@ -9,7 +9,7 @@ import (
 
 	"github.com/computerguymackay/metakill/internal/meta/iptc"
 	"github.com/computerguymackay/metakill/internal/meta/xmp"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // jpegHandler removes APPn metadata segments, comments and trailing data.

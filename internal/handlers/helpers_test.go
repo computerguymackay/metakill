@@ -7,7 +7,7 @@ import (
 
 	"github.com/computerguymackay/metakill/internal/fixtures"
 	"github.com/computerguymackay/metakill/internal/meta/memio"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // defaultOpts mirrors the CLI defaults (strip everything, zero padding).

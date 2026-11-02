@@ -7,7 +7,7 @@ import (
 	"encoding/binary"
 
 	"github.com/computerguymackay/metakill/internal/meta/classify"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // FooterSize is the size of an APE tag footer (and header).

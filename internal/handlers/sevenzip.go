@@ -10,7 +10,7 @@ import (
 
 	"github.com/bodgit/sevenzip"
 
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // sevenZipHandler cleans 7z archives. Reading is pure Go; repacking needs

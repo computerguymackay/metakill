@@ -3,7 +3,7 @@ package handlers
 import (
 	"io"
 
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // textHandler recognises plain text and Markdown. These formats carry no

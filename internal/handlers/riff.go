@@ -11,7 +11,7 @@ import (
 	"github.com/computerguymackay/metakill/internal/meta/classify"
 	"github.com/computerguymackay/metakill/internal/meta/id3"
 	"github.com/computerguymackay/metakill/internal/meta/xmp"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // RIFF formats (WAV, AVI) are cleaned in place: metadata chunks become JUNK

@@ -11,7 +11,7 @@ import (
 	"strings"
 
 	"github.com/computerguymackay/metakill/internal/meta/xmp"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // pngHandler drops text chunks (tEXt, zTXt, iTXt), eXIf (rewritten to keep

@@ -11,7 +11,7 @@ import (
 	"unicode/utf16"
 
 	"github.com/computerguymackay/metakill/internal/meta/classify"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 // Frame is one decoded ID3v2 frame (payload after de-unsynchronisation).

@@ -7,7 +7,7 @@ import (
 	mp4 "github.com/abema/go-mp4"
 
 	"github.com/computerguymackay/metakill/internal/fixtures"
-	"github.com/computerguymackay/metakill/internal/report"
+	"github.com/computerguymackay/metakill/report"
 )
 
 func TestMP4(t *testing.T) {
